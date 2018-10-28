@@ -1,3 +1,3 @@
 # ReadMe
 
-* Veja no repositório princical: https://github.com/academiadev-joinville/projeto-wiki-batatacombacon
+* Veja no repositório [Wiki](https://github.com/academiadev-jlle/wiki-batatacombacon)
