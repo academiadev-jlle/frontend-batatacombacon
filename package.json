@@ -1,22 +1,22 @@
 {
-  "name": "projeto-frontend-batatacombacon",
+  "name": "frontend-batatacombacon",
   "version": "1.0.0",
-  "description": "* Veja no repositório princical: https://github.com/academiadev-joinville/projeto-wiki-batatacombacon",
+  "description": "* Veja no repositório princical: https://github.com/academiadev-jlle/wiki-batatacombacon",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/academiadev-joinville/projeto-frontend-batatacombacon.git"
+    "url": "git+https://github.com/academiadev-jlle/frontend-batatacombacon.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/academiadev-joinville/projeto-frontend-batatacombacon/issues"
+    "url": "https://github.com/academiadev-jlle/frontend-batatacombacon/issues"
   },
-  "homepage": "https://github.com/academiadev-joinville/projeto-frontend-batatacombacon#readme",
+  "homepage": "https://github.com/academiadev-jlle/frontend-batatacombacon#readme",
   "devDependencies": {
     "bootstrap": "^4.1.3",
     "browser-sync": "^2.26.3",
