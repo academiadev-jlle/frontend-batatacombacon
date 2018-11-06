@@ -1,0 +1,21 @@
+.formulariocontato {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+  
+.titulocontato {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.titulocontato p {
+    margin-block-end: 0px;
+}
+
+.formcadastro {
+width: 90%;
+max-width: 500px;
+margin: auto;
+}
