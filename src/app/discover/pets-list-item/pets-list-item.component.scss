@@ -1,0 +1,14 @@
+.card-deck {
+    margin-bottom: 10px; 
+  
+    .card {
+        background-color: #f9f9f9;
+        border-color: transparent; 
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover; 
+    }
+}
