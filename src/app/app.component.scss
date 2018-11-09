@@ -1,0 +1,24 @@
+.footer{
+    //padding: 2.5rem 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: #999;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+  
+    p {
+      margin-bottom: 0;
+      margin-left: 20px;
+    }
+  
+    p.header {
+      padding-bottom: 10px;
+    }
+  
+    p:last-child{
+      margin-bottom: 0;
+    }
+  
+}

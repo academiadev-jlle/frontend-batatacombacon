@@ -2,31 +2,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PrivateModule } from './private/private.module';
-import { PublicModule } from './public/public.module';
-import { SharedModule } from './shared/shared.module';
-import { routing } from './app.routing';
-import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { LoginComponent } from './login/login.component';
-import { ContatoComponent } from './contato/contato.component';
-import { DiscoverComponent } from './discover/discover.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ContatoModule } from './contato/contato.module';
+import { HomeModule } from './home/home.module';
+import { DiscoverModule } from './discover/discover.module';
+import { LoginModule } from './login/login.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CadastroComponent,
-    LoginComponent,
-    ContatoComponent,
-    DiscoverComponent
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule,
-    PrivateModule,
-    PublicModule,
-    routing
+    HomeModule,
+    ContatoModule,
+    DiscoverModule,
+    LoginModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
