@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/public/home/home.component';
 import { DiscoverComponent } from './pages/public/discover/discover.component';
-import { CadastroComponent } from './pages/private/cadastro/cadastro.component';
+import { CadastroComponent } from './pages/public/cadastro/cadastro.component';
 import { LoginComponent } from './pages/private/login/login.component';
 import { ContatoComponent } from './pages/public/contato/contato.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
-    { path: '', pathMatch: 'full', component: HomeComponent }
+    { path: '',  component: HomeComponent }
 ];
 
 @NgModule({

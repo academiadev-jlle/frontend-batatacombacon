@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeModule } from './public/home/home.module';
-import { DiscoverModule } from './public/discover/discover.module';
-import { CadastroModule } from './private/cadastro/cadastro.module';
-import { ContatoModule } from './public/contato/contato.module';
 import { LoginModule } from './private/login/login.module';
+
+import { DiscoverModule } from './public/discover/discover.module';
+import { CadastroModule } from './public/cadastro/cadastro.module';
+import { ContatoModule } from './public/contato/contato.module';
+import { HomeModule } from './public/home/home.module';
 
 @NgModule({
   imports: [
