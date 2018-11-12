@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
-    { path: '',  component: HomeComponent }
+    { path: '', pathMatch: 'full', component: HomeComponent }
 ];
 
 @NgModule({
