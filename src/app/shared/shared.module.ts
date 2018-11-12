@@ -2,8 +2,10 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './public/navbar/navbar.component';
+import { FooterComponent } from './public/footer/footer.component';
+import { FooterLoggedComponent } from './private/footer-logged/footer-logged.component';
+import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.component';
 
 
 @NgModule({
@@ -13,11 +15,15 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   exports: [
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterLoggedComponent,
+    NavbarLoggedComponent
   ],
   declarations: [
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterLoggedComponent,
+    NavbarLoggedComponent
   ]
 })
 export class SharedModule { }
