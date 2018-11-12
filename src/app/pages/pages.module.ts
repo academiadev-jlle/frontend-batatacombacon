@@ -8,6 +8,7 @@ import { CadastroModule } from './public/cadastro/cadastro.module';
 import { ContatoModule } from './public/contato/contato.module';
 import { HomeModule } from './public/home/home.module';
 
+
 @NgModule({
   imports: [
     CommonModule
@@ -19,7 +20,6 @@ import { HomeModule } from './public/home/home.module';
     ContatoModule,
     LoginModule
   ],
-  declarations: [
-  ]
+  declarations: [ ]
 })
 export class PagesModule { }
