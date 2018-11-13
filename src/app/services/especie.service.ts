@@ -11,16 +11,8 @@ export class EspecieService {
     
     constructor() { }
 
-    getEspecies(): Observable<Especie[]>{
-        return of(ESPECIES);
+    getEspecies(): Observable<string[]>{
+        return of(ESPECIES.map(especie => especie.nome));
     }
-
-    searchEspecie(term: string): Observable<Especie[]>{
-        console.log()
-        if (!term.trim()) {
-          return of([]);
-        }
-        return of(ESPECIES.filter(especie_ => especie_.nome.toLowerCase().includes(term.toLowerCase())));
-      }
     
 }
