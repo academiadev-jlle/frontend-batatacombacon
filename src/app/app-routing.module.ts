@@ -11,7 +11,6 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
     { path: '', pathMatch: 'full', component: HomeComponent },
-    
     { path: 'discover', loadChildren: './public/discover/discover.module#DiscoverModule'}
 ];
 
