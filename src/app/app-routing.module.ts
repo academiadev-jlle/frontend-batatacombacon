@@ -12,7 +12,6 @@ const routes: Routes = [
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent}
-    
 ];
 
 @NgModule({
