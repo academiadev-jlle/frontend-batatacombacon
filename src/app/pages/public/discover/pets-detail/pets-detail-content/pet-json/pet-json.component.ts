@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Pet } from 'src/app/classes/pet';
 
+import { Pet } from 'src/app/classes/pets/pet';
 import { PetService } from 'src/app/services/pet.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 
 @Component({
   selector: 'app-pet-json',
@@ -13,7 +13,6 @@ import { Location } from '@angular/common';
 })
 export class PetJsonComponent implements OnInit {
 
-  //pets: Pet[];
   pet: Pet;
 
   constructor(
@@ -24,12 +23,6 @@ export class PetJsonComponent implements OnInit {
   ngOnInit() {
     this.getPet();
   }
-
-  // isso aqui vai na lista de cards!
-  // getPets(): void {
-  //   this.petService.getPets()
-  //   .subscribe(pets => this.pets = pets);
-  // }
 
   getPet(): void {
     const id = +this.route.snapshot.paramMap.get('id');
