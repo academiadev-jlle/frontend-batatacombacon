@@ -23,7 +23,7 @@ export class PetService {
     if (!especie.trim()) {
       return of([]);
     }
-    return of(PETS.filter(pet_ => pet_.especie === especie));
+    return of(PETS.filter(pet_ => pet_.especie.toLocaleLowerCase() === especie.toLocaleLowerCase()));
   }
   
 }

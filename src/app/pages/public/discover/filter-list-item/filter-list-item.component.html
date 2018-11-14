@@ -37,13 +37,35 @@
 <div class="filter">
     <div class='row'>
         <div class='col-sm'>
-            <ng-template #customItemTemplate let-model="item" let-index="index">{{model}}</ng-template>
-            <input [(ngModel)]="selected"
+            <input [(ngModel)]="selectedEspecie"
             [typeahead]="especies"
             typeaheadWaitMs="500"
-            (typeaheadOnSelect)="onSelect($event)"
             class="form-control"
             placeholder="Espécie">
+        </div>
+        <div class='col-sm'>
+            <input [(ngModel)]="selectedPorte"
+            [typeahead]="portes"
+            typeaheadWaitMs="500"
+            class="form-control"
+            placeholder="Porte">
+        </div>
+        <div class='col-sm'>
+            <input [(ngModel)]="selectedCategoria"
+            [typeahead]="categorias"
+            typeaheadWaitMs="500"
+            class="form-control"
+            placeholder="Categoria">
+        </div>
+        <div class='col-sm'>
+            <input [(ngModel)]="selectedSexo"
+            [typeahead]="sexos"
+            typeaheadWaitMs="500"
+            class="form-control"
+            placeholder="Sexo">
+        </div>
+        <div class='col-sm'>
+            <button type="button" class="btn btn-warning" (click)="click()">Filtrar</button>
         </div>
     </div>
 </div>

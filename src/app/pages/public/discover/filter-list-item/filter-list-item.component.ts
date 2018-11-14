@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { EspecieService } from 'src/app/services/especie.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FilterService } from 'src/app/services/filter.service';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
-import { PetService } from 'src/app/services/pet.service';
+import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
   selector: 'app-filter-list-item',
@@ -10,31 +10,63 @@ import { PetService } from 'src/app/services/pet.service';
 ]
 })
 export class FilterListItemComponent implements OnInit {
+  @Output() messageEvent = new EventEmitter<string>();
   
   especies: string[];
-  selected: string;
+  portes: string[];
+  categorias: string[];
+  sexos: string[];
+  
+  selectedEspecie: string;
+  selectedPorte: string;
+  selectedCategoria: string;
+  selectedSexo: string;
 
-  constructor(
-    private especieService: EspecieService) { }
+  filterParams =  new FilterPets();
 
-  ngOnInit() {
-    this.getEspecies();
-  }
+  constructor(private filterService: FilterService) { }
 
   getEspecies(): void {
-    this.especieService.getEspecies()
+    this.filterService.getEspecies()
       .subscribe(especies_ => this.especies = especies_);
   }
 
-  onSelect(event: TypeaheadMatch): void {
-    this.selected = event.item;
-    console.log(this.selected);
+  getPortes(): void {
+    this.filterService.getPortes()
+      .subscribe(portes_ => this.portes = portes_);
   }
 
-  // filterByEspecie():void {
-  //   this.petService.searchPetByEspecie(this.selected)
-  //     .subscribe()
-  // }
+  getCategorias(): void {
+    this.filterService.getCategorias()
+      .subscribe(categorias_ => this.categorias = categorias_);
+  }
+
+  getSexos(): void {
+    this.filterService.getSexos()
+      .subscribe(sexos_ => this.sexos = sexos_);
+  }
+
+  ngOnInit() {
+    this.getEspecies();
+    this.getPortes();
+    this.getCategorias();
+    this.getSexos();
+  }
+
+  click() {
+    this.filterParams["especie"] = this.selectedEspecie;
+    this.filterParams["porte"] = this.selectedPorte;
+    this.filterParams["categoria"] = this.selectedCategoria;
+    this.filterParams["sexo"] = this.selectedSexo;
+
+    this.sendMessage(this.filterParams);
+  }
+
+
+
+  sendMessage(selecteds) {
+    this.messageEvent.emit(selecteds);
+  }
 
 
 }
