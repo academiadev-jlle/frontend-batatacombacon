@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class PetsListItemComponent implements OnInit {
 
-  pets: Pet[];
+  pets: Pet[];z
 
   constructor(
     private petService: PetService,

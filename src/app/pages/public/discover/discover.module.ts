@@ -9,10 +9,15 @@ import { PetsDetailComponent } from './pets-detail/pets-detail.component';
 import { DiscoverComponent } from './discover.component';
 import { PetJsonComponent } from './pets-detail/pets-detail-content/pet-json/pet-json.component';
 
+import { FormsModule } from '@angular/forms';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 @NgModule({
   imports: [
     CommonModule,
-    DiscoverRoutingModule
+    DiscoverRoutingModule,
+    FormsModule,
+    TypeaheadModule.forRoot()
   ],
   exports: [],
   declarations: [

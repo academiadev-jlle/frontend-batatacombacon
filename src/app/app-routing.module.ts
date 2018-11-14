@@ -7,11 +7,11 @@ import { LoginComponent } from './pages/private/login/login.component';
 import { ContatoComponent } from './pages/public/contato/contato.component';
 
 const routes: Routes = [
+    { path: '', redirectTo: '/discover', pathMatch: 'full' },
+    { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'contato', component: ContatoComponent},
-    { path: '', pathMatch: 'full', component: HomeComponent },
-    { path: 'discover', loadChildren: './public/discover/discover.module#DiscoverModule'}
+    { path: 'contato', component: ContatoComponent}
 ];
 
 @NgModule({

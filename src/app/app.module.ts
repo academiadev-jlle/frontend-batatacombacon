@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
+import { FormsModule } from '@angular/forms';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     SharedModule,
     PagesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    TypeaheadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
