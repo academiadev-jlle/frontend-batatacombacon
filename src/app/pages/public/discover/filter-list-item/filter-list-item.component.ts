@@ -54,15 +54,13 @@ export class FilterListItemComponent implements OnInit {
   }
 
   click() {
-    this.filterParams["especie"] = this.selectedEspecie;
-    this.filterParams["porte"] = this.selectedPorte;
-    this.filterParams["categoria"] = this.selectedCategoria;
-    this.filterParams["sexo"] = this.selectedSexo;
+    this.filterParams["especie"] = this.selectedEspecie===undefined?this.selectedEspecie="":this.selectedEspecie;
+    this.filterParams["porte"] = this.selectedPorte===undefined?this.selectedPorte="":this.selectedPorte;
+    this.filterParams["categoria"] = this.selectedCategoria===undefined?this.selectedCategoria="":this.selectedCategoria;
+    this.filterParams["sexo"] = this.selectedSexo===undefined?this.selectedSexo="":this.selectedSexo;
 
     this.sendMessage(this.filterParams);
   }
-
-
 
   sendMessage(selecteds) {
     this.messageEvent.emit(selecteds);

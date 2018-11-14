@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
 import { Pet } from 'src/app/classes/pets/pet';
+import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
   selector: 'app-discover',
@@ -25,15 +26,11 @@ export class DiscoverComponent implements OnInit {
 
   receiveMessage($event) {
     this.message = $event
-    console.log("mensagem recebida")
-    console.log($event);
-    //this.filterPets($event);
+    this.filterPets($event);
   }
 
-  filterPets(params: string) {
-    console.log("filter: " + params);
-    this.petService.searchPetByEspecie(params)
+  filterPets(params: FilterPets):void {
+    this.petService.searchPetByFilter(params)
       .subscribe(pets => this.pets = pets);
   }
-
 }
