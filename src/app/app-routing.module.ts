@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/public/home/home.component';
-import { CadastroComponent } from './pages/public/cadastro/cadastro.component';
-import { LoginComponent } from './pages/private/login/login.component';
-import { ContatoComponent } from './pages/public/contato/contato.component';
+import { HomeComponent } from './home/home.component';
+import { DiscoverComponent } from './discover/discover.component';
+import { ContatoComponent } from './contato/contato.component';
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/discover', pathMatch: 'full' },
-    { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
+    { path: '', component: HomeComponent },
+    { path: 'discover', component: DiscoverComponent},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent}

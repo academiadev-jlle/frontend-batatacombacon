@@ -1,26 +1,27 @@
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { PagesModule } from './pages/pages.module';
-
-import { FormsModule } from '@angular/forms';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ContatoModule } from './contato/contato.module';
+import { HomeModule } from './home/home.module';
+import { DiscoverModule } from './discover/discover.module';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
-    SharedModule,
-    PagesModule,
-    AppRoutingModule,
-    FormsModule,
-    TypeaheadModule.forRoot()
+    HomeModule,
+    ContatoModule,
+    DiscoverModule,
+    LoginModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
