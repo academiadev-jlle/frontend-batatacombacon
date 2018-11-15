@@ -6,6 +6,7 @@ import { CadastroComponent } from './pages/public/cadastro/cadastro.component';
 import { LoginComponent } from './pages/private/login/login.component';
 import { ContatoComponent } from './pages/public/contato/contato.component';
 
+
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
     { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
