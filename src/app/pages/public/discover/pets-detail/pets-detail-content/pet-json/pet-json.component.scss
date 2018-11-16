@@ -1,0 +1,33 @@
+.petContent {
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.petDetailPhoto {
+    width: 90%; 
+    height: 80%;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.petInfo {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.petContainer {
+    margin: auto;
+    padding: 15px;
+}
+
+.petTitle {
+    text-align: center;
+    font-size: 250px;
+}

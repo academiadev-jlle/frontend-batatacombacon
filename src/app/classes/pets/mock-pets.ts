@@ -51,7 +51,7 @@ export const PETS: Pet[] = [
         name: 'Totó',
         description: 'Fui perdido em algum lugar',
         isAdoption: true,
-        isLost: false,
+        isLost: true,
         photo: 'https://www.paulickreport.com/wp-content/uploads/2015/08/Happy_horse.jpg',
         especie: 'passaro'
       }

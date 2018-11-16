@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-sm">
             <h5 class="card-title float-left">{{ pet.name }}</h5>
-            <span class="badge badge-danger float-right">{{ pet.isAdoption }}</span>
+            <span class="badge badge-danger float-right">{{ pet | petStatus }}</span>
           </div>
         </div>
         <p class="card-text">{{ pet.description }}</p>

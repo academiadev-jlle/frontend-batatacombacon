@@ -1,3 +1,26 @@
-<p>{{pet | json}}</p>
-
-<button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+<!-- <p>{{pet | json}}</p> -->
+<div class="container petContainer">
+    <div class="petTitle">
+        <h1>{{ pet.name }}</h1>
+    </div>
+    <div class="row petContent">
+        <div class="col-md-6">
+            <img src="{{ pet.photo }}" class="petDetailPhoto">
+        </div>
+        <div class="col-md-6 petInfo">
+            <div>
+                <span>Nome: </span>
+                <span>{{ pet.name }}</span>
+            </div>
+            <div>
+                <span>Espécie: </span>
+                <span>{{ pet.especie }}</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label>Descrição:</label>
+            <p>{{ pet.description }}</p>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+</div>
