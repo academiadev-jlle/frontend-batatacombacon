@@ -53,7 +53,7 @@ export class FilterListItemComponent implements OnInit {
     this.getSexos();
   }
 
-  click() {
+  filtraPetsClick() {
     this.filterParams["especie"] = this.selectedEspecie===undefined?this.selectedEspecie="":this.selectedEspecie;
     this.filterParams["porte"] = this.selectedPorte===undefined?this.selectedPorte="":this.selectedPorte;
     this.filterParams["categoria"] = this.selectedCategoria===undefined?this.selectedCategoria="":this.selectedCategoria;
