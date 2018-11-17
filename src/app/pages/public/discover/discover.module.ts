@@ -11,12 +11,14 @@ import { PetJsonComponent } from './pets-detail/pets-detail-content/pet-json/pet
 
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @NgModule({
   imports: [
     CommonModule,
     DiscoverRoutingModule,
     FormsModule,
+    ButtonsModule.forRoot(),
     TypeaheadModule.forRoot()
   ],
   exports: [],
