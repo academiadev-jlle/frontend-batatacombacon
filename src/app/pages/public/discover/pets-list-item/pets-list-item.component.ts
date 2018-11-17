@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Pet } from 'src/app/classes/pets/pet';
-import { PetService } from 'src/app/services/pet.service';
-
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pets-list-item',
@@ -12,21 +10,11 @@ import { Location } from '@angular/common';
 })
 export class PetsListItemComponent implements OnInit {
 
-  pets: Pet[];z
+  @Input() petsFromService: Pet[];
 
-  constructor(
-    private petService: PetService,
-    private location: Location
-  ) { }
+  constructor(private location: Location) { }
 
-  ngOnInit() {
-    this.getPets();
-  }
-
-  getPets(): void {
-    this.petService.getPets()
-    .subscribe(pets => this.pets = pets);
-  }
+  ngOnInit() {  }
 
   goBack(): void {
     this.location.back();

@@ -8,6 +8,7 @@ import { PagesModule } from './pages/pages.module';
 
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     PagesModule,
     AppRoutingModule,
     FormsModule,
+    ButtonsModule.forRoot(),
     TypeaheadModule.forRoot()
   ],
   providers: [],
