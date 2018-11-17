@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navbar-logged.component.html',
   styleUrls: ['./navbar-logged.component.scss']
 })
-export class NavbarLoggedComponent implements OnInit {
+export class NavbarLoggedComponent {
 
-  constructor() { }
+  navbarOpenLogged = false;
+  dropdownPerfil = false;
 
-  ngOnInit() {
+  toggleNavbarLogged() {
+    this.navbarOpenLogged = !this.navbarOpenLogged;
   }
-
+  
 }
