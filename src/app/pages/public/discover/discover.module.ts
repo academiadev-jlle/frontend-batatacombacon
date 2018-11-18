@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { FilterListItemComponent } from './filter-list-item/filter-list-item.component';
 import { PetsListItemComponent } from './pets-list-item/pets-list-item.component';
@@ -13,14 +11,15 @@ import { PetJsonComponent } from './pets-detail/pets-detail-content/pet-json/pet
 import { DiscoverRoutingModule } from './discover-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   imports: [
     CommonModule,
     DiscoverRoutingModule,
     FormsModule,
     SharedModule,
-    ButtonsModule.forRoot(),
-    TypeaheadModule.forRoot()
+    NgbTypeaheadModule,
   ],
   exports: [],
   declarations: [
