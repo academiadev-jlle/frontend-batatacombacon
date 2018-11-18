@@ -19,8 +19,7 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
     FooterComponent,
     NavbarComponent,
     NavbarLoggedComponent,
-    PetStatusPipe
-
+    PetStatusPipe,
     NavbarLoggedComponent
   ],
   declarations: [
@@ -28,6 +27,6 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
     NavbarComponent,
     NavbarLoggedComponent,
     PetStatusPipe
-
+  ]
 })
 export class SharedModule { }
