@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Pet } from '../classes/pets/pet';
 import { FilterPets } from '../classes/filter';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
+import { HandleError } from '../classes/handleErrors';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +19,28 @@ export class PetService {
   
   private petsUrl = 'http://localhost:3000/pets';  // URL to web api
 
-  constructor(private http: HttpClient) { }
+  private handleError = new HandleError();
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getPets(): Observable<Pet[]> {
     return this.http.get<Pet[]>(this.petsUrl)
       .pipe(
         //tap(_ => this.log('fetched pets')),
-        catchError(this.handleError('getPets', []))
+        catchError(this.handleError.handleThis('getPets', []))
       );
   }
   
   getPet(id: number): Observable<Pet> {
     return this.http.get<Pet>(`${this.petsUrl}/${id}`).pipe(
       //tap(_ => this.log(`fetched pet id=${id}`)),
-      catchError(this.handleError<Pet>(`getPet id=${id}`))
+      catchError(this.handleError.handleThis<Pet>(`getPet id=${id}`))
     );
   }
 
-  searchPetByFilter(filter: FilterPets): Observable<Pet[]>{
+  getPetsByFilter(filter: FilterPets): Observable<Pet[]>{
     console.log(filter);
 
     if(filter.objetivo===""&&filter.especie===""&&filter.porte===""&&filter.sexo==="")
@@ -51,23 +60,32 @@ export class PetService {
     return this.http.get<Pet[]>(this.petsUrl + str)
       .pipe(
         //tap(_ => this.log('fetched pets')),
-        catchError(this.handleError('getPets', []))
+        catchError(this.handleError.handleThis('getPets', []))
       );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-   
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-   
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-   
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  addPet(pet: Pet): Observable<Pet> {
+    return this.http.post<Pet>(this.petsUrl, pet, httpOptions).pipe(
+      //tap((pet: Pet) => this.log(`added pet w/ id=${pet.id}`)),
+      catchError(this.handleError.handleThis<Pet>('addPet'))
+    );
   }
 
+  updatePet(pet: Pet): Observable<any> {
+    return this.http.put(this.petsUrl, pet, httpOptions).pipe(
+      ///tap(_ => this.log(`updated pet id=${pet.id}`)),
+      catchError(this.handleError.handleThis<Pet>('updatePet'))
+    );
+  }
   
+  deletePet(pet: Pet): Observable<Pet> {
+    const id = typeof pet === 'number' ? pet : pet.id;
+    const url = `${this.petsUrl}/${id}`;
+  
+    return this.http.delete<Pet>(url, httpOptions).pipe(
+      //tap(_ => this.log(`deleted pet id=${id}`)),
+      catchError(this.handleError.handleThis<Pet>('deletePet'))
+
+    );
+  }  
 }

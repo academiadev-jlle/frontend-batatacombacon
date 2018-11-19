@@ -1,39 +1,3 @@
-<!-- <div class="filter">
-    <div class='row'>
-        <div class='col-sm'>
-            <select class="form-control">
-                <option selected>Espécie</option>
-                <option>Gato</option>
-                <option>Cachorro</option>
-                <option>Cavalo</option>
-                <option>Boi</option>
-            </select>
-        </div>
-        <div class='col-sm'>
-            <select class="form-control">
-                <option selected>Porte</option>
-                <option>Pequeno</option>
-                <option>Médio</option>
-                <option>Grande</option>
-            </select>
-        </div>
-        <div class='col-sm'>
-            <select class="form-control">
-                <option selected>Categoria</option>
-                <option>Achado</option>
-                <option>Perdido</option>
-                <option>Adoção</option>
-            </select>
-        </div>
-        <div class='col-sm'>
-            <select class="form-control">
-                <option selected>Sexo</option>
-                <option>Macho</option>
-                <option>Fêmea</option>
-            </select>
-        </div>
-    </div>
-</div> -->
 <div class="filter">
     <div class='row'>
         <div class='col-sm'>
@@ -51,8 +15,8 @@
             placeholder="Porte">
         </div>
         <div class='col-sm'>
-            <input [(ngModel)]="selectedCategoria"
-            [typeahead]="categorias"
+            <input [(ngModel)]="selectedObjetivo"
+            [typeahead]="objetivos"
             typeaheadWaitMs="500"
             class="form-control"
             placeholder="Categoria">

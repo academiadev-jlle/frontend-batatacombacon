@@ -31,7 +31,7 @@ export class DiscoverComponent implements OnInit {
   }
 
   filterPets(params: FilterPets):void {
-    this.petService.searchPetByFilter(params)
+    this.petService.getPetsByFilter(params)
       .subscribe(pets => this.pets = pets);
   }
 }

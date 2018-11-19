@@ -8,6 +8,7 @@ import { Sexo } from '../classes/sexo/sexo';
 
 import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
+import { HandleError } from '../classes/handleErrors';
 
 @Injectable({
     providedIn: 'root'
@@ -17,14 +18,18 @@ export class FilterService {
     
     private apiUrl = 'http://localhost:3000/';
     
-    constructor(private http: HttpClient) { }
+    private handleError = new HandleError();
+    
+    constructor(
+        private http: HttpClient
+    ) { }
 
     getEspecies(): Observable<string[]>{
         return this.http.get<Especie[]>(this.apiUrl + 'especies')
        .pipe(
            map(response => response.map(r => r.nome)),
            //tap(_ => this.log('fetched pets')),
-           //catchError(this.handleError('getPets', [])) //TODO: GENERALIZE handleError
+           catchError(this.handleError.handleThis('getEspecies', []))
        );
     }
 
@@ -33,7 +38,7 @@ export class FilterService {
        .pipe(
            map(response => response.map(r => r.tamanho)),
            //tap(_ => this.log('fetched pets')),
-           //catchError(this.handleError('getPets', [])) //TODO: GENERALIZE handleError
+           catchError(this.handleError.handleThis('getPortes', []))
        );
     }
 
@@ -42,7 +47,7 @@ export class FilterService {
        .pipe(
            map(response => response.map(r => r.descricao)),
            //tap(_ => this.log('fetched pets')),
-           //catchError(this.handleError('getPets', [])) //TODO: GENERALIZE handleError
+           catchError(this.handleError.handleThis('getObjetivos', []))
        );
     }
     
@@ -51,7 +56,7 @@ export class FilterService {
        .pipe(
            map(response => response.map(r => r.descricao)),
            //tap(_ => this.log('fetched pets')),
-           //catchError(this.handleError('getPets', [])) //TODO: GENERALIZE handleError
+           catchError(this.handleError.handleThis('getSexos', []))
        );
     }
 }

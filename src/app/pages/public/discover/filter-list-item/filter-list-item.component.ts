@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FilterService } from 'src/app/services/filter.service';
-import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
@@ -66,5 +65,9 @@ export class FilterListItemComponent implements OnInit {
     this.messageEvent.emit(selecteds);
   }
 
+  /* Add pet test */
+  addPetClick() {
+    console.log("mah oe")
+  }
 
 }
