@@ -13,8 +13,7 @@ const routes: Routes = [
     { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'contato', component: ContatoComponent},
-    {path: '**', component: PageNotFoundComponent},
+    { path: 'contato', component: ContatoComponent}
 ];
 
 @NgModule({
