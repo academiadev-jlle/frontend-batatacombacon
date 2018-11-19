@@ -1,4 +1,3 @@
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,7 +11,6 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 @NgModule({
   imports: [
     CommonModule,
-    BsDropdownModule.forRoot(),
     RouterModule
   ],
   exports: [
