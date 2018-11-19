@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
-import { Pet } from 'src/app/classes/pets/pet';
+import { Pet} from 'src/app/classes/pets/pet';
 import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
@@ -11,6 +11,7 @@ import { FilterPets } from 'src/app/classes/filter';
 export class DiscoverComponent implements OnInit {
 
   pets: Pet[];
+
   message:string;
 
   constructor(private petService: PetService) { }
@@ -19,9 +20,9 @@ export class DiscoverComponent implements OnInit {
     this.getPets();
   }
 
-  getPets(): void {
+  getPets() {
     this.petService.getPets()
-    .subscribe(pets => this.pets = pets);
+      .subscribe(pets =>this.pets = pets)
   }
 
   receiveMessage($event) {

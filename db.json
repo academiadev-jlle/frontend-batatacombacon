@@ -1,0 +1,227 @@
+{
+  "pets":[
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "FELINO",
+      "id": 1,
+      "localPet": "Morro da vó Salvelina",
+      "macho": true,
+      "nome": "Rex",
+      "objetivo": "PERDIDO",
+      "usuario": {
+        "email": "string@string.com",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "FELINO",
+      "id": 2,
+      "localPet": "Local 2",
+      "macho": false,
+      "nome": "Cãopeão",
+      "objetivo": "DOACAO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "CANINO",
+      "id": 3,
+      "localPet": "Morro da vó Salvelina",
+      "macho": true,
+      "nome": "Fernando Crazy",
+      "objetivo": "DOACAO",
+      "usuario": {
+        "email": "aaa@ssss.com",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "SUINO",
+      "id": 4,
+      "localPet": "Morro da orelha",
+      "macho": true,
+      "nome": "Baby",
+      "objetivo": "DOACAO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "FELINO",
+      "id": 5,
+      "localPet": "Morro da saudade",
+      "macho": true,
+      "nome": "Mardog",
+      "objetivo": "DOACAO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "RAPOSA",
+      "id": 6,
+      "localPet": "Morro da vó Salvelina",
+      "macho": false,
+      "nome": "Foxtraut",
+      "objetivo": "DOACAO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "BOVINO",
+      "id": 7,
+      "localPet": "Fazenda do Tião Egino",
+      "macho": true,
+      "nome": "Boi bandido",
+      "objetivo": "PERDIDO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "CANINO",
+      "id": 8,
+      "localPet": "Canil Selvagem LTDA",
+      "macho": false,
+      "nome": "Edmundo",
+      "objetivo": "ADOCAO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "GALINÁCEO",
+      "id": 9,
+      "localPet": "Canil Selvagem LTDA",
+      "macho": false,
+      "nome": "Sangue no zóio",
+      "objetivo": "PERDIDO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    },
+    {
+      "dataCriacao": "2018-12-31",
+      "imagem": "https://picsum.photos/300/?random",
+      "dataPet": "2018-12-31",
+      "especie": "POKEMON",
+      "id": 10,
+      "localPet": "Poke World",
+      "macho": false,
+      "nome": "Pikachu",
+      "objetivo": "PERDIDO",
+      "usuario": {
+        "email": "string",
+        "id": 0,
+        "nome": "string",
+        "senha": "string"
+      }
+    }
+  ],
+  "objetivos": [
+    {"id": 1,
+      "descricao": "DOACAO"
+    },
+    {"id": 2,
+      "descricao": "PERDIDO"
+    },
+    {"id": 3, 
+      "descricao": "ADOCAO"
+    }
+  ],
+  "portes": [
+    {"id": 1,
+      "tamanho": "Pequeno"
+    },
+    {"id": 2,
+      "tamanho": "Médio"
+    },
+    {"id": 3, 
+      "tamanho": "Grande"
+    }
+  ],
+  "especies": [
+    {"id": 1,
+      "nome": "FELINO"
+    },
+    {"id": 2,
+      "nome": "CANINO"
+    },
+    {"id": 3, 
+      "nome": "SUINO"
+    },
+    {"id": 4, 
+      "nome": "RAPOSA"
+    },
+    {"id": 5, 
+      "nome": "BOVINO"
+    },
+    {"id": 6, 
+      "nome": "GALINÁCEO"
+    },
+    {"id": 7, 
+      "nome": "POKEMON"
+    }
+  ],
+  "sexos": [
+    {"id": 1,
+      "descricao": "Macho"
+    },
+    {"id": 2,
+      "descricao": "Fêmea"
+    }
+  ]
+}

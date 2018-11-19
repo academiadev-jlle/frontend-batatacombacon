@@ -1,12 +1,14 @@
-export class Pet {
-    id: number;
+import { Usuario } from "../usuario/usuario";
+
+export class Pet{
+    dataCriacao: string;
+    imagem: string;
+    dataPet: string;
     especie: string;
-    porte: string;
-    categoria: string;
-    sexo: string;
-    name: String;
-    description: String;
-    isAdoption: Boolean;
-    isLost: Boolean;
-    photo: String;
+    id: number;
+    localPet: string;
+    macho: boolean;
+    nome: string;
+    objetivo: string;
+    usuario: Usuario;
 }

@@ -5,8 +5,6 @@ import { Location } from '@angular/common';
 import { Pet } from 'src/app/classes/pets/pet';
 import { PetService } from 'src/app/services/pet.service';
 
-
-
 @Component({
   selector: 'app-pet-json',
   templateUrl: './pet-json.component.html',

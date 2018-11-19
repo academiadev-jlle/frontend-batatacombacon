@@ -14,12 +14,12 @@ export class FilterListItemComponent implements OnInit {
   
   especies: string[];
   portes: string[];
-  categorias: string[];
+  objetivos: string[];
   sexos: string[];
   
   selectedEspecie: string;
   selectedPorte: string;
-  selectedCategoria: string;
+  selectedObjetivo: string;
   selectedSexo: string;
 
   filterParams =  new FilterPets();
@@ -36,9 +36,9 @@ export class FilterListItemComponent implements OnInit {
       .subscribe(portes_ => this.portes = portes_);
   }
 
-  getCategorias(): void {
-    this.filterService.getCategorias()
-      .subscribe(categorias_ => this.categorias = categorias_);
+  getObjetivos(): void {
+    this.filterService.getObjetivos()
+      .subscribe(objetivos_ => this.objetivos = objetivos_);
   }
 
   getSexos(): void {
@@ -49,14 +49,14 @@ export class FilterListItemComponent implements OnInit {
   ngOnInit() {
     this.getEspecies();
     this.getPortes();
-    this.getCategorias();
+    this.getObjetivos();
     this.getSexos();
   }
 
   filtraPetsClick() {
     this.filterParams["especie"] = this.selectedEspecie===undefined?this.selectedEspecie="":this.selectedEspecie;
     this.filterParams["porte"] = this.selectedPorte===undefined?this.selectedPorte="":this.selectedPorte;
-    this.filterParams["categoria"] = this.selectedCategoria===undefined?this.selectedCategoria="":this.selectedCategoria;
+    this.filterParams["objetivo"] = this.selectedObjetivo===undefined?this.selectedObjetivo="":this.selectedObjetivo;
     this.filterParams["sexo"] = this.selectedSexo===undefined?this.selectedSexo="":this.selectedSexo;
 
     this.sendMessage(this.filterParams);

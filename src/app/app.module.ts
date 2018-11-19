@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
+import { HttpClientModule }    from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     PagesModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ButtonsModule.forRoot(),
     TypeaheadModule.forRoot()
   ],
