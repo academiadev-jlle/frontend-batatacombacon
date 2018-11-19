@@ -12,7 +12,7 @@ import { Pet } from './pet';
      porte: 'Médio',
      categoria: 'Achado',
      sexo: 'Fêmea'
-   }, 
+   },
    {
      id: 2,
      name: 'Jair',
@@ -24,7 +24,7 @@ import { Pet } from './pet';
      porte: 'Médio',
      categoria: 'Perdido',
      sexo: 'Fêmea'
-   }, 
+   },
    {
      id: 3,
      name: 'Rex',
@@ -36,7 +36,7 @@ import { Pet } from './pet';
      porte: 'Grande',
      categoria: 'Adoção',
      sexo: 'Macho'
-   }, 
+   },
    {
      id: 4,
      name: 'Totó',
@@ -48,7 +48,7 @@ import { Pet } from './pet';
      porte: 'Grande',
      categoria: 'Adoção',
      sexo: 'Fêmea'
-   }, 
+   },
    {
      id: 5,
      name: 'Totó',
@@ -60,7 +60,7 @@ import { Pet } from './pet';
      porte: 'pequeno',
      categoria: 'Achado',
      sexo: 'Fêmea'
-   }, 
+   },
    {
      id: 6,
      name: 'Totó',
@@ -73,4 +73,4 @@ import { Pet } from './pet';
      categoria: 'Perdido',
      sexo: 'Macho'
    }
- ] 
+]
