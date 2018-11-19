@@ -7,6 +7,8 @@ import { DiscoverModule } from './public/discover/discover.module';
 import { CadastroModule } from './public/cadastro/cadastro.module';
 import { ContatoModule } from './public/contato/contato.module';
 import { HomeModule } from './public/home/home.module';
+import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+
 
 
 @NgModule({
@@ -20,6 +22,6 @@ import { HomeModule } from './public/home/home.module';
     ContatoModule,
     LoginModule
   ],
-  declarations: [ ]
+  declarations: [ PageNotFoundComponent]
 })
 export class PagesModule { }

@@ -1,29 +1,33 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
-import { FooterLoggedComponent } from './private/footer-logged/footer-logged.component';
 import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.component';
+import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    NgbModule,
     RouterModule
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    FooterLoggedComponent,
+    NavbarLoggedComponent,
+    PetStatusPipe,
     NavbarLoggedComponent
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
-    FooterLoggedComponent,
-    NavbarLoggedComponent
+    NavbarLoggedComponent,
+    PetStatusPipe
   ]
+
 })
 export class SharedModule { }

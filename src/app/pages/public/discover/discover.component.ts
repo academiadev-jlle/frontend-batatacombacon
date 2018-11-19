@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
+import { Pet } from 'src/app/classes/pets/pet';
+import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
   selector: 'app-discover',
@@ -8,11 +10,27 @@ import { PetService } from 'src/app/services/pet.service';
 })
 export class DiscoverComponent implements OnInit {
 
+  pets: Pet[];
   message:string;
 
-  constructor() { }
+  constructor(private petService: PetService) { }
 
   ngOnInit() {
+    this.getPets();
   }
 
+  getPets(): void {
+    this.petService.getPets()
+    .subscribe(pets => this.pets = pets);
+  }
+
+  receiveMessage($event) {
+    this.message = $event
+    this.filterPets($event);
+  }
+
+  filterPets(params: FilterPets):void {
+    this.petService.searchPetByFilter(params)
+      .subscribe(pets => this.pets = pets);
+  }
 }

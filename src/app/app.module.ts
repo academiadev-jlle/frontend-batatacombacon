@@ -7,7 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
 import { FormsModule } from '@angular/forms';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     PagesModule,
     AppRoutingModule,
     FormsModule,
-    TypeaheadModule.forRoot()
+    NgbTypeaheadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

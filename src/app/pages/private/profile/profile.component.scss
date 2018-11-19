@@ -1,4 +1,4 @@
-.formulariocadastro {
+.formularioEditCadastro {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -11,8 +11,14 @@
       text-align: center;
   }
   
-  .formcadastro {
+  .formEditCadastro {
     width: 90%;
     max-width: 600px;
     margin: auto;
+}
+
+.editProfile {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
