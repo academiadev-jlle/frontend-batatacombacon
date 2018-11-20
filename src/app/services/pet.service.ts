@@ -17,7 +17,6 @@ const httpOptions = {
 
 export class PetService {
   
-  //private petsUrl = 'http://localhost:3000/pets';  // URL to web api
   private petsUrl = 'https://backendcombacon.herokuapp.com/pet';
 
   private handleError = new HandleError();
@@ -42,7 +41,7 @@ export class PetService {
   }
 
   getPetsByFilter(filter: FilterPets): Observable<Pet[]>{
-    console.log(filter);
+    
 
     if(filter.objetivo===""&&filter.especie===""&&filter.porte===""&&filter.sexo==="")
       return this.getPets();
@@ -58,6 +57,9 @@ export class PetService {
     if(filter.sexo!=="")
       filter.sexo.toLocaleLowerCase()==='macho'?str += `macho=true&`:str += `macho=false&`
 
+    console.log(filter);
+    console.log(this.petsUrl + str)
+    
     return this.http.get<Pet[]>(this.petsUrl + str)
       .pipe(
         //tap(_ => this.log('fetched pets')),

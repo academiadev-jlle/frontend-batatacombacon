@@ -15,8 +15,7 @@ const httpOptions = {
 
 export class UserService {
 
-  //private usersUrl = 'http://localhost:3000/users';  // URL to web api
-  private usersUrl = 'user';
+  private usersUrl = 'https://backendcombacon.herokuapp.com/user';
 
   private handleError = new HandleError();
 
