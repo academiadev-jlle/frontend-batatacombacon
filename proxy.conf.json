@@ -15,25 +15,25 @@
 
 
     "/objetivos/*": {
-        "target": "http://localhost:3000",
+        "target": "https://srv-fake-api.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
     },
     "/portes/*": {
-        "target": "http://localhost:3000",
+        "target": "https://srv-fake-api.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
     },
     "/especies/*": {
-        "target": "http://localhost:3000",
+        "target": "https://srv-fake-api.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
     },
     "/sexos/*": {
-        "target": "http://localhost:3000",
+        "target": "https://srv-fake-api.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
