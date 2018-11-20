@@ -16,7 +16,7 @@ import { HandleError } from '../classes/handleErrors';
 
 export class FilterService {
     
-    //private apiUrl = 'http://localhost:3000/';
+    private apiUrl = 'https://srv-fake-api.herokuapp.com/';
     
     private handleError = new HandleError();
     
@@ -25,7 +25,7 @@ export class FilterService {
     ) { }
 
     getEspecies(): Observable<string[]>{
-        return this.http.get<Especie[]>('especies')
+        return this.http.get<Especie[]>(this.apiUrl += 'especies')
        .pipe(
            map(response => response.map(r => r.nome)),
            //tap(_ => this.log('fetched pets')),
@@ -34,7 +34,7 @@ export class FilterService {
     }
 
     getPortes(): Observable<string[]>{
-        return this.http.get<Porte[]>('portes')
+        return this.http.get<Porte[]>(this.apiUrl += 'portes')
        .pipe(
            map(response => response.map(r => r.tamanho)),
            //tap(_ => this.log('fetched pets')),
@@ -43,7 +43,7 @@ export class FilterService {
     }
 
     getObjetivos(): Observable<string[]>{
-        return this.http.get<Objetivo[]>('objetivos')
+        return this.http.get<Objetivo[]>(this.apiUrl += 'objetivos')
        .pipe(
            map(response => response.map(r => r.descricao)),
            //tap(_ => this.log('fetched pets')),
@@ -52,7 +52,7 @@ export class FilterService {
     }
     
     getSexos(): Observable<string[]>{
-        return this.http.get<Sexo[]>('sexos')
+        return this.http.get<Sexo[]>(this.apiUrl += 'sexos')
        .pipe(
            map(response => response.map(r => r.descricao)),
            //tap(_ => this.log('fetched pets')),

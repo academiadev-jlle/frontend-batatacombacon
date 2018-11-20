@@ -3,8 +3,7 @@ const express = require('express');
 const app = express();
 const dist = 'dist/frontend-batatacombacon';
 
-app.use(allowCrossDomain);
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 4000));
 app.use(express.static(path.join(__dirname, dist)));
 
 app.all('*', function(req, res) {
