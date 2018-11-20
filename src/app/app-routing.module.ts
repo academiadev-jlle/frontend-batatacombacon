@@ -14,7 +14,8 @@ const routes: Routes = [
     { path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
-    { path: '**', component: PageNotFoundComponent},
+    { path: '404', component: PageNotFoundComponent},
+    { path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FilterService } from 'src/app/services/filter.service';
 import { FilterPets } from 'src/app/classes/filter';
 
+
 @Component({
   selector: 'app-filter-list-item',
   templateUrl: './filter-list-item.component.html',
@@ -10,12 +11,12 @@ import { FilterPets } from 'src/app/classes/filter';
 })
 export class FilterListItemComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
-  
+
   especies: string[];
   portes: string[];
   objetivos: string[];
   sexos: string[];
-  
+
   selectedEspecie: string;
   selectedPorte: string;
   selectedObjetivo: string;
@@ -67,7 +68,6 @@ export class FilterListItemComponent implements OnInit {
 
   /* Add pet test */
   addPetClick() {
-    console.log("mah oe")
+    console.log("mah oe");
   }
-
 }
