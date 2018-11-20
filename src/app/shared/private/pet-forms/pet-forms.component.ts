@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-pet-forms',
@@ -7,7 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetFormsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
+
+  petForm = this.fb.group({
+    nome: [''],
+    especie: [''],
+    Porte: [''],
+    Categoria: [''],
+    Sexo: [''],
+    Estado: [''],
+    Data: [''],
+    Localização: [''],
+    Descrição: [''],
+  })
 
   ngOnInit() {
   }

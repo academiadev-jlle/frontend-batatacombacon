@@ -1,6 +1,6 @@
 <div class="container">
   <app-pet-forms></app-pet-forms>
   <div class="text-center">
-    <button type="button" class="btn btn-primary">Editar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!petForm.valid">Editar</button>
   </div>
 </div> 
