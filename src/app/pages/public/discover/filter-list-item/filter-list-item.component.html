@@ -2,29 +2,29 @@
     <div class='row'>
         <div class='col-sm'>
             <input [(ngModel)]="selectedEspecie"
-            [typeahead]="especies"
-            typeaheadWaitMs="500"
+            [ngbTypeahead]="especies"
+            ngbTypeaheadWaitMs="500"
             class="form-control"
             placeholder="Espécie">
         </div>
         <div class='col-sm'>
             <input [(ngModel)]="selectedPorte"
-            [typeahead]="portes"
-            typeaheadWaitMs="500"
+            [ngbTypeahead]="portes"
+            ngbTypeaheadWaitMs="500"
             class="form-control"
             placeholder="Porte">
         </div>
         <div class='col-sm'>
             <input [(ngModel)]="selectedObjetivo"
-            [typeahead]="objetivos"
-            typeaheadWaitMs="500"
+            [ngbTypeahead]="objetivos"
+            ngbTypeaheadWaitMs="500"
             class="form-control"
             placeholder="Categoria">
         </div>
         <div class='col-sm'>
             <input [(ngModel)]="selectedSexo"
-            [typeahead]="sexos"
-            typeaheadWaitMs="500"
+            [ngbTypeahead]="sexos"
+            ngbTypeaheadWaitMs="500"
             class="form-control"
             placeholder="Sexo">
         </div>
