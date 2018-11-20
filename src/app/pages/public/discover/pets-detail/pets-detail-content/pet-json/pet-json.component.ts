@@ -21,6 +21,9 @@ export class PetJsonComponent implements OnInit {
 
   ngOnInit() {
     this.getPet();
+    
+    // garantindo que não de erro quando a página abrir.
+    this.pet = new Pet();
   }
 
   getPet(): void {

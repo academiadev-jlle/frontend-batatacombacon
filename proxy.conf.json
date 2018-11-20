@@ -1,0 +1,41 @@
+{
+    "/pet/*": {
+        "target": "https://backendcombacon.herokuapp.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/user/*": {
+        "target": "https://backendcombacon.herokuapp.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+
+
+
+    "/objetivos/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/portes/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/especies/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/sexos/*": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

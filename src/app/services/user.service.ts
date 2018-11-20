@@ -15,7 +15,8 @@ const httpOptions = {
 
 export class UserService {
 
-  private usersUrl = 'http://localhost:3000/users';  // URL to web api
+  //private usersUrl = 'http://localhost:3000/users';  // URL to web api
+  private usersUrl = 'user';
 
   private handleError = new HandleError();
 

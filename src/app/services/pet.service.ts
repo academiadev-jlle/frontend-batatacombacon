@@ -17,7 +17,8 @@ const httpOptions = {
 
 export class PetService {
   
-  private petsUrl = 'http://localhost:3000/pets';  // URL to web api
+  //private petsUrl = 'http://localhost:3000/pets';  // URL to web api
+  private petsUrl = 'pet';
 
   private handleError = new HandleError();
 
