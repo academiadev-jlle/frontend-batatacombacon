@@ -1,35 +1,56 @@
 <div class="filter">
-    <div class='row'>
+    <div class="row">
         <div class='col-sm'>
-            <input [(ngModel)]="selectedEspecie"
-            [ngbTypeahead]="especies"
-            ngbTypeaheadWaitMs="500"
-            class="form-control"
-            placeholder="Espécie">
+                <input
+                id="typeahead-focus"
+                type="text"
+                class="form-control"
+                [(ngModel)]="selectedEspecie"
+                [ngbTypeahead]="searchEspecies"
+                (focus)="focusEspecie$.next($event.target.value)"
+                (click)="clickEspecie$.next($event.target.value)"
+                #instanceEspecie="ngbTypeahead"
+                placeholder="Espécie"
+              />
+            </div>
+        <div class='col-sm'>
+            <input
+                id="typeahead-focus"
+                type="text"
+                class="form-control"
+                [(ngModel)]="selectedPorte"
+                [ngbTypeahead]="searchPortes"
+                (focus)="focusPorte$.next($event.target.value)"
+                (click)="clickPorte$.next($event.target.value)"
+                #instancePorte="ngbTypeahead"
+                placeholder="Porte"/>
         </div>
         <div class='col-sm'>
-            <input [(ngModel)]="selectedPorte"
-            [ngbTypeahead]="portes"
-            ngbTypeaheadWaitMs="500"
-            class="form-control"
-            placeholder="Porte">
+            <input
+                id="typeahead-focus"
+                type="text"
+                class="form-control"
+                [(ngModel)]="selectedObjetivo"
+                [ngbTypeahead]="searchObjetivos"
+                (focus)="focusObjetivo$.next($event.target.value)"
+                (click)="clickObjetivo$.next($event.target.value)"
+                #instanceObjetivo="ngbTypeahead"
+                placeholder="Objetivo"/>
         </div>
         <div class='col-sm'>
-            <input [(ngModel)]="selectedObjetivo"
-            [ngbTypeahead]="objetivos"
-            ngbTypeaheadWaitMs="500"
-            class="form-control"
-            placeholder="Categoria">
+            <input
+                id="typeahead-focus"
+                type="text"
+                class="form-control"
+                [(ngModel)]="selectedSexo"
+                [ngbTypeahead]="searchSexos"
+                (focus)="focusSexo$.next($event.target.value)"
+                (click)="clickSexo$.next($event.target.value)"
+                #instanceSexo="ngbTypeahead"
+                placeholder="Sexo"/>
         </div>
         <div class='col-sm'>
-            <input [(ngModel)]="selectedSexo"
-            [ngbTypeahead]="sexos"
-            ngbTypeaheadWaitMs="500"
-            class="form-control"
-            placeholder="Sexo">
-        </div>
-        <div class='col-sm'>
-            <button type="button" class="btn btn-warning" (click)="filtraPetsClick()">Filtrar</button>
+            <button type="button" class="btn btn-primary" (click)="filtraPetsClick()">Filtrar</button>
         </div>
     </div>
 </div>
