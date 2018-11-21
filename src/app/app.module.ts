@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
@@ -21,6 +21,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     PagesModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     ButtonsModule.forRoot(),
     TypeaheadModule.forRoot()
   ],
