@@ -7,8 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
-import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbTypeaheadModule,
+    NgbTypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
