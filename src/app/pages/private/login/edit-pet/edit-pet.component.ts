@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { PetService } from 'src/app/services/pet.service';
+import { Pet } from 'src/app/classes/pets/pet';
 
 @Component({
   selector: 'app-edit-pet',
@@ -8,10 +10,12 @@ import { FormBuilder } from '@angular/forms';
 })
 export class EditPetComponent {
 
-  constructor(private fb: FormBuilder ) { }
+  pet : Pet = new Pet;
+
+  constructor(private fb: FormBuilder, private petService: PetService) { }
 
   petForm = this.fb.group({
-    nome: [''],
+    name: [''],
     especie: [''],
     porte: [''],
     categoria: [''],
@@ -22,8 +26,9 @@ export class EditPetComponent {
     descricao: [''],
   });
 
-  getNome() {
-    console.log(this.petForm.value);
+  editPet() {
+    this.petService.updatePet(this.petForm.value)
+    .subscribe();
   }
 
 }
