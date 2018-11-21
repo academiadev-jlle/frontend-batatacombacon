@@ -1,6 +1,75 @@
 <div class="container">
-  <app-pet-forms></app-pet-forms>
+  <!-- <app-pet-forms></app-pet-forms> -->
+  <div class="petTitle">
+      <h1></h1>
+    </div>
+    <form class="form-row petContent" [formGroup]="petForm">
+      <div class="col-md-7 petDivPhoto">
+          <app-drag-n-drop-image></app-drag-n-drop-image>
+      </div>
+      <div class="col-md-5 petInfo">
+        <div class="form-group row">
+            <label for="staticName" class="col-sm-2 col-form-label"><strong>Nome:</strong></label>
+          <div class="col-sm-10  m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticName" placeholder="pet.name" formControlName="nome">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticEspecie" class="col-sm-3 col-form-label"><strong>Espécie:</strong></label>
+          <div class="col-sm-9 m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticEspecie" placeholder="pet.especie" formControlName="especie">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticPorte" class="col-sm-2 col-form-label"><strong>Porte:</strong></label>
+          <div class="col-sm-10 m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticPorte" placeholder="pet.porte" formControlName="porte">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Categoria:</strong></label>
+          <div class="col-sm-9 m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="pet.categoria" formControlName="categoria">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticName" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
+          <div class="col-sm-10 m-auto">
+            <select class="form-control form-control-sm" formControlName="sexo">
+              <option>Macho</option>
+              <option>Fêmea</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="static" class="col-sm-2 col-form-label"><strong>Estado:</strong></label>
+          <div class="col-sm-10 m-auto">
+            <select class="form-control form-control-sm" formControlName="estado">
+              <option>Adoção</option>
+              <option>Achado</option>
+              <option>Perdido</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticCategoria" class="col-sm-2 col-form-label"><strong>Data:</strong></label>
+          <div class="col-sm-10 m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="pet.data" formControlName="data">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Localização:</strong></label>
+          <div class="col-sm-9 m-auto">
+            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Local Encontrado" formControlName="localizacao">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 petDescription">
+        <label for="staticDescricao"><strong>Descrição:</strong></label>
+        <textarea class="form-control" id="staticDescricao" rows="4" formControlName="descricao"></textarea>
+      </div>
+    </form>    
   <div class="text-center">
-    <button type="button" class="btn btn-primary">Editar</button>
+    <button type="button" class="btn btn-primary" (click)="getNome()">Salvar</button>
   </div>
 </div> 
