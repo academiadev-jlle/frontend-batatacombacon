@@ -1,32 +1,73 @@
 <div class="titulocadastro">
-  <img src="./assets/dog.svg" width="72" height="72" class="rounded mb-2" alt="">
+  <img src="./assets/dog.svg" class="rounded mb-2" alt="">
   <h1>Cadastro</h1>
 </div>
 
-<div class="formulariocadastro">
-  <form class="formcadastro">
-    <div class="form-row mb-2">
-      <div class="form-group col-md-5 mb-2">
-        <label for="inputnome">Nome</label>
-        <input type="text" class="form-control" id= "inputnome" placeholder="Nome">
-      </div>
-      <div class="form-group col-md-7 mb-2">
-        <label for="inputnome">Sobrenome</label>
-        <input type="text" class="form-control" id= "inputsobrenome" placeholder="Sobrenome">
-      </div>
-      <div class="form-group col-md-12 mb-2">
-        <label for="inputemail">E-mail</label>
-        <input type="email" class="form-control" id= "inputemail" placeholder="E-mail">
-      </div>
-      <div class="form-group col-md-12 mb-2">
-        <label for="inputsenha">Senha</label>
-        <input type="password" class="form-control" id= "inputsenha" placeholder="Senha">
-      </div>
-      <div class="form-group col-md-12 mb-3">
-        <label for="inputrepetirsenha">Repetir senha</label>
-        <input type="password" class="form-control" id= "inputrepetirsenha" placeholder="">
-      </div>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block mb-4" type="submit">Cadastrar</button>
+<div class="formularioCadastro">
+  <form class="formcadastro"
+        [formGroup]="usuario"
+        (submit)="submit($event)">
+        
+        <div class="form-row mb-2">
+          <div class="form-group col-md-7 mb-2">
+            <label for="inputnome">Nome</label>
+            <input class="form-control" 
+                   formControlName="nome"
+                   autofocus
+                   [ngClass]="{ 'is-invalid': f.nome.errors }">  
+              <div *ngIf="f.nome.errors">
+                  <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
+              </div>
+          </div>     
+          <div class="form-group col-md-5 mb-2">
+            <label for="inputnome">Sobrenome</label>
+            <input class="form-control" 
+                   formControlName="sobrenome"
+                   autofocus>  
+          </div>
+          <div class="form-group col-md-12 mb-2">
+            <label for="inputemail">E-mail</label>
+            <input class="form-control" 
+                  formControlName="email"
+                  autofocus
+                  [ngClass]="{ 'is-invalid': f.email.errors }">
+            <div *ngIf="f.email.errors">
+              <div class= "is-invalid-text" *ngIf="f.email.errors?.required">Preencha o email</div>
+              <div class= "is-invalid-text" *ngIf="f.email.errors?.email">Digite um email válido</div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 mb-2">
+            <label for="inputsenha">Senha</label>
+            <input
+                  type="password" 
+                  class="form-control" 
+                  formControlName="senha"
+                  [ngClass]="{ 'is-invalid': f.senha.errors }">
+            <div *ngIf="f.senha.errors">
+              <div class= "is-invalid-text" *ngIf="f.senha.errors?.required">Coloque uma senha</div>
+              <div class= "is-invalid-text" *ngIf="f.senha.errors?.minlength">Ao menos 6 caracteres</div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 mb-3">
+            <label for="inputrepetirsenha">Confirmar senha</label>
+            <input
+                  type="password" 
+                  class="form-control" 
+                  formControlName="confirmSenha"
+                  [ngClass]="{ 'is-invalid': f.confirmSenha.errors }">
+            <div *ngIf="f.confirmSenha.errors">
+              <div class= "is-invalid-text" *ngIf="f.confirmSenha.errors?.ConfirmPassword">A senha não é a mesma</div>
+            </div>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block mb-4" 
+                  type="submit" 
+                  [disabled]="usuario.invalid"
+                  class="btn btn-primary btn-block">Cadastrar</button>
+        </div>
+    
   </form>
+</div>
+
+<div>
+  {{usuario.value | json}}
 </div>
