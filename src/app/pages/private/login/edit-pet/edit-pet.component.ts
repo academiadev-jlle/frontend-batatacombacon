@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { PetService } from 'src/app/services/pet.service';
+import { Pet } from 'src/app/classes/pets/pet';
 
 import { PetService } from 'src/app/services/pet.service';
 
@@ -15,7 +17,7 @@ export class EditPetComponent {
 
 
   petForm = this.fb.group({
-    nome: [''],
+    name: [''],
     especie: [''],
     porte: [''],
     macho: [''],
