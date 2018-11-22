@@ -8,12 +8,14 @@ import { CadastroModule } from './public/cadastro/cadastro.module';
 import { ContatoModule } from './public/contato/contato.module';
 import { HomeModule } from './public/home/home.module';
 import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     HomeModule,
