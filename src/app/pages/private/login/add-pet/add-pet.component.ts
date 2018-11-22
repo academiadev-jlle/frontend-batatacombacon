@@ -13,18 +13,25 @@ export class AddPetComponent {
   constructor(private fb: FormBuilder, private petService: PetService) { }
 
   petForm = this.fb.group({
-    name: [''],
+    nome: [''],
     especie: [''],
     porte: [''],
-    categoria: [''],
-    sexo: [''],
-    estado: [''],
-    data: [''],
-    localizacao: [''],
+    macho: [''],
+    objetivo: [''],
+    dataPet: [''],
+    dataCriacao: ['2018-12-02'],
+    localPet: [''],
     descricao: [''],
+    imagem: [''],
+    usuario: this.fb.group({
+      email: [''],
+      id: ['1'],
+      nome: [''],
+      senha: ['']
+    }),
   });
 
-  editPet() {
+  ClickAddPet() {
     this.petService.addPet(this.petForm.value)
     .subscribe();
   }

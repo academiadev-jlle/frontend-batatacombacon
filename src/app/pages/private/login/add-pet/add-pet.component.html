@@ -1,7 +1,7 @@
 <div class="container">
   <!-- <app-pet-forms></app-pet-forms> -->
   <div class="petTitle">
-      <h1> {{ petForm.get('name').value }} </h1>
+      <h1> {{ petForm.get('nome').value }} </h1>
     </div>
     <form class="form-row petContent" [formGroup]="petForm">
       <div class="col-md-7 petDivPhoto">
@@ -11,56 +11,57 @@
         <div class="form-group row">
             <label for="staticName" class="col-sm-2 col-form-label"><strong>Nome:</strong></label>
           <div class="col-sm-10  m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticName" placeholder="pet.name" formControlName="name">
+            <input type="text" class="form-control form-control-sm" id="staticName" placeholder="Ex: Rex" formControlName="nome">
           </div>
         </div>
         <div class="form-group row">
           <label for="staticEspecie" class="col-sm-3 col-form-label"><strong>Espécie:</strong></label>
           <div class="col-sm-9 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticEspecie" placeholder="pet.especie" formControlName="especie">
+            <input type="text" class="form-control form-control-sm" id="staticEspecie" placeholder="Ex: Cachorro" formControlName="especie">
           </div>
         </div>
         <div class="form-group row">
           <label for="staticPorte" class="col-sm-2 col-form-label"><strong>Porte:</strong></label>
           <div class="col-sm-10 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticPorte" placeholder="pet.porte" formControlName="porte">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Categoria:</strong></label>
-          <div class="col-sm-9 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="pet.categoria" formControlName="categoria">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticName" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
-          <div class="col-sm-10 m-auto">
-            <select class="form-control form-control-sm" formControlName="sexo">
-              <option>Macho</option>
-              <option>Fêmea</option>
+            <select type="text" class="form-control form-control-sm" id="staticPorte" formControlName="porte">
+              <option value="" disabled selected>Escolha o porte do Pet</option>
+              <option>Pequeno</option>
+              <option>Médio</option>
+              <option>Grande</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
-          <label for="static" class="col-sm-2 col-form-label"><strong>Estado:</strong></label>
+          <label for="staticSexo" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
           <div class="col-sm-10 m-auto">
-            <select class="form-control form-control-sm" formControlName="estado">
-              <option>Adoção</option>
-              <option>Achado</option>
-              <option>Perdido</option>
+            <select class="form-control form-control-sm" id="staticSexo" formControlName="macho">
+                <option value="" disabled selected>Escolha o sexo do Pet</option>
+              <option [value]="true">Macho</option>
+              <option [value]="false">Fêmea</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="staticStatus" class="col-sm-2 col-form-label"><strong>Objetivo:</strong></label>
+          <div class="col-sm-10 m-auto">
+            <select class="form-control form-control-sm" id="staticStatus" formControlName="objetivo">
+              <option value="" disabled selected>Escolha o objetivo do Pet</option>
+              <option value="DOACAO" >Doação</option>
+              <option value="ACHADO" >Achado</option>
+              <option value="PERDIDO" >Perdido</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
           <label for="staticCategoria" class="col-sm-2 col-form-label"><strong>Data:</strong></label>
           <div class="col-sm-10 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="pet.data" formControlName="data">
+            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado" formControlName="dataPet">
           </div>
         </div>
         <div class="form-group row">
           <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Localização:</strong></label>
           <div class="col-sm-9 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Local Encontrado" formControlName="localizacao">
+            <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Local Encontrado" formControlName="localPet">
           </div>
         </div>
       </div>
@@ -70,6 +71,9 @@
       </div>
     </form>    
   <div class="text-center">
-    <button type="button" class="btn btn-primary" (click)="addPet(petForm.value); petForm.value=''">Adicionar</button>
+    <button type="button" class="btn btn-primary" (click)="ClickAddPet(petForm.value); petForm.value=''">Adicionar</button>
   </div>
+  <p>
+    {{ petForm.value | json }}
+  </p>
 </div> 
