@@ -7,6 +7,7 @@ import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
 import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.component';
 import { PetStatusPipe } from './public/pipe/pet-status.pipe';
+import { LoaderComponent } from './public/loader/loader.component';
 
 
 @NgModule({
@@ -20,13 +21,15 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
     NavbarComponent,
     NavbarLoggedComponent,
     PetStatusPipe,
-    NavbarLoggedComponent
+    NavbarLoggedComponent,
+    LoaderComponent
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
     NavbarLoggedComponent,
-    PetStatusPipe
+    PetStatusPipe,
+    LoaderComponent
   ]
 
 })
