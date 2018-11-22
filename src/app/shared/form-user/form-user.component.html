@@ -9,8 +9,8 @@
         <input class="form-control" 
         formControlName="nome"
         autofocus
-        [ngClass]="{ 'is-invalid': f.nome.errors }">  
-        <div *ngIf="f.nome.errors">
+        [ngClass]="{ 'is-invalid': submitted && f.nome.errors }">  
+        <div *ngIf="submitted && f.nome.errors">
           <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
         </div>
       </div>     
@@ -25,8 +25,8 @@
         <input class="form-control" 
         formControlName="email"
         autofocus
-        [ngClass]="{ 'is-invalid': f.email.errors }">
-        <div *ngIf="f.email.errors">
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors">
           <div class= "is-invalid-text" *ngIf="f.email.errors?.required">Preencha o email</div>
           <div class= "is-invalid-text" *ngIf="f.email.errors?.email">Digite um email válido</div>
         </div>
@@ -37,8 +37,8 @@
         type="password" 
         class="form-control" 
         formControlName="senha"
-        [ngClass]="{ 'is-invalid': f.senha.errors }">
-        <div *ngIf="f.senha.errors">
+        [ngClass]="{ 'is-invalid': submitted && f.senha.errors }">
+        <div *ngIf="submitted && f.senha.errors">
           <div class= "is-invalid-text" *ngIf="f.senha.errors?.required">Coloque uma senha</div>
           <div class= "is-invalid-text" *ngIf="f.senha.errors?.minlength">Ao menos 6 caracteres</div>
         </div>
@@ -49,14 +49,13 @@
         type="password" 
         class="form-control" 
         formControlName="confirmSenha"
-        [ngClass]="{ 'is-invalid': f.confirmSenha.errors }">
-        <div *ngIf="f.confirmSenha.errors">
+        [ngClass]="{ 'is-invalid': submitted && f.confirmSenha.errors }">
+        <div *ngIf="submitted && f.confirmSenha.errors">
           <div class= "is-invalid-text" *ngIf="f.confirmSenha.errors?.ConfirmPassword">A senha não é a mesma</div>
         </div>
       </div>
       <button class="btn btn-lg btn-primary btn-block mb-4" 
       type="submit" 
-      [disabled]="usuario.invalid"
       class="btn btn-primary btn-block">Cadastrar</button>
     </div>
     

@@ -11,6 +11,7 @@ export class FormUserComponent implements OnInit {
   
   @Output() messageEvent = new EventEmitter<FormGroup>();
   usuario: FormGroup;
+  submitted = false;
   
   constructor(
     private formBuilder: FormBuilder) { }
@@ -35,6 +36,8 @@ export class FormUserComponent implements OnInit {
     }
     
     submitClick($event) {
+      this.submitted = true;
+      
       if (this.usuario.valid) {
         this.sendMessage();
       }
