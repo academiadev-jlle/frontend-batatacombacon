@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
+import { Usuario } from 'src/app/classes/usuario/usuario';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,15 +11,17 @@ import { ConfirmPasswordValidator } from './confirm-password.validator';
 })
 export class CadastroComponent implements OnInit {
   
-  user: FormGroup;
+  usuario: FormGroup;
   
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService) { }
 
   // convenience getter for easy access to form fields
-  get f() { return this.user.controls; }
+  get f() { return this.usuario.controls; }
   
   ngOnInit() {
-    this.user = this.formBuilder.group({
+    this.usuario = this.formBuilder.group({
       nome: ['', Validators.required],
       sobrenome: [''],
       email: ['', [Validators.required, Validators.email]],
@@ -29,10 +33,8 @@ export class CadastroComponent implements OnInit {
   }
   
   submit() {
-    if (this.user.valid) {
-      //his.userService.create(this.user.value).subscribe(user => console.log(user));
-      // this.userService.get().subscribe(value => console.log(value));
-      console.log(this.user.value);
+    if (this.usuario.valid) {
+      this.userService.addUser(this.usuario.value).subscribe(user => console.log(user));
     }
   }
   

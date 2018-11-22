@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HandleError } from '../classes/handleErrors';
 import { Observable } from 'rxjs';
-import { Usuario } from '../classes/usuario/usuario';
+import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
 import { catchError } from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'accept': '*/*'
+  })
 };
 
 @Injectable({
@@ -22,6 +25,13 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getUsers(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.usersUrl}`).pipe(
+      //tap(_ => this.log(`fetched pet id=${id}`)),
+      catchError(this.handleError.handleThis<Usuario>(`getUsuarios`))
+    );
+  }
   
   getUser(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.usersUrl}/${id}`).pipe(
@@ -30,15 +40,17 @@ export class UserService {
     );
   }
 
-  addUser(user: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.usersUrl, user, httpOptions).pipe(
+  addUser(usuario: Usuario): Observable<any> {
+    const userPayload = APIUsuarioFactory(usuario);
+    
+    return this.http.post<UsuarioAPI>(this.usersUrl, userPayload, httpOptions).pipe(
       //tap((pet: Pet) => this.log(`added pet w/ id=${pet.id}`)),
-      catchError(this.handleError.handleThis<Usuario>('addUser'))
+      catchError(this.handleError.handleThis<UsuarioAPI>('addUser'))
     );
   }
 
-  updateUser(user: Usuario): Observable<any> {
-    return this.http.put(this.usersUrl, user, httpOptions).pipe(
+  updateUser(usuario: Usuario): Observable<any> {
+    return this.http.put(this.usersUrl, usuario, httpOptions).pipe(
       ///tap(_ => this.log(`updated pet id=${pet.id}`)),
       catchError(this.handleError.handleThis<Usuario>('updateUser'))
     );
