@@ -9,7 +9,7 @@ import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.com
 import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 import { FormUserComponent } from './form-user/form-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { LoaderComponent } from './public/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     NavbarLoggedComponent,
     PetStatusPipe,
-    FormUserComponent
+    FormUserComponent,
+    LoaderComponent
   ]
 
 })
