@@ -24,7 +24,8 @@ import { LoaderComponent } from './public/loader/loader.component';
     NavbarLoggedComponent,
     PetStatusPipe,
     NavbarLoggedComponent,
-    FormUserComponent
+    FormUserComponent,
+    LoaderComponent
   ],
   declarations: [
     FooterComponent,
