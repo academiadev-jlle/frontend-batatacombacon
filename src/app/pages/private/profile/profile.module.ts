@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CadastroComponent } from './cadastro.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileComponent } from './profile.component';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ],
   declarations: [
-    CadastroComponent
+    ProfileComponent
   ]
 })
-export class CadastroModule { }
+export class ProfileModule { }
