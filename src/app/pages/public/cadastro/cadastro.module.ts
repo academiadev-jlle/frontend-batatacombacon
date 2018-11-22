@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { CadastroComponent } from './cadastro.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports:[],
   declarations: [
