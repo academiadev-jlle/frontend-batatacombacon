@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { Usuario } from 'src/app/classes/usuario/usuario';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,13 +17,13 @@ export class CadastroComponent implements OnInit {
   }
   
   convertFormToUser(){
-  // post new user
-  this.userService.addUser(this.receivedForm.value).subscribe(user => console.log(user));
+    this.userService.addUser(this.receivedForm.value).subscribe(user => console.log(user));
   }
 
   receiveClickAddUser($event) {
-    console.log($event)
     this.receivedForm = $event
+
+    this.convertFormToUser();
   }
 
 
