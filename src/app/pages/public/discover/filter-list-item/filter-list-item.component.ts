@@ -14,10 +14,10 @@ import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 })
 export class FilterListItemComponent implements OnInit {
   
-  especies: string[];
-  portes: string[];
-  objetivos: string[];
-  sexos: string[];
+  especies: string[]=[];
+  portes: string[]=[];
+  objetivos: string[]=[];
+  sexos: string[]=[];
 
   selectedEspecie: string;
   @ViewChild('instanceEspecie') instanceEspecie: NgbTypeahead;

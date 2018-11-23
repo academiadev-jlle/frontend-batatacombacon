@@ -1,32 +1,8 @@
 <div class="titulocadastro">
-  <img src="./assets/dog.svg" width="72" height="72" class="rounded mb-2" alt="">
+  <img src="./assets/dog.svg" class="rounded mb-2" alt="">
   <h1>Cadastro</h1>
 </div>
 
-<div class="formulariocadastro">
-  <form class="formcadastro">
-    <div class="form-row mb-2">
-      <div class="form-group col-md-5 mb-2">
-        <label for="inputnome">Nome</label>
-        <input type="text" class="form-control" id= "inputnome" placeholder="Nome">
-      </div>
-      <div class="form-group col-md-7 mb-2">
-        <label for="inputnome">Sobrenome</label>
-        <input type="text" class="form-control" id= "inputsobrenome" placeholder="Sobrenome">
-      </div>
-      <div class="form-group col-md-12 mb-2">
-        <label for="inputemail">E-mail</label>
-        <input type="email" class="form-control" id= "inputemail" placeholder="E-mail">
-      </div>
-      <div class="form-group col-md-12 mb-2">
-        <label for="inputsenha">Senha</label>
-        <input type="password" class="form-control" id= "inputsenha" placeholder="Senha">
-      </div>
-      <div class="form-group col-md-12 mb-3">
-        <label for="inputrepetirsenha">Repetir senha</label>
-        <input type="password" class="form-control" id= "inputrepetirsenha" placeholder="">
-      </div>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block mb-4" type="submit">Cadastrar</button>
-  </form>
-</div>
+<app-alert></app-alert>
+
+<app-form-user (messageEvent)=receiveClickAddUser($event)></app-form-user>
