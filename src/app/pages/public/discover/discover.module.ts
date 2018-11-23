@@ -10,9 +10,7 @@ import { DiscoverComponent } from './discover.component';
 import { PetJsonComponent } from './pets-detail/pets-detail-content/pet-json/pet-json.component';
 import { DiscoverRoutingModule } from './discover-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { BadgeStatusComponent } from './badge-status/badge-status.component';
-
-
+import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status.component';
 
 @NgModule({
   imports: [
