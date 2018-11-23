@@ -46,5 +46,4 @@ export class ProfileComponent implements OnInit {
     return this.receivedForm.controls[att].value
   }
 
-
 }
