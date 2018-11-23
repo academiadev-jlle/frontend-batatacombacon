@@ -6,7 +6,9 @@
     <form class="form-row petContent" [formGroup]="petForm">
       <div class="col-md-7 petDivPhoto">
           <!-- <app-drag-n-drop-image></app-drag-n-drop-image> -->
-          <div class="preview-image-container" style="cursor: default;" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+          <!-- <div class="preview-image-container" style="cursor: default;" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"> -->
+          <div class="preview-image-container" style="cursor: default;">
+            <button class="preview-image-btn-close btn btn-primary" (click)="unPreviewFile()" *ngIf="!showBtn"></button>
             <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" (change)="readURL($event)" style="display:none" #previewFile>
             <div class="preview-image-dummy"></div>
             <img class="preview-image-url" [src]=" imageSrc || '' " alt="your image">
