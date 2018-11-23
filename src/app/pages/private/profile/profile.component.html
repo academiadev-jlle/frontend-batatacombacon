@@ -1,6 +1,6 @@
 <div class="row editProfile">
   <div class="col-md-6">
-    <app-form-user [usuarioProfile]="usuario"></app-form-user>
+    <app-form-user (messageEvent)=receiveClickEditUser($event) [usuarioProfile]="usuario"></app-form-user>
     <!-- <div class="form-row mb-2">
         <div class="form-group col-md-5 mb-2">
           <label for="inputnome">Nome</label>

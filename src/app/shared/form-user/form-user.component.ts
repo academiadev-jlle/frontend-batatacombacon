@@ -23,7 +23,6 @@ export class FormUserComponent implements OnInit, OnChanges {
     get f() { return this.usuario.controls; }
     
     ngOnInit() {
-
       this.usuario = this.formBuilder.group({
         nome: ['', Validators.required],
         sobrenome: [''],
@@ -44,7 +43,7 @@ export class FormUserComponent implements OnInit, OnChanges {
       }
     }
 
-    fillUsuario(){
+    fillUsuario(){ //preenche o form quando faz a edição
       this.usuario.patchValue({
         nome: this.usuarioProfile.nome,
         email: this.usuarioProfile.email,
@@ -58,12 +57,12 @@ export class FormUserComponent implements OnInit, OnChanges {
     }
     
     submitClick($event) {
-      this.submitted = true;
+      // variavel que torna o botao de submit disponivel ou 
+      // nao somente ao terminar todo o form
+      this.submitted = true; 
       
-      if (this.usuario.valid) {
+      if (this.usuario.valid)
         this.sendMessage();
-      }
-      
     }
   }
   

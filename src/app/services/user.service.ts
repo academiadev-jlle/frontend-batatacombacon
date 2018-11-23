@@ -18,7 +18,8 @@ const httpOptions = {
 
 export class UserService {
 
-  private usersUrl = 'https://backendcombacon.herokuapp.com/user';
+  //private usersUrl = 'https://backendcombacon.herokuapp.com/user';
+  private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
 
   private handleError = new HandleError();
 
@@ -50,9 +51,11 @@ export class UserService {
   }
 
   updateUser(usuario: Usuario): Observable<any> {
-    return this.http.put(this.usersUrl, usuario, httpOptions).pipe(
+    const userPayload = APIUsuarioFactory(usuario);
+
+    return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions).pipe(
       ///tap(_ => this.log(`updated pet id=${pet.id}`)),
-      catchError(this.handleError.handleThis<Usuario>('updateUser'))
+      catchError(this.handleError.handleThis<UsuarioAPI>('updateUser'))
     );
   }
 
