@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { UsuarioAPI, Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
+import { Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
 import { FormGroup } from '@angular/forms';
+import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +10,12 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  @ViewChild(AlertComponent) alert;
+  
   usuario: Usuario;
+  receivedForm: FormGroup;
 
   constructor(private userService: UserService) { }
-
-  receivedForm: FormGroup;
 
   ngOnInit() {
 
@@ -39,7 +40,12 @@ export class ProfileComponent implements OnInit {
       sendUser.senha = this.getFormValues('senha');
 
     // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
-    this.userService.updateUser(sendUser).subscribe(ret => console.log(ret))
+    this.userService.updateUser(sendUser).subscribe(ret => {
+      
+      console.log(ret)
+      ret!==undefined ? this.alert.show('success', 'Editado com sucesso.') : this.alert.show('danger')
+      
+    })
   }
 
   getFormValues(att){

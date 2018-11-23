@@ -10,13 +10,15 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 import { FormUserComponent } from './form-user/form-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './public/loader/loader.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   exports: [
     FooterComponent,
@@ -25,7 +27,8 @@ import { LoaderComponent } from './public/loader/loader.component';
     PetStatusPipe,
     NavbarLoggedComponent,
     FormUserComponent,
-    LoaderComponent
+    LoaderComponent,
+    AlertComponent
   ],
   declarations: [
     FooterComponent,
@@ -33,7 +36,8 @@ import { LoaderComponent } from './public/loader/loader.component';
     NavbarLoggedComponent,
     PetStatusPipe,
     FormUserComponent,
-    LoaderComponent
+    LoaderComponent,
+    AlertComponent
   ]
 
 })
