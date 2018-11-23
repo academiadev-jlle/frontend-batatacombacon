@@ -16,15 +16,14 @@ export class CadastroComponent implements OnInit {
   ngOnInit() {
   }
   
-  convertFormToUser(){
-    this.userService.addUser(this.receivedForm.value).subscribe(user => console.log(user));
-  }
-
   receiveClickAddUser($event) {
     this.receivedForm = $event
 
-    this.convertFormToUser();
+    // 1) Enviando direto os campos do form. Sem conversao para usuario     
+    // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
+    this.userService.addUser(this.receivedForm.value).subscribe(ret => console.log(ret));
   }
+
 
 
 }
