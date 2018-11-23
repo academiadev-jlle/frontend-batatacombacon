@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { PetService } from 'src/app/services/pet.service';
@@ -10,45 +10,11 @@ import { PetService } from 'src/app/services/pet.service';
 })
 export class AddPetComponent {
 
-  imageSrc: string;
+  imageSrc: String;
   background = document.getElementsByClassName('preview-image-container');
+  img = document.getElementsByClassName('preview-image-url');
 
-  constructor(private fb: FormBuilder, private petService: PetService) { }
-
-  readURL(event: Event): void {
-    if ((<HTMLInputElement>event.target).files && (<HTMLInputElement>event.target).files[0]) {
-        const file = (<HTMLInputElement>event.target).files[0];
-
-        const reader = new FileReader();
-        reader.onload = e => this.imageSrc = reader.result;
-
-        reader.readAsDataURL(file);
-    }
-  };
-
-  mouse() {
-    console.log(this.background);
-    // this.background.style.background-color = '#999';
-  }
-
-  // @HostListener('dragover', ['$event']) public onDragOver(evt){
-  //   evt.preventDefault();
-  //   evt.stopPropagation();
-  //   this.background.style.background-color = '#999';
-  // }
-  // @HostListener('dragleave', ['$event']) public onDragLeave(evt){
-  //   evt.preventDefault();
-  //   evt.stopPropagation();
-  //   this.background = '#eee'
-  // }
-  // @HostListener('drop', ['$event']) public onDrop(evt){
-  //   evt.preventDefault();
-  //   evt.stopPropagation();
-  //   let files = evt.dataTransfer.files;
-  //   if(files.length > 0){
-  //     this.background = '#eee'
-  //   }
-  // }
+  constructor(private fb: FormBuilder, private petService: PetService, private renderer: Renderer2) { }
 
   petForm = this.fb.group({
     nome: [''],
@@ -69,9 +35,62 @@ export class AddPetComponent {
     }),
   });
 
+  @ViewChild('imagePreview') imagePreview;
+
+  readURL(event): void {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload =  (event) => {
+        console.log('readfiles event ===== ', event);
+        const fileReader = event.target as FileReader;
+        let image = new Image();
+        image.src = fileReader.result;
+        image.insertAdjacentHTML( 'afterbegin' , 'class="preview-image-url" ');
+        this.imagePreview.nativeElement.appendChild(image);
+      };
+      reader.readAsDataURL(file);
+      // const reader = new FileReader();
+      // reader.onload = e => this.imageSrc = reader.result;
+
+      // reader.readAsDataURL(file);
+    }
+  }
+
+  onDragOver(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.renderer.setStyle(this.background[0], 'background-color', '#999');
+  }
+
+  onDragLeave(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.renderer.setStyle(this.background[0], 'background-color', '#FFF');
+  }
+
+  onDrop(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.renderer.setStyle(this.background[0], 'background-color', '#FFF');
+    let file = event.dataTransfer.files[0];
+    let reader = new FileReader();
+    reader.onload =  (event) => {
+      console.log('readfiles event ===== ', event);
+      const fileReader = event.target as FileReader;
+      let image = new Image();
+      image.src = fileReader.result;
+    //   this.imageSrc = reader.result;
+    //   document.getElementsByClassName("preview-image-url").src = image.src;
+      image.insertAdjacentHTML( 'afterbegin' , 'class="preview-image-url" ');
+    //   image.setAttribute('class', 'preview-image-url');
+      this.imagePreview.nativeElement.appendChild(image);
+    };
+    reader.readAsDataURL(file);
+  }
+
   ClickAddPet() {
     this.petService.addPet(this.petForm.value)
     .subscribe();
   }
-
 }
