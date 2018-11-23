@@ -1,18 +1,22 @@
 <div class="container">
+  <!-- <app-pet-forms></app-pet-forms> -->
   <div class="petTitle">
     <h1> {{ petForm.get('nome').value }} </h1>
   </div>
   <form class="form-row petContent" [formGroup]="petForm">
     <div class="col-md-7 petDivPhoto">
-      <div class="preview-image-container" style="cursor: default;">
-        <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" style="display:none;">
-        <div class="preview-image-dummy"></div>
-        <img class="preview-image-url">
-        <div class="preview-image-instruction" style="background-color: inherit; cursor: default;">
-          <button class="preview-image-btn-browse btn btn-primary">Inserir Imagem</button>
-          <p>ou arraste a imagem aqui.</p>
+        <!-- <app-drag-n-drop-image></app-drag-n-drop-image> -->
+        <!-- <div class="preview-image-container" style="cursor: default;" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"> -->
+        <div class="preview-image-container" style="cursor: default;">
+          <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" (change)="readURL($event)" style="display:none" formControlName="imagem" #previewFile>
+          <div class="preview-image-dummy"></div>
+          <img class="preview-image-url" [src]=" imageSrc || '' " alt="your image">
+          <div class="preview-image-instruction" style="background-color: inherit; cursor: default;" >
+            <button class="preview-image-btn-close btn btn-sm btn-primary" *ngIf="!showBtn" (click)="unPreviewFile()">X</button>
+            <button class="preview-image-btn-browse btn btn-primary" (click)="previewFile.click()"  *ngIf="showBtn">Inserir Imagem</button>
+            <!-- <p>ou arraste a imagem aqui.</p> -->
+          </div>
         </div>
-      </div>
     </div>
     <div class="col-md-5 petInfo">
       <div class="form-group row">
@@ -78,9 +82,7 @@
     </div>
   </form>    
   <div class="text-center">
-    <button type="button" class="btn btn-primary" (click)="ClickEditPet(petForm.value); petForm.value=''">Adicionar</button>
+    <button type="button" class="btn btn-primary" (click)="ClickEditPet()">Editar</button>
   </div>
-  <p>
-    {{ petForm.value | json }}
-  </p>
+  <p>{{ petForm.value | json }}</p>
 </div> 
