@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { FormGroup } from '@angular/forms';
+import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,10 +9,11 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent implements OnInit {
-  
-  constructor(private userService: UserService) { }
+  @ViewChild(AlertComponent) alert;
 
   receivedForm: FormGroup;
+
+  constructor(private userService: UserService) { }
   
   ngOnInit() {
   }
@@ -21,7 +23,13 @@ export class CadastroComponent implements OnInit {
 
     // 1) Enviando direto os campos do form. Sem conversao para usuario     
     // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
-    this.userService.addUser(this.receivedForm.value).subscribe(ret => console.log(ret));
+    this.userService.addUser(this.receivedForm.value).subscribe(ret => {
+      
+      console.log(ret);
+      ret!==undefined ? this.alert.show('success') : this.alert.show('danger')
+    
+    });
+  
   }
 
 
