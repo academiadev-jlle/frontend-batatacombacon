@@ -56,7 +56,7 @@ input {
     border: 2px dotted #bbb;
     border-radius: 5px;
 
-  
+
   .preview-image-dummy {
     margin-top: 75%;
   }
@@ -115,6 +115,9 @@ input {
     .preview-image-btn-browse {
       margin: auto;
       margin-top: 30%;
+    }
+    .preview-image-btn-close {
+        float: right;
     }
   }
 }

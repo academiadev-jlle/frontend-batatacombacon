@@ -1,38 +1,50 @@
-import { Component, HostListener, Renderer2, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, HostListener, Renderer2, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { PetService } from 'src/app/services/pet.service';
+import { UserService } from 'src/app/services/user.service';
+import { Usuario } from 'src/app/classes/usuario/usuario';
+
 
 @Component({
   selector: 'app-add-pet',
   templateUrl: './add-pet.component.html',
   styleUrls: ['./add-pet.component.scss']
 })
-export class AddPetComponent {
+export class AddPetComponent implements OnInit {
 
   imageSrc: String;
   // background = document.getElementsByClassName('preview-image-container');
   // img = document.getElementsByClassName('preview-image-url');
-  showBtn: boolean = true;
+  showBtn: Boolean = true;
+  closeBtn = document.getElementsByClassName('preview-image-btn-close');
 
-  constructor(private fb: FormBuilder, private petService: PetService, private renderer: Renderer2) { }
+  constructor(private fb: FormBuilder,
+    private petService: PetService,
+    private renderer: Renderer2,
+    private userService: UserService,
+    private usuario: Usuario ) { }
+
+  ngOnInit () {
+    this.usuario = this.userService.getUser(1);
+  }
 
   petForm = this.fb.group({
-    nome: [''],
-    especie: [''],
-    porte: [''],
-    macho: [''],
-    objetivo: [''],
-    dataPet: [''],
+    nome: ['', Validators.required],
+    especie: ['', Validators.required],
+    porte: ['', Validators.required],
+    macho: ['', Validators.required],
+    objetivo: ['', Validators.required],
+    dataPet: ['', Validators.required],
     dataCriacao: ['2018-12-02'],
-    localPet: [''],
-    descricao: [''],
-    imagem: [''],
+    localPet: ['', Validators.required],
+    descricao: ['', Validators.required],
+    imagem: ['', Validators.required],
     usuario: this.fb.group({
-      email: [''],
-      id: ['1'],
-      nome: [''],
-      senha: ['']
+      email: [this.usuario.email],
+      id: [this.usuario.id],
+      nome: [this.usuario.nome],
+      senha: [this.usuario.senha]
     }),
   });
 
@@ -59,6 +71,11 @@ export class AddPetComponent {
 
   hideBtn() {
     this.showBtn = !this.showBtn;
+  }
+
+  unPreviewFile() {
+    this.imageSrc = '';
+    this.hideBtn();
   }
 
 // @ViewChild('imagePreview') imagePreview;
