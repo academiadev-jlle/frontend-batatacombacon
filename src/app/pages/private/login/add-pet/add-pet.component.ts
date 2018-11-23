@@ -2,8 +2,7 @@ import { Component, HostListener, Renderer2, ElementRef, ViewChild, OnInit } fro
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { PetService } from 'src/app/services/pet.service';
-import { UserService } from 'src/app/services/user.service';
-import { Usuario } from 'src/app/classes/usuario/usuario';
+
 
 
 @Component({
@@ -21,30 +20,28 @@ export class AddPetComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private petService: PetService,
-    private renderer: Renderer2,
-    private userService: UserService,
-    private usuario: Usuario ) { }
+    private renderer: Renderer2 ) { }
 
   ngOnInit () {
-    this.usuario = this.userService.getUser(1);
+    // this.usuario = this.userService.getUser(1);
   }
 
   petForm = this.fb.group({
-    nome: ['', Validators.required],
-    especie: ['', Validators.required],
-    porte: ['', Validators.required],
-    macho: ['', Validators.required],
-    objetivo: ['', Validators.required],
-    dataPet: ['', Validators.required],
-    dataCriacao: ['2018-12-02'],
-    localPet: ['', Validators.required],
-    descricao: ['', Validators.required],
-    imagem: ['', Validators.required],
+    nome: [''],
+    especie: [''],
+    porte: [''],
+    macho: [''],
+    objetivo: [''],
+    dataPet: [''],
+    dataCriacao: [''],
+    localPet: [''],
+    descricao: [''],
+    imagem: [''],
     usuario: this.fb.group({
-      email: [this.usuario.email],
-      id: [this.usuario.id],
-      nome: [this.usuario.nome],
-      senha: [this.usuario.senha]
+      email: [''],
+      id: [''],
+      nome: [''],
+      senha: ['']
     }),
   });
 

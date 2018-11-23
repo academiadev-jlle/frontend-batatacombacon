@@ -8,6 +8,7 @@ import { LoginComponent } from './login.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
