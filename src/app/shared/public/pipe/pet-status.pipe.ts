@@ -5,17 +5,21 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'petStatus'
 })
 export class PetStatusPipe implements PipeTransform {
-
-  transform(pet: Pet) {
-    if (pet.isLost) {
-      if (pet.isAdoption) {
-        return 'A Procura de um Lar!';
-      } else {
-        return 'Perdido!';
-      }
-    } else {
-      return 'Encontrou um Lar!';
-    }
+  
+  transform(pet){
+    return pet;
   }
+
+  // transform(pet: Pet) {
+  //   if (pet.isLost) {
+  //     if (pet.isAdoption) {
+  //       return 'A Procura de um Lar!';
+  //     } else {
+  //       return 'Perdido!';
+  //     }
+  //   } else {
+  //     return 'Encontrou um Lar!';
+  //   }
+  // }
 
 }

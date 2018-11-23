@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
@@ -10,6 +11,7 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 @NgModule({
   imports: [
     CommonModule,
+    NgbModule,
     RouterModule
   ],
   exports: [
@@ -17,12 +19,14 @@ import { PetStatusPipe } from './public/pipe/pet-status.pipe';
     NavbarComponent,
     NavbarLoggedComponent,
     PetStatusPipe,
+    NavbarLoggedComponent
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
     NavbarLoggedComponent,
-    PetStatusPipe,
+    PetStatusPipe
   ]
+
 })
 export class SharedModule { }

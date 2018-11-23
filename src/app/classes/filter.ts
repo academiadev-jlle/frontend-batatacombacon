@@ -2,7 +2,7 @@ export class FilterPets {
 
     especie: string = "";
     porte: string = "";
-    categoria: string = "";
+    objetivo: string = "";
     sexo: string = "";
 
 }

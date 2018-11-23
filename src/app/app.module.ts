@@ -1,14 +1,13 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import {NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -21,9 +20,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     PagesModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    ButtonsModule.forRoot(),
-    TypeaheadModule.forRoot()
+    HttpClientModule,
+    NgbTypeaheadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
