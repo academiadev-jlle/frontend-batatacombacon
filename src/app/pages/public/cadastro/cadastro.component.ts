@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConfirmPasswordValidator } from './confirm-password.validator';
-import { Usuario } from 'src/app/classes/usuario/usuario';
 import { UserService } from 'src/app/services/user.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,31 +9,22 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CadastroComponent implements OnInit {
   
-  usuario: FormGroup;
-  
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.usuario.controls; }
+  receivedForm: FormGroup;
   
   ngOnInit() {
-    this.usuario = this.formBuilder.group({
-      nome: ['', Validators.required],
-      sobrenome: [''],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      confirmSenha: ['', Validators.required]
-    },{
-      validator: ConfirmPasswordValidator.MatchPassword
-    });
   }
   
-  submit() {
-    if (this.usuario.valid) {
-      this.userService.addUser(this.usuario.value).subscribe(user => console.log(user));
-    }
+  convertFormToUser(){
+    this.userService.addUser(this.receivedForm.value).subscribe(user => console.log(user));
   }
-  
+
+  receiveClickAddUser($event) {
+    this.receivedForm = $event
+
+    this.convertFormToUser();
+  }
+
+
 }

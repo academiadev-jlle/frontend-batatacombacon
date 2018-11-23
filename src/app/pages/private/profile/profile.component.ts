@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { UsuarioAPI, Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  usuario: Usuario;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    
+    // desenvolvimento apenas. Provavelmente o usuario virá
+    // estará registrado em algum lugar e bastara chamar ele.
+    this.userService.getUser(1).subscribe(user => this.usuario = APIUsuarioFactory(user));
   }
 
 }

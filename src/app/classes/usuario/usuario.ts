@@ -3,7 +3,7 @@ export interface Usuario {
     id?: number;
     nome: string;
     senha: string;
-    confirmSenha: string;
+    confirmSenha?: string;
 }
 
 export interface UsuarioAPI {
