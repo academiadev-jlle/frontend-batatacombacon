@@ -6,7 +6,7 @@ import { AddPetComponent } from './add-pet/add-pet.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
-  { path: 'addpet', component: AddPetComponent} 
+  { path: 'addpet', component: AddPetComponent}
 ];
 
 @NgModule({
