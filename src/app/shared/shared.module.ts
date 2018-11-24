@@ -17,8 +17,7 @@ import { AlertComponent } from './alert/alert.component';
     CommonModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule,
-    
+    ReactiveFormsModule
   ],
   exports: [
     FooterComponent,
