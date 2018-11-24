@@ -1,12 +1,13 @@
+import { LoginComponent } from './login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { LoginComponent } from './login.component';
+import { EditPetComponent } from './edit-pet/edit-pet.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
-  { path: 'addpet', component: AddPetComponent}
+  { path: '', component: LoginComponent },
+  { path: 'editpet', component: EditPetComponent},
+  { path: 'addpet', component: AddPetComponent} 
 ];
 
 @NgModule({

@@ -6,18 +6,20 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
+import { EditPetComponent } from './edit-pet/edit-pet.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    LoginRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    LoginRoutingModule
+    ReactiveFormsModule
   ],
   exports: [],
   declarations: [
     LoginComponent,
-    AddPetComponent
+    AddPetComponent,
+    EditPetComponent
   ]
 })
 export class LoginModule { }
