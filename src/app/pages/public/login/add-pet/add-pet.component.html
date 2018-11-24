@@ -10,9 +10,9 @@
           <div class="preview-image-container" style="cursor: default;">
             <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" (change)="readURL($event)" style="display:none" formControlName="imagem" #previewFile>
             <div class="preview-image-dummy"></div>
-            <img class="preview-image-url" [src]=" imageSrc || '' " alt="your image">
+            <img class="preview-image-url" [src]=" imageSrc || '' ">
             <div class="preview-image-instruction" style="background-color: inherit; cursor: default;" >
-              <button class="preview-image-btn-close btn btn-sm btn-primary" *ngIf="!showBtn" (click)="unPreviewFile()">X</button>
+              <button class="preview-image-btn-close btn btn-sm btn-primary" *ngIf="!showBtn" (click)="unPreviewFile(); readURL($event)">X</button>
               <button class="preview-image-btn-browse btn btn-primary" (click)="previewFile.click()"  *ngIf="showBtn">Inserir Imagem</button>
               <!-- <p>ou arraste a imagem aqui.</p> -->
             </div>
