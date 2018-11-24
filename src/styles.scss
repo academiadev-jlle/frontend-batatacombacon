@@ -1,23 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
-
+/* You can add global styles to this file, and also import other style files */s
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 // body {
-//     margin-bottom: 60px;
-// }
-
-.main.container {
+  //     margin-bottom: 60px;
+  // }
+  
+  .main.container {
     padding: 60px 15px 0;
-}
-
-.botaoIndex {
+  }
+  
+  .botaoIndex {
     margin-top: 2rem;
   }
-
+  
   .lds-grid {
     display: inline-block;
     position:absolute;
