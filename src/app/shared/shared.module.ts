@@ -11,6 +11,8 @@ import { FormUserComponent } from './form-user/form-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './public/loader/loader.component';
 import { AlertComponent } from './alert/alert.component';
+import { FormPetComponent } from './private/form-pet/form-pet.component';
+import { DragNDropComponent } from './private/drag-n-drop/drag-n-drop.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { AlertComponent } from './alert/alert.component';
     PetStatusPipe,
     FormUserComponent,
     LoaderComponent,
-    AlertComponent
+    AlertComponent,
+    FormPetComponent,
+    DragNDropComponent
   ]
 
 })
