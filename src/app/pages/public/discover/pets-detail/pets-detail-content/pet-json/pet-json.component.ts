@@ -20,10 +20,10 @@ export class PetJsonComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    // this.getPet();
+    this.getPet();
     
-    // // garantindo que não de erro quando a página abrir.
-    // this.pet = new Pet();
+    //garantindo que não de erro quando a página abrir.
+    this.pet = new Pet();
   }
 
   getPet(): void {
