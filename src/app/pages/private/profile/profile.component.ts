@@ -23,16 +23,16 @@ export class ProfileComponent implements OnInit {
 
     // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 101;
+    const idUser = 1;
     
     this.userService.getUser(idUser).subscribe(user => {
-      console.log(user);
       this.usuario = APIUsuarioFactory(user)
       
       //setando id para que eu saiba quem eu vou editar
       this.usuario.id = idUser;
     });
 
+    // loading pets of user
     this.userService.getPetsUser(idUser).subscribe(pets => {
       console.log(pets);
       return this.pets = pets;
@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
 
   }
   
-
   receiveClickEditUser($event) {
     this.receivedForm = $event
 
