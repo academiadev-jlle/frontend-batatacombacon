@@ -23,13 +23,15 @@ export class CadastroComponent implements OnInit {
 
     // 1) Enviando direto os campos do form. Sem conversao para usuario     
     // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
-    this.userService.addUser(this.receivedForm.value).subscribe(ret => {
-      
-      console.log(ret);
-      ret!==undefined ? this.alert.show('success') : this.alert.show('danger')
-    
-    });
-  
+    this.userService.addUser(this.receivedForm.value)
+      .subscribe(
+        ret => {
+        this.alert.show('success')
+        console.log(ret);
+        },
+        error => {
+          this.alert.show('danger')
+        });
   }
 
 

@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
 
     // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 1;
+    const idUser = 101;
     
     this.userService.getUser(idUser).subscribe(user => {
       console.log(user);
@@ -51,12 +51,14 @@ export class ProfileComponent implements OnInit {
       sendUser.senha = this.getFormValues('senha');
 
     // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
-    this.userService.updateUser(sendUser).subscribe(ret => {
-      
-      console.log(ret)
-      ret!==undefined ? this.alert.show('success', 'Editado com sucesso.') : this.alert.show('danger')
-      
-    })
+    this.userService.updateUser(sendUser)
+      .subscribe(ret => {
+        this.alert.show('success')
+        console.log(ret);
+        },
+        error => {
+          this.alert.show('danger')
+        });
   }
 
   getFormValues(att){
