@@ -1,4 +1,4 @@
-export class Categoria {
+export class Objetivo {
     id: number;
     descricao: string;
 }

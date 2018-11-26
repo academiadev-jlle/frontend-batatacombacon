@@ -1,46 +1,51 @@
 <!-- <p>{{pet | json}}</p> -->
 <div class="container">
     <div class="petTitle">
-        <h1>{{ pet.name }}</h1>
+        <h1>{{ pet.nome }}</h1>
     </div>
     <div class="row petContent">
         <div class="col-md-7 petDivPhoto">
-            <img src="{{ pet.photo }}" class="petPhoto">
+            <div class="pet-image-container" style="cursor: default;">
+                <div class="pet-image-dummy"></div>
+                <img class="pet-image-url" src="{{ pet.imagem }}" alt="your image">
+            </div>      
         </div>
         <div class="col-md-5 petInfo">
             <div>
                 <span><strong>Nome: </strong></span>
-                <span>{{ pet.name }}</span>
+                <span>{{ pet.nome }}</span>
             </div>
             <div>
                 <span><strong>Espécie: </strong></span>
                 <span>{{ pet.especie }}</span>
             </div>
             <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+                <span><strong>Porte: </strong></span>
+                <span>{{ pet.porte }}</span>
             </div>
             <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+                <span><strong>Sexo: </strong></span>
+                <span>{{ pet.macho }}</span>
             </div>
             <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+                <span><strong>Objetivo: </strong></span>
+                <span>{{ pet.objetivo }}</span>
             </div>
             <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+                <span><strong>Data: </strong></span>
+                <span>{{ pet.dataPet | date: 'dd/MM/yyyy' }}</span>
             </div>
             <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+                <span><strong>Localização: </strong></span>
+                <span>{{ pet.localPet }}</span>
             </div>
         </div>
         <div class="col-md-12 petDescription">
             <label><strong>Descrição: </strong></label>
-            <p>{{ pet.description }}</p>
+            <!-- <p>{{ pet.descricao }}</p> -->
         </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+    <div class="btnVoltar">
+        <button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+    </div>
 </div>

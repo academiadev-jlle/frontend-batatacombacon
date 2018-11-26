@@ -1,16 +1,17 @@
 <div class="filter">
     <div class="row">
         <div class='col-sm'>
-            <input
+                <input
                 id="typeahead-focus"
                 type="text"
                 class="form-control"
                 [(ngModel)]="selectedEspecie"
-                [ngbTypeahead]="searchEspecie"
+                [ngbTypeahead]="searchEspecies"
                 (focus)="focusEspecie$.next($event.target.value)"
                 (click)="clickEspecie$.next($event.target.value)"
-                #instance="ngbTypeahead"
-                placeholder="Espécie"/>
+                #instanceEspecie="ngbTypeahead"
+                placeholder="Espécie"
+              />
             </div>
         <div class='col-sm'>
             <input
@@ -18,10 +19,10 @@
                 type="text"
                 class="form-control"
                 [(ngModel)]="selectedPorte"
-                [ngbTypeahead]="searchPorte"
+                [ngbTypeahead]="searchPortes"
                 (focus)="focusPorte$.next($event.target.value)"
                 (click)="clickPorte$.next($event.target.value)"
-                #instance="ngbTypeahead"
+                #instancePorte="ngbTypeahead"
                 placeholder="Porte"/>
         </div>
         <div class='col-sm'>
@@ -29,12 +30,12 @@
                 id="typeahead-focus"
                 type="text"
                 class="form-control"
-                [(ngModel)]="selectedCategoria"
-                [ngbTypeahead]="searchCategoria"
-                (focus)="focusCategoria$.next($event.target.value)"
-                (click)="clickCategoria$.next($event.target.value)"
-                #instance="ngbTypeahead"
-                placeholder="Categoria"/>
+                [(ngModel)]="selectedObjetivo"
+                [ngbTypeahead]="searchObjetivos"
+                (focus)="focusObjetivo$.next($event.target.value)"
+                (click)="clickObjetivo$.next($event.target.value)"
+                #instanceObjetivo="ngbTypeahead"
+                placeholder="Objetivo"/>
         </div>
         <div class='col-sm'>
             <input
@@ -42,10 +43,10 @@
                 type="text"
                 class="form-control"
                 [(ngModel)]="selectedSexo"
-                [ngbTypeahead]="searchSexo"
+                [ngbTypeahead]="searchSexos"
                 (focus)="focusSexo$.next($event.target.value)"
                 (click)="clickSexo$.next($event.target.value)"
-                #instance="ngbTypeahead"
+                #instanceSexo="ngbTypeahead"
                 placeholder="Sexo"/>
         </div>
         <div class='col-sm'>
