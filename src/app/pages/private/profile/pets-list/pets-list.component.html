@@ -1,4 +1,34 @@
-<table class="table table-hover table-responsive-sm">
+<h2>
+  Meus pets
+</h2>
+
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel *ngFor="let pet of petListUser" title="{{ pet.nome }}" >
+      <ng-template ngbPanelContent>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <img src="{{ pet.imagem }}" alt="pet">
+            </div>
+            <div class="col">
+              <p><strong>Espécie: </strong>{{ pet.especie }}</p>
+              <p><strong>Objetivo: </strong>{{ pet.objetivo }}</p>
+              <p><strong>Porte: </strong>{{ pet.porte }}</p>
+              <p><strong>Sexo: </strong>{{ pet.sexo }}</p>
+              <p><strong>Local: </strong>{{ pet.localPet }}</p>
+              <div class="row">
+                <button class="btn btn-primary edit-btn"><i class="fa fa-edit"></i> Editar</button>
+                <button class="btn btn-danger"><i class="fa fa-trash"></i> Apagar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+
+<!-- <table class="table table-hover table-responsive-sm">
   <thead>
     <tr>
       <th>Nome</th>
@@ -28,4 +58,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
