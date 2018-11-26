@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileComponent } from './profile.component';
+import { PetsListComponent } from './pets-list/pets-list.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { ProfileComponent } from './profile.component';
     SharedModule
   ],
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    PetsListComponent
   ]
 })
 export class ProfileModule { }

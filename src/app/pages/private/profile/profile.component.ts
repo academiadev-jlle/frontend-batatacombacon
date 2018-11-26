@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
+import { Pet } from 'src/app/classes/pets/pet';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
@@ -14,21 +15,31 @@ export class ProfileComponent implements OnInit {
   
   usuario: Usuario;
   receivedForm: FormGroup;
+  pets: Pet[]=[];
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
 
-    // desenvolvimento apenas. Provavelmente o usuario virá
+    // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
     const idUser = 1;
     
     this.userService.getUser(idUser).subscribe(user => {
+      console.log(user);
       this.usuario = APIUsuarioFactory(user)
       
       //setando id para que eu saiba quem eu vou editar
-      this.usuario.id = idUser;});
+      this.usuario.id = idUser;
+    });
+
+    this.userService.getPetsUser(idUser).subscribe(pets => {
+      console.log(pets);
+      return this.pets = pets;
+    })
+
   }
+  
 
   receiveClickEditUser($event) {
     this.receivedForm = $event
