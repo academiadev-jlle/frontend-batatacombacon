@@ -5,6 +5,7 @@ import { Pet } from 'src/app/classes/pets/pet';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { PetService } from 'src/app/services/pet.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -18,9 +19,10 @@ export class ProfileComponent implements OnInit {
   receivedForm: FormGroup;
   pets: Pet[]=[];
 
+  closeResult: string;
+
   constructor(private userService: UserService,
-              private petService: PetService
-              ) { }
+              private petService: PetService) { }
 
   ngOnInit() {
 
@@ -41,7 +43,11 @@ export class ProfileComponent implements OnInit {
 
   // criada função pois é usada no init e no delete do pet
   getPetsUser(idUser: number){
-    this.userService.getPetsUser(idUser).subscribe(pets => this.pets = pets);
+    this.userService.getPetsUser(idUser)
+      .subscribe(
+        pets => this.pets = pets,
+        error => this.alert.show('danger', error.message)
+      )
   }
   
   receiveClickEditUser($event) {
@@ -72,10 +78,11 @@ export class ProfileComponent implements OnInit {
     this.petService.deletePet($event)
       .subscribe(
         ret => {
-          this.alert.show('success', ret.message);
           this.getPetsUser(this.usuario.id);
+          this.alert.show('success', ret.message);
         },
         error => this.alert.show('danger', error.message)
       )
   }
+  
 }
