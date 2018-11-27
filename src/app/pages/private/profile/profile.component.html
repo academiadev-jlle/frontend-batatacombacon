@@ -2,9 +2,16 @@
 
 <div class="row editProfile">
   <div class="col-md-6">
-    <app-form-user (messageEvent)=receiveClickEditUser($event) [usuarioProfile]="usuario"></app-form-user>
+    <div class="user-form">
+      <h3>Meus dados</h3>
+      <app-form-user (messageEvent)=receiveClickEditUser($event) [usuarioProfile]="usuario"></app-form-user>
+    </div>
+    
   </div>
   <div class="col-md-6">
-    <app-pets-list [petListUser]="pets"></app-pets-list>
+    <div class="pets-data">
+      <h3>Meus pets</h3>
+      <app-pets-list [petListUser]="pets" (msgDeletePet)="msgDeletePet($event)"></app-pets-list>
+    </div>
   </div>
 </div>

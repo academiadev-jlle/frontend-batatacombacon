@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pet } from 'src/app/classes/pets/pet';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pets-list',
@@ -9,10 +10,19 @@ import { Pet } from 'src/app/classes/pets/pet';
 export class PetsListComponent implements OnInit {
 
   @Input() petListUser: Pet[];
+  @Output() msgDeletePet = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  infoPet($event){
+    this.router.navigate([`pet/${$event}`]);
+  }
+
+  deletePet($event){
+    this.msgDeletePet.emit($event);
   }
 
 }

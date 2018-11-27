@@ -4,6 +4,7 @@ import { Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
 import { Pet } from 'src/app/classes/pets/pet';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
+import { PetService } from 'src/app/services/pet.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,9 @@ export class ProfileComponent implements OnInit {
   receivedForm: FormGroup;
   pets: Pet[]=[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private petService: PetService
+              ) { }
 
   ngOnInit() {
 
@@ -33,15 +36,16 @@ export class ProfileComponent implements OnInit {
     });
 
     // loading pets of user
-    this.userService.getPetsUser(idUser).subscribe(pets => {
-      console.log(pets);
-      return this.pets = pets;
-    })
+    this.getPetsUser(idUser);
+  }
 
+  // criada função pois é usada no init e no delete do pet
+  getPetsUser(idUser: number){
+    this.userService.getPetsUser(idUser).subscribe(pets => this.pets = pets);
   }
   
   receiveClickEditUser($event) {
-    this.receivedForm = $event
+    this.receivedForm = $event;
 
     // 1) Aqui tem a conversao de form para usuario. è necessario o id e o form nao tem id.
     const sendUser = APIUsuarioFactory(this.usuario)
@@ -51,17 +55,27 @@ export class ProfileComponent implements OnInit {
 
     // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
     this.userService.updateUser(sendUser)
-      .subscribe(ret => {
-        this.alert.show('success')
-        console.log(ret);
+      .subscribe(
+        ret => {
+          this.alert.show('success');
         },
         error => {
-          this.alert.show('danger')
+          this.alert.show('danger');
         });
   }
 
   getFormValues(att){
-    return this.receivedForm.controls[att].value
+    return this.receivedForm.controls[att].value;
   }
 
+  msgDeletePet($event){
+    this.petService.deletePet($event)
+      .subscribe(
+        ret => {
+          this.alert.show('success', ret.message);
+          this.getPetsUser(this.usuario.id);
+        },
+        error => this.alert.show('danger', error.message)
+      )
+  }
 }

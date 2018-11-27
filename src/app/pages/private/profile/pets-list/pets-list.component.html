@@ -1,61 +1,26 @@
-<h2>
-  Meus pets
-</h2>
-
-  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-    <ngb-panel *ngFor="let pet of petListUser" title="{{ pet.nome }}" >
-      <ng-template ngbPanelContent>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let pet of petListUser" title="{{ pet.nome }}" id="{{ pet.id }}">
+    <ng-template ngbPanelContent>
         <div class="container">
-          <div class="row">
-            <div class="col">
-              <img src="{{ pet.imagem }}" alt="pet">
-            </div>
-            <div class="col">
-              <p><strong>Espécie: </strong>{{ pet.especie }}</p>
-              <p><strong>Objetivo: </strong>{{ pet.objetivo }}</p>
-              <p><strong>Porte: </strong>{{ pet.porte }}</p>
-              <p><strong>Sexo: </strong>{{ pet.sexo }}</p>
-              <p><strong>Local: </strong>{{ pet.localPet }}</p>
-              <div class="row">
-                <button class="btn btn-primary edit-btn"><i class="fa fa-edit"></i> Editar</button>
-                <button class="btn btn-danger"><i class="fa fa-trash"></i> Apagar</button>
+            <div class="row">
+              <div class="col">
+                <img src="{{ pet.imagem }}" alt="pet">
+              </div>
+              <div class="col">
+                <p><strong>Espécie: </strong>{{ pet.especie }}</p>
+                <p><strong>Objetivo: </strong>{{ pet.objetivo }}</p>
+                <p><strong>Porte: </strong>{{ pet.porte }}</p>
+                <p><strong>Sexo: </strong>{{ pet.sexo }}</p>
+                <p><strong>Local: </strong>{{ pet.localPet }}</p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        </ng-template>
-    </ngb-panel>
-  </ngb-accordion>
-
-<!-- <table class="table table-hover table-responsive-sm">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Espécie</th>
-      <th>Objetivo</th>
-      <th>Porte</th>
-      <th>Sexo</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pet of petListUser">
-      <td>{{ pet.nome }}</td>
-      <td>{{ pet.especie }}</td>
-      <td>{{ pet.objetivo }}</td>
-      <td>{{ pet.porte }}</td>
-      <td>{{ pet.sexo }}</td>
-      <td>
-        <button class="btn btn-link pull-left">
-          <i class="fa fa-edit"></i>
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-link pull-right">
-          <i class="fa fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
+            <div class="row">
+                <div class="col-sm">
+                  <button class="btn btn-primary edit-btn" (click)="infoPet(pet.id)"><i class="fa fa-edit"></i> Editar</button>
+                  <button class="btn btn-danger" (click)="deletePet(pet.id)"><i class="fa fa-trash"></i> Apagar</button>
+                </div>
+              </div>
+          </div>      
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
