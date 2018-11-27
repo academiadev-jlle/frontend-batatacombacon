@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 
     // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 1;
+    const idUser = 101;
     
     this.userService.getUser(idUser).subscribe(user => {
       this.usuario = APIUsuarioFactory(user)
@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
       sendUser.email = this.getFormValues('email');
       sendUser.senha = this.getFormValues('senha');
 
-    // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
+   // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
     this.userService.updateUser(sendUser)
       .subscribe(
         ret => {
@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
           this.alert.show('danger');
         });
   }
-
+  
   getFormValues(att){
     return this.receivedForm.controls[att].value;
   }
