@@ -11,13 +11,15 @@ import { FormUserComponent } from './form-user/form-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './public/loader/loader.component';
 import { AlertComponent } from './alert/alert.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   exports: [
     FooterComponent,

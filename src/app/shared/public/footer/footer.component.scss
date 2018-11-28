@@ -1,10 +1,11 @@
 .footer {
-  margin: auto;
   padding-top: 20px;
-  padding-bottom: 20px;
   color: #999;
   text-align: left;
   background-color: #f9f9f9;
+  position: relative;
+  left: 0;
+  bottom: 0;
   
   p {
     margin-bottom: 0;
@@ -27,5 +28,21 @@
     padding-right: 10%;
     
     margin-bottom: 2%;
+  }
+
+  .githubIcon {
+    text-align: center;
+    
+    div{
+      display: flex;
+      align-items: center;
+
+      button {
+        padding: 0;
+        border: none;
+        background: none;
+        vertical-align: middle;
+      }
+    }
   }
 }
