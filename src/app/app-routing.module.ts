@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-fo
 
 import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
-import { NewUserGuard } from './pages/guards/new-user.guard';
+import { NewUserGuard } from './pages/public/guards/new-user.guard';
 
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
     { path: 'cadastro', component: CadastroComponent},
-    { path: 'cadastro/:id', component: RedirectNewUserComponent, canActivate: [NewUserGuard]},
+    { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard]},
 
     //Essa rota será alterada para validar login. Criada assim para desenvolvimento apenas.
     { path: 'profile', component: ProfileComponent },

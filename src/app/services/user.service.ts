@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { HandleError } from '../classes/handleErrors';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
 import { catchError } from 'rxjs/operators';
 import { Pet } from '../classes/pets/pet';
@@ -18,6 +17,10 @@ const httpOptions = {
 })
 
 export class UserService {
+
+  newUser: {nome: '',
+            email: '',
+            acabouDeRegistrar: boolean};
 
   //private usersUrl = 'https://backendcombacon.herokuapp.com/user';
   private usersUrl = 'https://srv-fake-api.herokuapp.com/user';

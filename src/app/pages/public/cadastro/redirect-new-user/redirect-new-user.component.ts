@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-redirect-new-user',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RedirectNewUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  nome: string='';
+  email: string='';
 
   ngOnInit() {
+
+    this.router.routerState.root.data.subscribe(data => {
+      this.nome = data.nome;
+      this.email = data.email;
+    })
+  }
+
+  redirectHome(){
+    this.router.navigate([''])
   }
 
 }

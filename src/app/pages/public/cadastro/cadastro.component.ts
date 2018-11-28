@@ -27,12 +27,12 @@ export class CadastroComponent implements OnInit {
     this.userService.addUser(this.receivedForm.value)
       .subscribe(
         ret => {
-          //this.alert.show('success')
-          this.router.navigate([`cadastro/${ret.id}`]);
-          
+          this.alert.show('success', ret.message)
+          this.userService.newUser = {nome: ret.nome, email: ret.email, acabouDeRegistrar: true};
+          this.router.navigate(['bem-vindo']);
         },
         error => {
-          this.alert.show('danger')
+          this.alert.show('danger', error.message)
         });
   }
 
