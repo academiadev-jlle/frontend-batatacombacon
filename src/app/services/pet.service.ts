@@ -93,8 +93,8 @@ export class PetService {
       return throwError(ret);
     }
     
-    ret.message =`(${error.status}) Ops... Aconteceu algum problema`;
+    ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
     return throwError(ret);
-}
+  }
 
 }

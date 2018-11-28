@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,7 +14,7 @@ export class CadastroComponent implements OnInit {
 
   receivedForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
   
   ngOnInit() {
   }
@@ -26,8 +27,9 @@ export class CadastroComponent implements OnInit {
     this.userService.addUser(this.receivedForm.value)
       .subscribe(
         ret => {
-        this.alert.show('success')
-        console.log(ret);
+          //this.alert.show('success')
+          this.router.navigate([`cadastro/${ret.id}`]);
+          
         },
         error => {
           this.alert.show('danger')
