@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 
     // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 1;
+    const idUser = 101;
     
     this.userService.getUser(idUser).subscribe(user => {
       this.usuario = APIUsuarioFactory(user)
