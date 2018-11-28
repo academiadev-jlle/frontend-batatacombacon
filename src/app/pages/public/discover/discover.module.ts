@@ -11,6 +11,7 @@ import { PetJsonComponent } from './pets-detail/pets-detail-content/pet-json/pet
 import { DiscoverRoutingModule } from './discover-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status.component';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status
     FormsModule,
     SharedModule,
     NgbTypeaheadModule,
+    ShareButtonsModule.forRoot()
   ],
   exports: [],
   declarations: [
