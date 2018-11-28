@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
 
-  ngOnInit() {
+  open() {
+    this.modalService.open(EsqueceuSenhaComponent);
   }
-
 }
