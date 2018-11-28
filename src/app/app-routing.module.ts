@@ -8,14 +8,18 @@ import { ContatoComponent } from './pages/public/contato/contato.component';
 import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-found.component';
 
 import { ProfileComponent } from './pages/private/profile/profile.component';
+import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
+import { NewUserGuard } from './pages/public/guards/new-user.guard';
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
     { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
-    { path: 'cadastro', component: CadastroComponent},
+    //{ path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
     { path: 'contato', component: ContatoComponent},
+    { path: 'cadastro', component: CadastroComponent},
+    { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard]},
 
     //Essa rota será alterada para validar login. Criada assim para desenvolvimento apenas.
     { path: 'profile', component: ProfileComponent },
