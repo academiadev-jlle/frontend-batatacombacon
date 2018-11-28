@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-import { Router } from '@angular/router';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -8,17 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  faGithub = faGithubSquare;
+  faGithub = faGithub;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  goGitWiki(){
-    // this.window.location.href = 'https://github.com/academiadev-jlle/wiki-batatacombacon/blob/master/Documentation/Frontend.md';
-    console.log('oi');
-    // this.router.navigate(['https://github.com/academiadev-jlle/wiki-batatacombacon/blob/master/Documentation/Frontend.md']);
-    
+  goGitWiki() {
+    window.location.href = 'https://github.com/academiadev-jlle/wiki-batatacombacon/blob/master/Documentation/Frontend.md';
   }
 }
