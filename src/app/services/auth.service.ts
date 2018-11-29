@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  access_token = '';
+  private access_token = '';
 
   private url = "https://reqres.in/api";
 
@@ -50,6 +50,7 @@ export class AuthService {
   }
 
   isUserLogged() {
+    console.log('authService', this.access_token, !!this.access_token);
     return !!this.access_token;
   }
 

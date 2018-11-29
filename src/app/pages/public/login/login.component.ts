@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .login("","")
       .subscribe(ret => {
-          console.log("from authService", this.authService.access_token);
+          console.log("from authService", this.authService.isUserLogged());
           //redirect to home with login changed to Username :D
       },
       error => console.log(error) //trocar pelo alert.
