@@ -13,7 +13,7 @@ export class LoginComponent {
   constructor(private modalService: NgbModal) {}
 
   openEsqueceuSenha() {
-    this.modalService.open(EsqueceuSenhaComponent);
+    this.modalService.open(EsqueceuSenhaComponent, { centered: true });
   }
 
 }

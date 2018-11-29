@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-esqueceu-senha',
@@ -9,7 +10,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EsqueceuSenhaComponent {
 
+  formEmail = this.fb.group({
+    email: ['']
+  })
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {}
 
+  requestNovaSenha() {
+    console.log(this.formEmail.value.email);
+  }
 }
