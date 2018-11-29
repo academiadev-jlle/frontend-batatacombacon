@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-fo
 
 import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
-import { NewUserGuard } from './pages/public/guards/new-user.guard';
+import { NewUserGuard } from './guards/new-user.guard';
 
 
 const routes: Routes = [
