@@ -10,6 +10,10 @@ import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.componen
 })
 export class LoginComponent {
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
+
+  openEsqueceuSenha() {
+    this.modalService.open(EsqueceuSenhaComponent);
+  }
 
 }

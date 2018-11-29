@@ -20,7 +20,8 @@ import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.componen
   declarations: [
     LoginComponent,
     AddPetComponent,
-    EditPetComponent
+    EditPetComponent,
+    EsqueceuSenhaComponent
   ],
   entryComponents: [
     EsqueceuSenhaComponent
