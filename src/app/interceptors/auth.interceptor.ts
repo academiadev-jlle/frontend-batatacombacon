@@ -5,13 +5,17 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class AuthInterceptor implements HttpInterceptor {
-
-    constructor(private authService: AuthService) {}
-
+    
+    constructor(private authService: AuthService) {
+        this.authService.isLogged.subscribe(state => this.isLogged = state);
+    }
+    
+    isLogged: boolean=false;
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if(this.authService.isUserLogged()){
+        if(this.isLogged){
             req = req.clone({
                 setHeaders: { 
                     Authorization: this.authService.getAuthorizationHeader()

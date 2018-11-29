@@ -1,46 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit{
-  
-  navbarOpen = false;
-  itemsList = [];
-  
+export class NavbarComponent implements OnInit {
+  isLogged$: Observable<boolean>; 
+  navbarOpen = false;  
+
   constructor(private authService: AuthService) {  }
 
   ngOnInit() {
-    
-    this.itemsList = [
-      {
-        text: "Minha conta",
-        link: "/profile",
-        show: true
-      },
-      {
-        text: "Cadastro",
-        link: "/cadastro",
-        show: true
-      },
-      {
-        text: "Login",
-        link: "/login",
-        show: true
-      },
-      {
-        text: "Contato",
-        link: "/contato",
-        show: true
-      }
-    ]
+    this.isLogged$ = this.authService.isLogged;
   }
   
+  onLogout(){
+    this.authService.logout();
+  }
 
-  
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
