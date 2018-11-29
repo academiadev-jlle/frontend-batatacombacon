@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   isLogged$: Observable<boolean>; 
-  navbarOpen = false;  
+  navbarOpen = false;
 
   constructor(private authService: AuthService) {  }
 
