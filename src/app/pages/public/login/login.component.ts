@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,8 +18,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .login("","")
       .subscribe(ret => {
-          console.log("from authService", this.authService.isUserLogged());
-          //redirect to home with login changed to Username :D
+          this.router.navigate(['']);
       },
       error => console.log(error) //trocar pelo alert.
       );

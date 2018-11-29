@@ -8,20 +8,24 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfileGuard implements CanActivate {
   
-  constructor(private authService: AuthService, private router: Router){  }
+  constructor(private authService: AuthService, private router: Router){
+    this.authService.isLogged.subscribe(state => this.isLogged = state);
+  }
+  
+  isLogged: boolean=false;
   
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    
-      console.log(this.authService.isUserLogged())
 
-    if(this.authService.isUserLogged())
+    if(this.isLogged){
       return true;
-
+    }
+    
     this.router.navigate(['']);
     return false;
-
-
+      
+      
+    }
   }
-}
+  

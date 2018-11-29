@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,12 +16,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-
   private access_token = '';
-
   private url = "https://reqres.in/api";
+  private logged = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(user: string, pass: string): Observable<any>{
 
@@ -34,6 +34,7 @@ export class AuthService {
       .pipe(
         map(ret => {
           this.access_token = ret['token'];
+          this.logged.next(true);
           return ret;
         }),
         catchError(this.handleError)
@@ -41,17 +42,17 @@ export class AuthService {
   }
 
   logout(){
-    // TODO: chamada http aqui!
+    // TODO: mais alguma implementação?
+    this.logged.next(false);
+    this.router.navigate(['']);
   }
-
 
   getAuthorizationHeader() {
     return `Bearer ${this.access_token}`;
   }
 
-  isUserLogged() {
-    console.log('authService', this.access_token, !!this.access_token);
-    return !!this.access_token;
+  get isLogged() {
+    return this.logged.asObservable();
   }
 
   private handleError(error: any) { 
