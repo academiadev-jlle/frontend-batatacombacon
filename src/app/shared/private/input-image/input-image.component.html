@@ -1,5 +1,5 @@
 <div class="preview-image-container" style="cursor: default;" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
-  <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" (change)="readURL($event)" style="display:none" formControlName="imagem" #previewFile>
+  <!-- <input type="file" name="File" id="File" class="image-url form-control" accept="image/*" (change)="readURL($event)" style="display:none" formControlName="imagem" #previewFile> -->
   <div class="preview-image-dummy"></div>
   <img class="preview-image-url" [src]=" imageSrc ">
   <div class="preview-image-instruction">
