@@ -18,19 +18,23 @@ export class FormPetComponent implements OnInit, OnChanges {
 
   constructor(private formBuilder: FormBuilder) { }
 
+  get f() {
+    return this.petForm.controls;
+  }
+
   ngOnInit() {
     this.petForm = this.formBuilder.group({
-      nome: [''],
-      especie: [''],
-      porte: [''],
-      sexo: [''],
-      objetivo: [''],
+      nome: ['', Validators.required],
+      especie: ['', Validators.required],
+      porte: ['', Validators.required],
+      sexo: ['', Validators.required],
+      objetivo: ['', Validators.required],
       // dataPet: [''],
       // dataCriacao: [''],
-      localPet: [''],
+      localPet: ['', Validators.required],
       // descricao: [''],
-      fotos: [''],
-      idUser: [1]
+      fotos: [],
+      idUsuario: [1]
     });
   }
 
@@ -50,9 +54,9 @@ export class FormPetComponent implements OnInit, OnChanges {
       porte: this.petProfile.porte,
       sexo: this.petProfile.sexo,
       objetivo: this.petProfile.objetivo,
-      dataPet: this.petProfile.dataPet,
+      // dataPet: this.petProfile.dataPet,
       localPet: this.petProfile.localPet,
-      descricao: 'oi',
+      // descricao: 'oi',
       fotos: this.petProfile.fotos,
     });
   }
