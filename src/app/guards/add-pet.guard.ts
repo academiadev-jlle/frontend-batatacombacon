@@ -6,7 +6,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileGuard implements CanActivate {
+export class AddPetGuard implements CanActivate {
   
   constructor(private authService: AuthService, private router: Router){
     this.authService.isLogged.subscribe(state => this.isLogged = state);
@@ -17,14 +17,14 @@ export class ProfileGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
+    
     if(this.isLogged){
       return true;
     }
-    
+      
     this.router.navigate(['']);
     return false;
-      
+
     }
-  }
+}
   
