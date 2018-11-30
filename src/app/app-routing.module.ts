@@ -9,20 +9,19 @@ import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-fo
 
 import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
-import { NewUserGuard } from './pages/public/guards/new-user.guard';
+import { NewUserGuard } from './guards/new-user.guard';
+import { ProfileGuard } from './guards/profile.guard';
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
     { path: 'discover', loadChildren: './pages/public/discover/discover.module#DiscoverModule'},
-    //{ path: 'cadastro', component: CadastroComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'contato', component: ContatoComponent},
     { path: 'cadastro', component: CadastroComponent},
-    { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard]},
+    { path: 'contato', component: ContatoComponent},
 
-    //Essa rota será alterada para validar login. Criada assim para desenvolvimento apenas.
-    { path: 'profile', component: ProfileComponent },
+    { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam
     { path: '404', component: PageNotFoundComponent},
