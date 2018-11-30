@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HandleError } from '../classes/handleErrors';
 import { Observable } from 'rxjs';
 import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +18,8 @@ const httpOptions = {
 
 export class UserService {
 
-  //private usersUrl = 'https://backendcombacon.herokuapp.com/user';
-  private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
+  private usersUrl = 'https://backendcombacon.herokuapp.com/user';
+  // private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
 
   private handleError = new HandleError();
 
