@@ -1,7 +1,7 @@
 <div class="petTitle">
   <h1> {{ petForm.get('nome').value }} </h1>
 </div>
-<form class="form-row petContent" [formGroup]="petForm">
+<form class="form-row petContent" [formGroup]="petForm" (change)="submitPet($event)">
   <div class="col-md-7 petDivPhoto">
     <app-input-image></app-input-image>
   </div>
@@ -32,10 +32,10 @@
     <div class="form-group row">
       <label for="staticSexo" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
       <div class="col-sm-10 m-auto">
-        <select class="form-control form-control-sm" id="staticSexo" formControlName="macho">
+        <select class="form-control form-control-sm" id="staticSexo" formControlName="sexo">
             <option value="" disabled selected>Escolha o sexo do Pet</option>
-          <option [value]="true">Macho</option>
-          <option [value]="false">Fêmea</option>
+          <option [value]="MACHO">Macho</option>
+          <option [value]="FEMEA">Fêmea</option>
         </select>
       </div>
     </div>

@@ -23,14 +23,14 @@ export class FormPetComponent implements OnInit, OnChanges {
       nome: [''],
       especie: [''],
       porte: [''],
-      macho: [''],
+      sexo: [''],
       objetivo: [''],
-      dataPet: [''],
-      dataCriacao: [''],
+      // dataPet: [''],
+      // dataCriacao: [''],
       localPet: [''],
-      descricao: [''],
-      imagem: [''],
-      idUser: ['']
+      // descricao: [''],
+      fotos: [''],
+      idUser: [1]
     });
   }
 
@@ -47,13 +47,13 @@ export class FormPetComponent implements OnInit, OnChanges {
     this.petForm.patchValue({
       nome: this.petProfile.nome,
       especie: this.petProfile.especie,
-      porte: this.petProfile.dataCriacao,
-      macho: this.petProfile.macho,
+      porte: this.petProfile.porte,
+      sexo: this.petProfile.sexo,
       objetivo: this.petProfile.objetivo,
       dataPet: this.petProfile.dataPet,
       localPet: this.petProfile.localPet,
       descricao: 'oi',
-      imagem: this.petProfile.imagem,
+      fotos: this.petProfile.fotos,
     });
   }
 
@@ -61,7 +61,7 @@ export class FormPetComponent implements OnInit, OnChanges {
     this.messageEvent.emit(this.petForm);
   }
 
-  submitClick($event) {
+  submitPet($event) {
     // variavel que torna o botao de submit disponivel ou 
     // nao somente ao terminar todo o form
     this.submitted = true;

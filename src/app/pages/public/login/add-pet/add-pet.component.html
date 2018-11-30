@@ -1,7 +1,6 @@
 <div class="container">
-  <app-form-pet></app-form-pet>
+  <app-form-pet (messageEvent)=receiveClickAddUser($event)></app-form-pet>
   <div class="text-center">
-    <button type="button" class="btn btn-primary" (click)="ClickAddPet()">Adicionar</button>
+    <button type="button" class="btn btn-primary" (click)="clickAddPet()">Adicionar</button>
   </div>
-  <!-- <p>{{ receivedForm.value | json }}</p> -->
 </div> 

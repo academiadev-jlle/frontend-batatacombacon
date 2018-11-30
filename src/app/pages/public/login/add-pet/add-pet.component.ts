@@ -37,25 +37,12 @@ export class AddPetComponent implements OnInit {
     this.receivedForm = $event;
   }
 
-  // ClickAddPet() {
-  //   console.log(this.receivedForm.value[0]);
+  clickAddPet() {
+    console.log(this.receivedForm.value);
     // this.petService.addPet(this.receivedForm.value)
     //   .subscribe(
     //     ret => {
     //       this.alert.show('success')
-    //       this.petService.addPet = {
-    //         nome: ret.nome,
-    //         especie: ret.especie,
-    //         porte: ret.porte,
-    //         macho: ret.macho,
-    //         objetivo: ret.objetivo,
-    //         dataPet: ret.dataPet,
-    //         dataCriacao: ret.dataCriacao,
-    //         localPet: ret.localPet,
-    //         descricao: ret.descricao,
-    //         imagem: ret.imagem,
-    //         usuario: 1,
-    //       };
     //       this.router.navigate(['/addpet']);
     //     },
     //     error => {

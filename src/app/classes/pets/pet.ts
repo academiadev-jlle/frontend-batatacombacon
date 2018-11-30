@@ -1,14 +1,13 @@
-import { Usuario } from "../usuario/usuario";
 
 export class Pet{
-    dataCriacao: string;
-    imagem: string;
+    fotos?: [string];
     dataPet: string;
     especie: string;
-    id: number;
+    id?: number;
     localPet: string;
-    macho: boolean;
+    sexo: string;
     nome: string;
+    porte: string;
     objetivo: string;
-    usuario: Usuario;
+    idUsuario: number;
 }
