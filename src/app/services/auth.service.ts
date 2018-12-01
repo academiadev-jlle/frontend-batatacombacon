@@ -57,7 +57,6 @@ export class AuthService {
   // }
 
   logout(){
-    // TODO: mais alguma implementação?
     this.oauth.logOut();
     this.logged.next(false);
     this.router.navigate(['']);
