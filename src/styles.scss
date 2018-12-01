@@ -1,90 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
-// body {
-//     margin-bottom: 60px;
-// }
+html, body { overflow-x: hidden; }
 
 .main.container {
-    padding: 60px 15px 0;
+  padding: 60px 15px 0;
 }
 
 .botaoIndex {
-    margin-top: 2rem;
-  }
+  margin-top: 2rem;
+}
 
-  .lds-grid {
-    display: inline-block;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    width: 64px;
-    height: 64px;
+.user-form {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Loading app */
+.lds-grid {
+  display: inline-block;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+}
+.lds-grid div {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+  top: 6px;
+  left: 6px;
+  animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+  top: 6px;
+  left: 26px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+  top: 6px;
+  left: 45px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+  top: 26px;
+  left: 6px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+  top: 26px;
+  left: 26px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+  top: 26px;
+  left: 45px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+  top: 45px;
+  left: 6px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+  top: 45px;
+  left: 26px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+  top: 45px;
+  left: 45px;
+  animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
   }
-  .lds-grid div {
-    position: absolute;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: rgb(0, 0, 0);
-    animation: lds-grid 1.2s linear infinite;
+  50% {
+    opacity: 0.5;
   }
-  .lds-grid div:nth-child(1) {
-    top: 6px;
-    left: 6px;
-    animation-delay: 0s;
-  }
-  .lds-grid div:nth-child(2) {
-    top: 6px;
-    left: 26px;
-    animation-delay: -0.4s;
-  }
-  .lds-grid div:nth-child(3) {
-    top: 6px;
-    left: 45px;
-    animation-delay: -0.8s;
-  }
-  .lds-grid div:nth-child(4) {
-    top: 26px;
-    left: 6px;
-    animation-delay: -0.4s;
-  }
-  .lds-grid div:nth-child(5) {
-    top: 26px;
-    left: 26px;
-    animation-delay: -0.8s;
-  }
-  .lds-grid div:nth-child(6) {
-    top: 26px;
-    left: 45px;
-    animation-delay: -1.2s;
-  }
-  .lds-grid div:nth-child(7) {
-    top: 45px;
-    left: 6px;
-    animation-delay: -0.8s;
-  }
-  .lds-grid div:nth-child(8) {
-    top: 45px;
-    left: 26px;
-    animation-delay: -1.2s;
-  }
-  .lds-grid div:nth-child(9) {
-    top: 45px;
-    left: 45px;
-    animation-delay: -1.6s;
-  }
-  @keyframes lds-grid {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-  
+}

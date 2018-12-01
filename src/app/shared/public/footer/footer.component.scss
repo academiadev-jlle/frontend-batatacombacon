@@ -1,21 +1,31 @@
-.footer{
-    margin: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #999;
-    text-align: left;
-    background-color: #f9f9f9;
+.footer {
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #999;
+  text-align: left;
+  background-color: #f9f9f9;
   
-    p {
-      margin-bottom: 0;
-      margin-left: 20px;
-    }
+  p {
+    margin-bottom: 0;
+    margin-left: 20px;
 
-    p.header {
+    text-align: justify;
+    
+    .header {
       padding-bottom: 10px;
     }
-  
-    p:last-child{
+    
+    :last-child {
       margin-bottom: 0;
     }
+    
+  }
+  
+  .row {
+    padding-left: 10%;
+    padding-right: 10%;
+    
+    margin-bottom: 2%;
+  }
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
+import { Pet } from 'src/app/classes/pets/pet';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
+import { PetService } from 'src/app/services/pet.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -14,24 +17,41 @@ export class ProfileComponent implements OnInit {
   
   usuario: Usuario;
   receivedForm: FormGroup;
+  pets: Pet[]=[];
 
-  constructor(private userService: UserService) { }
+  closeResult: string;
+
+  constructor(private userService: UserService,
+              private petService: PetService) { }
 
   ngOnInit() {
 
-    // desenvolvimento apenas. Provavelmente o usuario virá
+    // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 1;
+    const idUser = 101;
     
     this.userService.getUser(idUser).subscribe(user => {
       this.usuario = APIUsuarioFactory(user)
       
       //setando id para que eu saiba quem eu vou editar
-      this.usuario.id = idUser;});
+      this.usuario.id = idUser;
+    });
+
+    // loading pets of user
+    this.getPetsUser(idUser);
   }
 
+  // criada função pois é usada no init e no delete do pet
+  getPetsUser(idUser: number){
+    this.userService.getPetsUser(idUser)
+      .subscribe(
+        pets => this.pets = pets,
+        error => this.alert.show('danger', error.message)
+      )
+  }
+  
   receiveClickEditUser($event) {
-    this.receivedForm = $event
+    this.receivedForm = $event;
 
     // 1) Aqui tem a conversao de form para usuario. è necessario o id e o form nao tem id.
     const sendUser = APIUsuarioFactory(this.usuario)
@@ -39,17 +59,30 @@ export class ProfileComponent implements OnInit {
       sendUser.email = this.getFormValues('email');
       sendUser.senha = this.getFormValues('senha');
 
-    // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
-    this.userService.updateUser(sendUser).subscribe(ret => {
-      
-      console.log(ret)
-      ret!==undefined ? this.alert.show('success', 'Editado com sucesso.') : this.alert.show('danger')
-      
-    })
+   // 2) no subscribe vai o retorno da request. Mesmo ainda retornando undefined, o user é adicionado
+    this.userService.updateUser(sendUser)
+      .subscribe(
+        ret => {
+          this.alert.show('success');
+        },
+        error => {
+          this.alert.show('danger');
+        });
   }
-
+  
   getFormValues(att){
-    return this.receivedForm.controls[att].value
+    return this.receivedForm.controls[att].value;
   }
 
+  msgDeletePet($event){
+    this.petService.deletePet($event)
+      .subscribe(
+        ret => {
+          this.getPetsUser(this.usuario.id);
+          this.alert.show('success', ret.message);
+        },
+        error => this.alert.show('danger', error.message)
+      )
+  }
+  
 }

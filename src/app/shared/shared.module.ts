@@ -6,8 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
-import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.component';
-import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 import { FormUserComponent } from './form-user/form-user.component';
 import { LoaderComponent } from './public/loader/loader.component';
 import { AlertComponent } from './alert/alert.component';
@@ -25,9 +23,6 @@ import { InputImageComponent } from './private/input-image/input-image.component
   exports: [
     FooterComponent,
     NavbarComponent,
-    NavbarLoggedComponent,
-    PetStatusPipe,
-    NavbarLoggedComponent,
     FormUserComponent,
     LoaderComponent,
     AlertComponent,
@@ -37,8 +32,6 @@ import { InputImageComponent } from './private/input-image/input-image.component
   declarations: [
     FooterComponent,
     NavbarComponent,
-    NavbarLoggedComponent,
-    PetStatusPipe,
     FormUserComponent,
     LoaderComponent,
     AlertComponent,

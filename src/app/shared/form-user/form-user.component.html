@@ -4,7 +4,7 @@
     (submit)="submitClick($event)">
     
     <div class="form-row mb-2">
-      <div class="form-group col-md-7 mb-2">
+      <div class="form-group col-md-12 mb-2">
         <label for="inputnome">Nome</label>
         <input class="form-control" 
         formControlName="nome"
@@ -14,12 +14,6 @@
           <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
         </div>
       </div>     
-      <div class="form-group col-md-5 mb-2">
-        <label for="inputnome">Sobrenome</label>
-        <input class="form-control" 
-        formControlName="sobrenome"
-        autofocus>  
-      </div>
       <div class="form-group col-md-12 mb-2">
         <label for="inputemail">E-mail</label>
         <input class="form-control" 
