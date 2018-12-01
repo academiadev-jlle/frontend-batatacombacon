@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
-
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { UserService } from 'src/app/services/user.service';
-import { Usuario } from 'src/app/classes/usuario/usuario';
 
 @Component({
   selector: 'app-esqueceu-senha',
@@ -13,24 +11,35 @@ import { Usuario } from 'src/app/classes/usuario/usuario';
 })
 export class EsqueceuSenhaComponent implements OnInit {
 
-  users: any;
+  formEmail: FormGroup;
+  submitted = false;
 
-  formEmail = this.fb.group({
-    email: ['']
-  })
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder,
+    private userService: UserService) {}
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private userService: UserService) {}
+  get f() { return this.formEmail.controls; }
 
   ngOnInit() {
-    this.getUsers();
-  }
-
-  getUsers() {
-    this.userService.getUsers().subscribe(users => this.users = users);
+    this.formEmail = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
   requestNovaSenha() {
-      console.log(this.formEmail.value.email);
+    this.submitted = true;
+    if (this.formEmail.valid) {
+      this.activeModal.close();
+      // this.userService.addUser(this.receivedForm.value)
+      // .subscribe(
+      //   ret => {
+      //     this.alert.show('success', ret.message)
+      //     this.router.navigate(['bem-vindo']);
+      //   },
+      //   error => {
+      //     this.alert.show('danger', error.message)
+      //   });
+    }
     // console.log(this.users);
+    //esperar
   }
 }
