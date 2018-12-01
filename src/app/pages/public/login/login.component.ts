@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.authService
-      .login("","")
+      //.login("","")
+      .loginAuth("petcodes@petcodes.com.br","SuperSecreto")
       .subscribe(ret => {
           this.router.navigate(['']);
       },

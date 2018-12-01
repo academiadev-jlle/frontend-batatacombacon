@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { Observable, throwError, BehaviorSubject, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +21,20 @@ export class AuthService {
   private url = "https://reqres.in/api";
   private logged = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private oauth: OAuthService) { }
+
+  loginAuth(user: string, pass: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(this.oauth.clientId + ':' + this.oauth.dummyClientSecret),
+      'grant_type': 'password'
+    });
+    
+    this.oauth.scope = 'password';
+
+    return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers)
+    );
+  }
+
 
   login(user: string, pass: string): Observable<any>{
 
@@ -43,12 +57,13 @@ export class AuthService {
 
   logout(){
     // TODO: mais alguma implementação?
+    this.oauth.logOut();
     this.logged.next(false);
     this.router.navigate(['']);
   }
 
   getAuthorizationHeader() {
-    return `Bearer ${this.access_token}`;
+    return `Bearer ${this.oauth.getAccessToken()}`;
   }
 
   get isLogged() {
