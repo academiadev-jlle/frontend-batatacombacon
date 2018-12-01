@@ -98,7 +98,13 @@ export class FilterListItemComponent implements OnInit {
 
   getEspecies(): void {
     this.filterService.getEspecies()
-      .subscribe(especies_ => this.especies = especies_);
+      .subscribe(especies_ => {
+        
+        console.log(especies_)
+
+        this.especies = especies_
+        
+      });
   }
 
   getPortes(): void {

@@ -5,7 +5,6 @@ import { FilterPets } from '../classes/filter';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
-import { HandleError } from '../classes/handleErrors';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -90,6 +89,16 @@ export class PetService {
 
     if(error.status===404){
       ret.message = "Pet não encontrado."
+      return throwError(ret);
+    }
+
+    if(error.status===400){
+      ret.message = "Bad request."
+      return throwError(ret);
+    }
+
+    if(error.status===401){
+      ret.message = "Você não tem autorização"
       return throwError(ret);
     }
     
