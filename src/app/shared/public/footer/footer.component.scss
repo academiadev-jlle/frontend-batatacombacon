@@ -1,44 +1,35 @@
-.footer {
-  margin: auto;
-  padding-top: 20px;
-  color: #999;
-  text-align: left;
-  background-color: #f9f9f9;
-  position: absolute;
-  bottom: 0px;
+p {
+  margin-bottom: 0;
+  margin-left: 20px;
+
+  text-align: justify;
   
-  p {
+  .header {
+    padding-bottom: 10px;
+  }
+  
+  :last-child {
     margin-bottom: 0;
-    margin-left: 20px;
-
-    text-align: justify;
-    
-    .header {
-      padding-bottom: 10px;
-    }
-    
-    :last-child {
-      margin-bottom: 0;
-    }
-    
   }
   
-  .row {
-    padding-left: 2%;
-    padding-right: 2%;
-    margin-bottom: 0.5%;
-  }
+}
 
-  .githubIcon {
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
+.row {
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 0.5%;
+}
 
-    button {
-      padding: 0;
-      border: none;
-      background: none;
-      vertical-align: middle;
-    }
+.githubIcon {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    vertical-align: middle;
   }
 }
+  

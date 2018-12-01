@@ -1,7 +1,35 @@
+$paddingHeight: 150px;
+
 /* You can add global styles to this file, and also import other style files */s
 html {
   position: relative;
   min-height: 100%;
+}
+
+main {
+  padding-bottom: $paddingHeight;
+}
+
+.footer-fixed {
+  margin: auto;
+  padding-top: 20px;
+  color: #999;
+  text-align: left;
+  background-color: #f9f9f9;
+  position: fixed;
+  bottom: 0px;
+}
+
+// Conversao do footer para o mobile
+@media (max-width: 576px) { 
+  .footer-fixed {
+    position: initial;
+    bottom: auto;
+  }
+
+  main {
+    padding-bottom: 0;
+  }
 }
 
 html, body { overflow-x: hidden; }
