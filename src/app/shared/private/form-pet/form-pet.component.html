@@ -1,105 +1,110 @@
 <div class="petTitle">
   <h1> {{ petForm.get('nome').value }} </h1>
 </div>
-<form class="form-row petContent" [formGroup]="petForm" (change)="submitPet($event)">
-  <div class="col-md-7 petDivPhoto">
-    <app-input-image></app-input-image>
+<form [formGroup]="petForm" (submit)="submitPet($event)">
+  <div class="form-row petContent">
+    <div class="col-md-7 petDivPhoto">
+      <app-input-image></app-input-image>
+    </div>
+    <div class="col-md-5 petInfo">
+      <div class="form-group row">
+        <label for="staticName" class="col-sm-2 col-form-label"><strong>Nome:</strong></label>
+        <div class="col-sm-10  m-auto">
+          <input type="text" class="form-control form-control-sm" id="staticName" placeholder="Ex: Rex" 
+          formControlName="nome"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"> 
+          <div *ngIf="submitted && f.nome.errors">
+            <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticEspecie" class="col-sm-3 col-form-label"><strong>Espécie:</strong></label>
+        <div class="col-sm-9 m-auto">
+          <input type="text" class="form-control form-control-sm" id="staticEspecie" placeholder="Ex: Cachorro" 
+          formControlName="especie"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.especie.errors }">
+          <div *ngIf="submitted && f.especie.errors">
+            <div class= "is-invalid-text" *ngIf="f.especie.errors?.required">Preencha a espécie</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticPorte" class="col-sm-2 col-form-label"><strong>Porte:</strong></label>
+        <div class="col-sm-10 m-auto">
+          <select type="text" class="form-control form-control-sm" id="staticPorte" formControlName="porte"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.porte.errors }">
+            <option value="" disabled selected>Escolha o porte do Pet</option>
+            <option value="PEQUENO">Pequeno</option>
+            <option value="MEDIO">Médio</option>
+            <option value="GRANDE">Grande</option>
+          </select>
+          <div *ngIf="submitted && f.porte.errors">
+            <div class= "is-invalid-text" *ngIf="f.porte.errors?.required">Selecione o porte</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticSexo" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
+        <div class="col-sm-10 m-auto">
+          <select class="form-control form-control-sm" id="staticSexo" formControlName="sexo"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.sexo.errors }">
+            <option value="" disabled selected>Escolha o sexo do Pet</option>
+            <option value="MACHO">Macho</option>
+            <option value="FEMEA">Fêmea</option>
+          </select>
+          <div *ngIf="submitted && f.sexo.errors">
+            <div class= "is-invalid-text" *ngIf="f.sexo.errors?.required">Selecione o sexo</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticStatus" class="col-sm-2 col-form-label"><strong>Objetivo:</strong></label>
+        <div class="col-sm-10 m-auto">
+          <select class="form-control form-control-sm" id="staticStatus" formControlName="objetivo"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.objetivo.errors }">
+            <option value="" disabled selected>Escolha o objetivo do Pet</option>
+            <option value="DOACAO" >Doação</option>
+            <option value="ACHADO" >Achado</option>
+            <option value="PERDIDO" >Perdido</option>
+          </select>
+          <div *ngIf="submitted && f.objetivo.errors">
+            <div class= "is-invalid-text" *ngIf="f.objetivo.errors?.required">Selecione um objetivo</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticCategoria" class="col-sm-2 col-form-label"><strong>Data:</strong></label>
+        <div class="col-sm-10 m-auto">
+          <!-- <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado" formControlName="dataPet"> -->
+          <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Localização:</strong></label>
+        <div class="col-sm-9 m-auto">
+          <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Local Encontrado" formControlName="localPet"
+          autofocus
+          [ngClass]="{ 'is-invalid': submitted && f.localPet.errors }">
+          <div *ngIf="submitted && f.localPet.errors">
+            <div class= "is-invalid-text" *ngIf="f.localPet.errors?.required">Preencha a localização</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 petDescription">
+      <label for="staticDescricao"><strong>Descrição:</strong></label>
+      <!-- <textarea class="form-control" id="staticDescricao" rows="4" formControlName="descricao"></textarea> -->
+      <textarea class="form-control" id="staticDescricao" rows="4"></textarea>
+    </div>
   </div>
-  <div class="col-md-5 petInfo">
-    <div class="form-group row">
-      <label for="staticName" class="col-sm-2 col-form-label"><strong>Nome:</strong></label>
-      <div class="col-sm-10  m-auto">
-        <input type="text" class="form-control form-control-sm" id="staticName" placeholder="Ex: Rex" 
-        formControlName="nome"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"> 
-        <div *ngIf="submitted && f.nome.errors">
-          <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticEspecie" class="col-sm-3 col-form-label"><strong>Espécie:</strong></label>
-      <div class="col-sm-9 m-auto">
-        <input type="text" class="form-control form-control-sm" id="staticEspecie" placeholder="Ex: Cachorro" 
-        formControlName="especie"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.especie.errors }">
-        <div *ngIf="submitted && f.especie.errors">
-          <div class= "is-invalid-text" *ngIf="f.especie.errors?.required">Preencha a espécie</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticPorte" class="col-sm-2 col-form-label"><strong>Porte:</strong></label>
-      <div class="col-sm-10 m-auto">
-        <select type="text" class="form-control form-control-sm" id="staticPorte" formControlName="porte"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.porte.errors }">
-          <option value="" disabled selected>Escolha o porte do Pet</option>
-          <option value="PEQUENO">Pequeno</option>
-          <option value="MEDIO">Médio</option>
-          <option value="GRANDE">Grande</option>
-        </select>
-        <div *ngIf="submitted && f.porte.errors">
-          <div class= "is-invalid-text" *ngIf="f.porte.errors?.required">Selecione o porte</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticSexo" class="col-sm-2 col-form-label"><strong>Sexo:</strong></label>
-      <div class="col-sm-10 m-auto">
-        <select class="form-control form-control-sm" id="staticSexo" formControlName="sexo"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.sexo.errors }">
-          <option value="" disabled selected>Escolha o sexo do Pet</option>
-          <option value="MACHO">Macho</option>
-          <option value="FEMEA">Fêmea</option>
-        </select>
-        <div *ngIf="submitted && f.sexo.errors">
-          <div class= "is-invalid-text" *ngIf="f.sexo.errors?.required">Selecione o sexo</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticStatus" class="col-sm-2 col-form-label"><strong>Objetivo:</strong></label>
-      <div class="col-sm-10 m-auto">
-        <select class="form-control form-control-sm" id="staticStatus" formControlName="objetivo"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.objetivo.errors }">
-          <option value="" disabled selected>Escolha o objetivo do Pet</option>
-          <option value="DOACAO" >Doação</option>
-          <option value="ACHADO" >Achado</option>
-          <option value="PERDIDO" >Perdido</option>
-        </select>
-        <div *ngIf="submitted && f.objetivo.errors">
-          <div class= "is-invalid-text" *ngIf="f.objetivo.errors?.required">Selecione um objetivo</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticCategoria" class="col-sm-2 col-form-label"><strong>Data:</strong></label>
-      <div class="col-sm-10 m-auto">
-        <!-- <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado" formControlName="dataPet"> -->
-        <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Localização:</strong></label>
-      <div class="col-sm-9 m-auto">
-        <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Local Encontrado" formControlName="localPet"
-        autofocus
-        [ngClass]="{ 'is-invalid': submitted && f.localPet.errors }">
-        <div *ngIf="submitted && f.localPet.errors">
-          <div class= "is-invalid-text" *ngIf="f.localPet.errors?.required">Preencha a localização</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-12 petDescription">
-    <label for="staticDescricao"><strong>Descrição:</strong></label>
-    <!-- <textarea class="form-control" id="staticDescricao" rows="4" formControlName="descricao"></textarea> -->
-    <textarea class="form-control" id="staticDescricao" rows="4"></textarea>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">{{ buttonText }}</button>
   </div>
 </form>
   

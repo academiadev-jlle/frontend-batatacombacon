@@ -11,6 +11,7 @@ import { Pet } from 'src/app/classes/pets/pet';
 export class FormPetComponent implements OnInit, OnChanges {
 
   @Input() petProfile: Pet;
+  @Input() buttonText: string;
   @Output() messageEvent = new EventEmitter<FormGroup>();
 
   petForm: FormGroup;

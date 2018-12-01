@@ -1,6 +1,3 @@
 <div class="container">
-  <app-form-pet (messageEvent)=receiveClickAddUser($event)></app-form-pet>
-  <div class="text-center">
-    <button type="button" class="btn btn-primary" (click)="clickAddPet()">Adicionar</button>
-  </div>
+  <app-form-pet buttonText="Adicionar" (messageEvent)=receiveClickAddUser($event)></app-form-pet>
 </div> 

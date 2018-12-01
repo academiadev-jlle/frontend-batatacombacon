@@ -1,5 +1,4 @@
-
-export class Pet{
+export class Pet {
     fotos?: [string];
     dataPet: string;
     especie: string;
