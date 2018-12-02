@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarLoggedComponent } from './navbar-logged.component';
+import { RedirectNewUserComponent } from './redirect-new-user.component';
 
-describe('NavbarLoggedComponent', () => {
-  let component: NavbarLoggedComponent;
-  let fixture: ComponentFixture<NavbarLoggedComponent>;
+describe('RedirectNewUserComponent', () => {
+  let component: RedirectNewUserComponent;
+  let fixture: ComponentFixture<RedirectNewUserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarLoggedComponent ]
+      declarations: [ RedirectNewUserComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarLoggedComponent);
+    fixture = TestBed.createComponent(RedirectNewUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

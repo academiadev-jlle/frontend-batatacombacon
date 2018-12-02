@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
+import { AuthService } from 'src/app/services/auth.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +14,7 @@ import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.componen
 })
 export class LoginComponent {
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) { }
 
   openEsqueceuSenha() {
     this.modalService.open(EsqueceuSenhaComponent, { centered: true });
@@ -28,5 +32,15 @@ export class LoginComponent {
     //   this.alert.show('error', this.messageAlert);
     // }
     // console.log('oi');
+  }
+  
+  onSubmit(){
+    this.authService
+      .login("","")
+      .subscribe(ret => {
+          this.router.navigate(['']);
+      },
+      error => console.log(error) //trocar pelo alert.
+      );
   }
 }

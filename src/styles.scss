@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */s
+/* You can add global styles to this file, and also import other style files */
+@import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
+
 html {
   position: relative;
   min-height: 100%;
@@ -14,6 +16,13 @@ html, body { overflow-x: hidden; }
   margin-top: 2rem;
 }
 
+.user-form {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Loading app */
 .lds-grid {
   display: inline-block;
   position:absolute;

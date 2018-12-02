@@ -45,7 +45,20 @@
             <!-- <p>{{ pet.descricao }}</p> -->
         </div>
     </div>
-    <div class="btnVoltar">
-        <button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+    <div class="btnDiv row">
+        <div class="col-md-1 btnVoltar">
+            <button type="button" class="btn btn-primary" (click)="goBack()">Voltar</button>
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-md-3 btnShare">
+            <share-buttons [theme]="'circles-dark'"
+            [include]="['facebook','twitter','whatsapp','copy']"
+            [show]="4"
+            [showText]="true"
+            [size]="-4"
+            [title]="'Salve um PET'"
+            [image]="'url'"
+            ></share-buttons>
+        </div>
     </div>
 </div>
