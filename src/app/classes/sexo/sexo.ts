@@ -1,4 +1,4 @@
 export class Sexo {
-    id: number;
+    sexo: string;
     descricao: string;
 }
