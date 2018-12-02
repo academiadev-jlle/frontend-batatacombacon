@@ -15,21 +15,21 @@ import { catchError, map } from 'rxjs/operators';
 
 export class FilterService {
     
-    private filterUrl = 'https://srv-fake-api.herokuapp.com';
-    //private filterUrl = 'https://backendcombacon.herokuapp.com';
+    //private filterUrl = 'https://srv-fake-api.herokuapp.com';
+    private filterUrl = 'https://backendcombacon.herokuapp.com';
     
     constructor(private http: HttpClient) { }
 
     getEspecies(): Observable<string[]>{
         return this.http.get<Especie[]>(`${this.filterUrl}/especies`).pipe(
-           map(response => response.map(r => r.nome)),
+           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }
 
     getPortes(): Observable<string[]>{
         return this.http.get<Porte[]>(`${this.filterUrl}/porte`).pipe(
-           map(response => response.map(r => r.tamanho)),
+           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }
@@ -68,7 +68,6 @@ export class FilterService {
             return throwError(ret);
         }
         
-        ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
-        return throwError(ret);
+        return throwError(error);
         }
 }

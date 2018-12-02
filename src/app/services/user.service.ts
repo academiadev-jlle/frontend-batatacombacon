@@ -83,8 +83,8 @@ export class UserService {
       return throwError(ret);
     }
     
-    ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
-    return throwError(ret);
+    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
+    return throwError(error);
   }
 
 }
