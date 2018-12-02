@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { EmailMessageErrorComponent } from './../email-message-error/email-message-error.component';
+import { EmailMessageSuccessComponent } from './../email-message-success/email-message-success.component';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-esqueceu-senha',
@@ -10,12 +13,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./esqueceu-senha.component.scss']
 })
 export class EsqueceuSenhaComponent implements OnInit {
+  @Output() messageEvent = new EventEmitter();
 
   formEmail: FormGroup;
   submitted = false;
 
+
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder,
-    private userService: UserService) {}
+    private userService: UserService, private modalService: NgbModal) {}
 
   get f() { return this.formEmail.controls; }
 
@@ -25,21 +30,23 @@ export class EsqueceuSenhaComponent implements OnInit {
     });
   }
 
+  sendMessage(showMessage: Boolean, errorMessage: Boolean, message: string) {
+    this.messageEvent.emit([showMessage, errorMessage, message]);
+  }
+
   requestNovaSenha() {
     this.submitted = true;
     if (this.formEmail.valid) {
       this.activeModal.close();
+      this.modalService.open(EmailMessageSuccessComponent, { centered: true });
+    }
       // this.userService.addUser(this.receivedForm.value)
       // .subscribe(
       //   ret => {
-      //     this.alert.show('success', ret.message)
-      //     this.router.navigate(['bem-vindo']);
+      //     this.modalService.open(EmailMessageSuccessComponent, {size: 'sm', centered: true });
       //   },
       //   error => {
-      //     this.alert.show('danger', error.message)
+      //     this.modalService.open(EmailMessageErrorComponent, {size: 'sm', centered: true });
       //   });
-    }
-    // console.log(this.users);
-    //esperar
   }
 }
