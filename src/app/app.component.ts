@@ -13,7 +13,7 @@ export class AppComponent {
   
   oauthSetup() {
     this.oAuthService.requireHttps = false;
-    this.oAuthService.tokenEndpoint = 'https://securitycombacon.herokuapp.com/oauth/token';
+    this.oAuthService.tokenEndpoint = 'https://backendcombacon.herokuapp.com/oauth/token';
     // this.oAuthService.userinfoEndpoint = '';
     this.oAuthService.clientId = 'tokenAdmin';
     this.oAuthService.scope = 'openid profile email voucher offline_access';

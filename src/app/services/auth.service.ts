@@ -5,13 +5,13 @@ import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    // montando o header com Authorization. Seria esse um parametro Dummy?
-    'Authorization': 'Basic ' + btoa('frontfront:frontend')
-  })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     // montando o header com Authorization. Seria esse um parametro Dummy?
+//     'Authorization': 'Basic ' + btoa('frontfront:frontend')
+//   })
+// };
 
 @Injectable({
   providedIn: 'root'
