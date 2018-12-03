@@ -9,6 +9,7 @@ import { EditPetComponent } from './edit-pet/edit-pet.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EmailMessageSuccessComponent } from './email-message-success/email-message-success.component';
 import { EmailMessageErrorComponent } from './email-message-error/email-message-error.component';
+import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 
 @NgModule({
   imports: [

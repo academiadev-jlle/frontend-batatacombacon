@@ -9,4 +9,6 @@ export class Pet {
     porte: string;
     objetivo: string;
     idUsuario: number;
+    macho:boolean;
+    imagem: any;
 }

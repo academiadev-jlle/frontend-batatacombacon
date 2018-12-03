@@ -15,6 +15,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
+import { FileDropModule } from 'ngx-file-drop';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -30,7 +32,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NgbTypeaheadModule,
     NgbAlertModule,
     NgbAccordionModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    FileDropModule
   ],
   providers: [
     {
