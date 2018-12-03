@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
@@ -14,7 +15,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
 
-  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) { }
+  constructor(private modalService: NgbModal, 
+              private authService: AuthService, 
+              private router: Router,
+              private userService: UserService) { }
 
   openEsqueceuSenha() {
     this.modalService.open(EsqueceuSenhaComponent, { centered: true });
@@ -36,7 +40,8 @@ export class LoginComponent {
   
   onSubmit(){
     this.authService
-      .login("","")
+      //.login("","")
+      .loginAuth("petcodes@petcodes.com.br","SuperSecreto")
       .subscribe(ret => {
           this.router.navigate(['']);
       },
