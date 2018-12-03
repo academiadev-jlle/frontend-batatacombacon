@@ -6,7 +6,6 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
-import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EmailMessageSuccessComponent } from './email-message-success/email-message-success.component';
 import { EmailMessageErrorComponent } from './email-message-error/email-message-error.component';
