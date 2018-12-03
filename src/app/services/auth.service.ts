@@ -5,14 +5,6 @@ import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { catchError } from 'rxjs/operators';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     // montando o header com Authorization. Seria esse um parametro Dummy?
-//     'Authorization': 'Basic ' + btoa('frontfront:frontend')
-//   })
-// };
-
 @Injectable({
   providedIn: 'root'
 })
