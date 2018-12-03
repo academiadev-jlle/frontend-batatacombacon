@@ -16,9 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     isLogged: boolean=false;
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(this.isLogged)
         if(this.isLogged){
-            console.log(this.authService.getAuthorizationHeader())
             req = req.clone(
                 {
                 setHeaders: { 

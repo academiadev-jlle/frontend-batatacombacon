@@ -3,23 +3,13 @@ import { Observable, throwError, BehaviorSubject, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     // montando o header com Authorization. Seria esse um parametro Dummy?
-//     'Authorization': 'Basic ' + btoa('frontfront:frontend')
-//   })
-// };
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  //private access_token = '';
-  //private url = "https://reqres.in/api";
-
   private logged = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router, private oauth: OAuthService) { }
@@ -34,33 +24,15 @@ export class AuthService {
 
     return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers).then(
       result => {
-        console.log(result)
         if(!!this.oauth.getAccessToken()){
           this.logged.next(true);
+        }else{
+          catchError(this.handleError)
+          //this.handleError(result)
         }
-      },
-      error => this.handleError(error)
+      }
     ));
   }
-
-  // login(user: string, pass: string): Observable<any>{
-
-  //   user = "peter@klaven";
-  //   pass = "cityslicka";
-
-  //   // aqui vai o body com a requisicao. OAuth2 pede 'grant_type: password' ?
-  //   const bodyPayload = {"email": user, "password": pass /*'grant_type':'password');*/};
-
-  //   return this.http.post(`${this.url}/login`, bodyPayload, httpOptions)
-  //     .pipe(
-  //       map(ret => {
-  //         this.access_token = ret['token'];
-  //         this.logged.next(true);
-  //         return ret;
-  //       }),
-  //       catchError(this.handleError)
-  //     );
-  // }
 
   logout(){
     this.oauth.logOut();
@@ -77,7 +49,15 @@ export class AuthService {
   }
 
   private handleError(error: any) { 
-    // TODO: Implementar codigo de erros!
+
+    const ret = {status: error.status,
+                 message: ""};
+
+      if(error.status===401){
+        ret.message = "Você não tem autorização."
+        return throwError(ret);
+      }
+
     return throwError(error);
   }
 
