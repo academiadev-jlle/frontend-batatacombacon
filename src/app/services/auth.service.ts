@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError, BehaviorSubject, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 
@@ -33,8 +32,15 @@ export class AuthService {
     
     this.oauth.scope = 'password';
 
-    return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers)
-    );
+    return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers).then(
+      result => {
+        console.log(result)
+        if(!!this.oauth.getAccessToken()){
+          this.logged.next(true);
+        }
+      },
+      error => this.handleError(error)
+    ));
   }
 
   // login(user: string, pass: string): Observable<any>{

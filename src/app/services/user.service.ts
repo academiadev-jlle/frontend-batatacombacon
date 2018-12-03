@@ -22,8 +22,8 @@ export class UserService {
             email: '',
             acabouDeRegistrar: boolean};
 
-  //private usersUrl = 'https://backendcombacon.herokuapp.com/user';
-  private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
+  private usersUrl = 'https://backendcombacon.herokuapp.com/user';
+  //private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
 
   constructor(private http: HttpClient) { }
 
@@ -73,8 +73,8 @@ export class UserService {
       return throwError(ret);
     }
     
-    ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
-    return throwError(ret);
+    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
+    return throwError(error);
   }
 
 }
