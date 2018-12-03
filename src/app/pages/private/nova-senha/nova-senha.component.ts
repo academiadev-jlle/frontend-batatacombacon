@@ -48,7 +48,7 @@ export class NovaSenhaComponent implements OnInit {
     this.submitted = true;
     if (this.novaSenhaForm.valid) {
       this.submitSenha.value.senha = this.novaSenhaForm.value.senha;
-      this.userService.resetUserPassword(this.submitSenha.value).subscribe(
+      this.userService.changeUserPassword(this.submitSenha.value).subscribe(
         ret => {
           this.router.navigate(['login']);
         },

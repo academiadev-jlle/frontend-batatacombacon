@@ -64,8 +64,14 @@ export class UserService {
     )
   }
 
-  resetUserPassword(submitForm: FormGroup): Observable<FormGroup> {
-    return this.http.post<FormGroup>(`${this.usersUrl}/user/novasenha`, submitForm.value)
+  changeUserPassword(submitForm: FormGroup): Observable<FormGroup> {
+    return this.http.post<FormGroup>(`${this.usersUrl}/user/changePassword`, submitForm.value)
+    .pipe(catchError(this.handleError)
+    );
+  }
+
+  resetUserPassword(email: FormGroup): Observable<string> {
+    return this.http.post<string>(`${this.usersUrl}/user/resetPassword`, email.value)
     .pipe(catchError(this.handleError)
     );
   }
