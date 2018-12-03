@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { SharedModule } from '../shared/shared.module';
 import { LoginModule } from './public/login/login.module';
 import { ProfileModule } from './private/profile/profile.module';
+import { NovaSenhaComponent } from './private/nova-senha/nova-senha.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ProfileModule } from './private/profile/profile.module';
     LoginModule,
     ProfileModule
   ],
-  declarations: [ PageNotFoundComponent]
+  declarations: [ PageNotFoundComponent, NovaSenhaComponent]
 })
 export class PagesModule { }

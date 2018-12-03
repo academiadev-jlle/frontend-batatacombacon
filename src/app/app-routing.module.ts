@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
 import { NewUserGuard } from './guards/new-user.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { NovaSenhaComponent } from './pages/private/nova-senha/nova-senha.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'contato', component: ContatoComponent},
+    { path: 'novasenha', component: NovaSenhaComponent},
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },

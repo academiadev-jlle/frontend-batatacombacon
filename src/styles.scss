@@ -31,6 +31,17 @@ main {
   }
 }
 
+@media (max-height: 450px) { 
+  .footer-fixed {
+    position: initial;
+    bottom: auto;
+  }
+
+  main {
+    padding-bottom: 0;
+  }
+}
+
 html, body { overflow-x: hidden; }
 
 .main.container {
