@@ -15,35 +15,30 @@ import { catchError, map } from 'rxjs/operators';
 
 export class FilterService {
     
-    //private filterUrl = 'https://srv-fake-api.herokuapp.com';
     private filterUrl = 'https://backendcombacon.herokuapp.com';
     
     constructor(private http: HttpClient) { }
 
-    getEspecies(): Observable<string[]>{
+    getEspecies(): Observable<Especie[]>{
         return this.http.get<Especie[]>(`${this.filterUrl}/especies`).pipe(
-           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }
 
-    getPortes(): Observable<string[]>{
+    getPortes(): Observable<Porte[]>{
         return this.http.get<Porte[]>(`${this.filterUrl}/porte`).pipe(
-           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }
 
-    getObjetivos(): Observable<string[]>{
+    getObjetivos(): Observable<Objetivo[]>{
         return this.http.get<Objetivo[]>(`${this.filterUrl}/objetivos`).pipe(
-           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }
     
-    getSexos(): Observable<string[]>{
+    getSexos(): Observable<Sexo[]>{
         return this.http.get<Sexo[]>(`${this.filterUrl}/sexo`).pipe(
-           map(response => response.map(r => r.descricao)),
            catchError(this.handleError)
        );
     }

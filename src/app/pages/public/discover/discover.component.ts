@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
-import { Pet} from 'src/app/classes/pets/pet';
+import { Pet, PetPagination} from 'src/app/classes/pets/pet';
 import { FilterPets } from 'src/app/classes/filter';
 
 @Component({
@@ -10,8 +10,7 @@ import { FilterPets } from 'src/app/classes/filter';
 })
 export class DiscoverComponent implements OnInit {
 
-  pets: Pet[];
-
+  pets: PetPagination[]=[];
   message:string;
 
   constructor(private petService: PetService) { }
@@ -22,7 +21,10 @@ export class DiscoverComponent implements OnInit {
 
   getPets() {
     this.petService.getPets()
-      .subscribe(pets =>this.pets = pets)
+      .subscribe(
+        pets => this.pets = pets.content,
+        error => console.log(error)
+      )
   }
 
   receiveMessage($event) {
@@ -32,6 +34,9 @@ export class DiscoverComponent implements OnInit {
 
   filterPets(params: FilterPets):void {
     this.petService.getPetsByFilter(params)
-      .subscribe(pets => this.pets = pets);
+      .subscribe(
+        pets => this.pets = pets.content,
+        error => console.log(error)
+      );
   }
 }

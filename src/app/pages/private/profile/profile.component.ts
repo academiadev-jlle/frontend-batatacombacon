@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Usuario, APIUsuarioFactory } from 'src/app/classes/usuario/usuario';
-import { Pet } from 'src/app/classes/pets/pet';
+import { Pet, PetPagination } from 'src/app/classes/pets/pet';
 import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { PetService } from 'src/app/services/pet.service';
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 
     // desenvolvimento apenas. Provavelmente o usuario 
     // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 101;
+    const idUser = 2;
     
     this.userService.getUser(idUser).subscribe(user => {
       this.usuario = APIUsuarioFactory(user)
@@ -45,8 +45,11 @@ export class ProfileComponent implements OnInit {
   getPetsUser(idUser: number){
     this.userService.getPetsUser(idUser)
       .subscribe(
-        pets => this.pets = pets,
-        error => this.alert.show('danger', error.message)
+        pets => {
+          this.pets = pets.content
+          console.log(pets)
+        },
+        error => this.alert.show('info', 'Nenhum pet foi encontrado.')
       )
   }
   

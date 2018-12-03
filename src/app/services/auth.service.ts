@@ -17,13 +17,16 @@ export class AuthService {
   loginAuth(user: string, pass: string): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa(this.oauth.clientId + ':' + this.oauth.dummyClientSecret),
-      //'grant_type': 'password'
+      'grant_type': 'password'
     });
     
     this.oauth.scope = 'password';
 
     return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers).then(
       result => {
+
+        console.log(this.oauth.getIdentityClaims())
+
         if(!!this.oauth.getAccessToken()){
           this.logged.next(true);
         }else{
