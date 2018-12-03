@@ -3,7 +3,7 @@
   <h1>Redefinição de senha</h1>
 </div>
 <div class="container senhaContainer">
-  <form [formGroup]="novaSenhaForm">
+  <form [formGroup]="novaSenhaForm" (submit)="clickConfirma($event)">
     <div class="form-group col-md-12 mb-2">
       <label for="inputsenha">Senha</label>
       <input
@@ -27,8 +27,8 @@
         <div class= "is-invalid-text" *ngIf="f.confirmSenha.errors?.ConfirmPassword">A senha não é a mesma</div>
       </div>
     </div>
+    <div class="btn-confirma text-center">
+      <button class="btn btn-primary btn-block" type="submit">Confirmar</button>
+    </div>
   </form>
-  <div class="btn-confirma text-center">
-    <button class="btn btn-primary btn-block" (click)="clickConfirma()">Confirmar</button>
-  </div>
 </div>

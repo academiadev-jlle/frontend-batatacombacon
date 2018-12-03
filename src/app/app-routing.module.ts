@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'contato', component: ContatoComponent},
-    { path: 'novasenha', component: NovaSenhaComponent},
+    { path: 'novasenha?id=:id&token=:token', component: NovaSenhaComponent},
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
