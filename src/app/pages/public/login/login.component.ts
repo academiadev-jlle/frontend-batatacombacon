@@ -1,25 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
 import { AuthService } from 'src/app/services/auth.service';
-
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertComponent } from 'src/app/shared/alert/alert.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
+  @ViewChild(AlertComponent) alert;
+  
+  loginUser: FormGroup;
+  submitted = false;
+  
   constructor(private modalService: NgbModal, 
-              private authService: AuthService, 
-              private router: Router,
-              private userService: UserService) { }
-
+    private authService: AuthService, 
+    private router: Router,
+    private userService: UserService,
+    private formBuilder: FormBuilder) { }
+    
+  // convenience getter for easy access to form fields
+  get f() { return this.loginUser.controls; }
+  
+  ngOnInit() {
+    this.loginUser = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required]]
+    })
+  }
+  
   openEsqueceuSenha() {
     this.modalService.open(EsqueceuSenhaComponent, { centered: true });
     // this.modalService.open(EsqueceuSenhaComponent, { centered: true }).componentInstance.messageEvent
@@ -37,15 +52,29 @@ export class LoginComponent {
     // }
     // console.log('oi');
   }
-  
-  onSubmit(){
-    this.authService
-      //.login("","")
-      .loginAuth("petcodes@petcodes.com.br","SuperSecreto")
-      .subscribe(ret => {
-          this.router.navigate(['']);
-      },
-      error => console.log(error) //trocar pelo alert.
-      );
+    
+  submitClick($event) {
+    // variavel que torna o botao de submit disponivel ou 
+    // nao somente ao terminar todo o form
+    this.submitted = true; 
+    
+    if (this.loginUser.valid){
+      this.authService
+        .loginAuth(this.loginUser.controls['email'].value, this.loginUser.controls['senha'].value)
+        .subscribe(
+          ret => {
+            this.router.navigate(['']);
+          },
+          error => {
+            //this.alert.show('danger', error.message);
+            this.alert.show('danger', 'Você não tem autorização para entrar. Cadastre-se ou confirme seu email antes.');
+          }
+        );
+    }
+    
+    
   }
 }
+  
+  
+  

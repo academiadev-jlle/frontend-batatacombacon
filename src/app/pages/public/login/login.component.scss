@@ -1,8 +1,17 @@
 .form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  
+  .is-invalid {
+    background-color: #ffd0c0 ;
+  }
+  
+  .is-invalid-text {
+    color: red;
+    text-align: left;
+  }
   
   .form-signin .checkbox {
     font-weight: 400;
