@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { HandleError } from '../classes/handleErrors';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
 import { catchError } from 'rxjs/operators';
+import { Pet } from '../classes/pets/pet';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,45 +18,73 @@ const httpOptions = {
 
 export class UserService {
 
+  newUser: {nome: '',
+            email: '',
+            acabouDeRegistrar: boolean};
+
   //private usersUrl = 'https://backendcombacon.herokuapp.com/user';
   private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
 
-  private handleError = new HandleError();
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.usersUrl}`).pipe(
-      //tap(_ => this.log(`fetched pet id=${id}`)),
-      catchError(this.handleError.handleThis<Usuario>(`getUsuarios`))
+      catchError(this.handleError)
     );
   }
   
   getUser(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.usersUrl}/${id}`).pipe(
-      //tap(_ => this.log(`fetched pet id=${id}`)),
-      catchError(this.handleError.handleThis<Usuario>(`getUsuario id=${id}`))
+      catchError(this.handleError)
     );
   }
 
   addUser(usuario: Usuario): Observable<any> {
     const userPayload = APIUsuarioFactory(usuario);
     
-    return this.http.post<UsuarioAPI>(this.usersUrl, userPayload, httpOptions).pipe(
-      //tap((pet: Pet) => this.log(`added pet w/ id=${pet.id}`)),
-      catchError(this.handleError.handleThis<UsuarioAPI>('addUser'))
+    return this.http.post<UsuarioAPI>(this.usersUrl, userPayload, httpOptions)
+    .pipe(
+      catchError(this.handleError)
     );
   }
 
   updateUser(usuario: Usuario): Observable<any> {
     const userPayload = APIUsuarioFactory(usuario);
 
-    return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions).pipe(
-      ///tap(_ => this.log(`updated pet id=${pet.id}`)),
-      catchError(this.handleError.handleThis<UsuarioAPI>('updateUser'))
+    return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions)
+    .pipe(
+      catchError(this.handleError)
     );
+  }
+
+  getPetsUser(userId: number): Observable<Pet[]>{
+    return this.http.get<Pet[]>(`https://backendcombacon.herokuapp.com/usuario/${userId}/pet`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  private handleError(error: any) { 
+
+    const ret = {status: error.status,
+                 message: ""};
+
+    if(error.status===404){
+      ret.message = "Usuário não encontrado."
+      return throwError(ret);
+    }
+
+    if(error.status===400){
+      ret.message = "Bad request."
+      return throwError(ret);
+    }
+
+    if(error.status===401){
+      ret.message = "Você não tem autorização"
+      return throwError(ret);
+    }
+    
+    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
+    return throwError(error);
   }
 
 }

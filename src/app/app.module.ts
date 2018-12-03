@@ -8,11 +8,11 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTypeaheadModule, NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoaderInterceptorService } from './services/loader-interceptor.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,18 @@ import { LoaderInterceptorService } from './services/loader-interceptor.service'
     ReactiveFormsModule,
     HttpClientModule,
     NgbTypeaheadModule,
-    NgbAlertModule
+    NgbAlertModule,
+    NgbAccordionModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptorService,
+      useClass: LoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],

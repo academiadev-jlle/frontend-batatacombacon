@@ -14,6 +14,7 @@ export class PetJsonComponent implements OnInit {
 
   pet: Pet;
 
+
   constructor(
     private route: ActivatedRoute,
     private petService: PetService,
@@ -22,7 +23,7 @@ export class PetJsonComponent implements OnInit {
   ngOnInit() {
     this.getPet();
     
-    // garantindo que não de erro quando a página abrir.
+    //garantindo que não de erro quando a página abrir.
     this.pet = new Pet();
   }
 

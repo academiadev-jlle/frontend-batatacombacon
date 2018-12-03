@@ -10,5 +10,6 @@ export class Pet{
     macho: boolean;
     nome: string;
     objetivo: string;
+    porte: string;
     usuario: Usuario;
 }

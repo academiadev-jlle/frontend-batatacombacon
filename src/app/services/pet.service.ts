@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError  } from 'rxjs';
 import { Pet } from '../classes/pets/pet';
 import { FilterPets } from '../classes/filter';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
-import { HandleError } from '../classes/handleErrors';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,8 +18,6 @@ export class PetService {
   
   private petsUrl = 'https://backendcombacon.herokuapp.com/pet';
 
-  private handleError = new HandleError();
-
   constructor(
     private http: HttpClient
   ) { }
@@ -28,15 +25,13 @@ export class PetService {
   getPets(): Observable<Pet[]> {
     return this.http.get<Pet[]>(this.petsUrl)
       .pipe(
-        //tap(_ => this.log('fetched pets')),
-        catchError(this.handleError.handleThis('getPets', []))
+        catchError(this.handleError)
       );
   }
   
   getPet(id: number): Observable<Pet> {
     return this.http.get<Pet>(`${this.petsUrl}/${id}`).pipe(
-      //tap(_ => this.log(`fetched pet id=${id}`)),
-      catchError(this.handleError.handleThis<Pet>(`getPet id=${id}`))
+      catchError(this.handleError)
     );
   }
 
@@ -62,33 +57,53 @@ export class PetService {
     
     return this.http.get<Pet[]>(this.petsUrl + str)
       .pipe(
-        //tap(_ => this.log('fetched pets')),
-        catchError(this.handleError.handleThis('getPets', []))
+        catchError(this.handleError)
       );
   }
 
   addPet(pet: Pet): Observable<Pet> {
     return this.http.post<Pet>(this.petsUrl, pet, httpOptions).pipe(
-      //tap((pet: Pet) => this.log(`added pet w/ id=${pet.id}`)),
-      catchError(this.handleError.handleThis<Pet>('addPet'))
+      catchError(this.handleError)
     );
   }
 
   updatePet(pet: Pet): Observable<any> {
     return this.http.put(this.petsUrl, pet, httpOptions).pipe(
-      ///tap(_ => this.log(`updated pet id=${pet.id}`)),
-      catchError(this.handleError.handleThis<Pet>('updatePet'))
+      catchError(this.handleError)
     );
   }
   
-  deletePet(pet: Pet): Observable<Pet> {
-    const id = typeof pet === 'number' ? pet : pet.id;
+  deletePet(pet: number): Observable<any> {
+    const id = typeof pet === 'number' ? pet : undefined;
     const url = `${this.petsUrl}/${id}`;
   
     return this.http.delete<Pet>(url, httpOptions).pipe(
-      //tap(_ => this.log(`deleted pet id=${id}`)),
-      catchError(this.handleError.handleThis<Pet>('deletePet'))
-
+      catchError(this.handleError)
     );
-  }  
+  }
+  
+  private handleError(error: any) { 
+
+    const ret = {status: error.status,
+                 message: ""};
+
+    if(error.status===404){
+      ret.message = "Pet não encontrado."
+      return throwError(ret);
+    }
+
+    if(error.status===400){
+      ret.message = "Bad request."
+      return throwError(ret);
+    }
+
+    if(error.status===401){
+      ret.message = "Você não tem autorização"
+      return throwError(ret);
+    }
+    
+    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
+    return throwError(error);
+  }
+
 }

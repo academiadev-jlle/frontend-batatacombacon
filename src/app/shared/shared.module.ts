@@ -5,8 +5,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
-import { NavbarLoggedComponent } from './private/navbar-logged/navbar-logged.component';
-import { PetStatusPipe } from './public/pipe/pet-status.pipe';
 import { FormUserComponent } from './form-user/form-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './public/loader/loader.component';
@@ -24,9 +22,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   exports: [
     FooterComponent,
     NavbarComponent,
-    NavbarLoggedComponent,
-    PetStatusPipe,
-    NavbarLoggedComponent,
     FormUserComponent,
     LoaderComponent,
     AlertComponent
@@ -34,8 +29,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    NavbarLoggedComponent,
-    PetStatusPipe,
     FormUserComponent,
     LoaderComponent,
     AlertComponent
