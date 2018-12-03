@@ -1,18 +1,18 @@
 <div class="filter">
     <div class="row">
-        <div class='col-sm'>
-                <label for="firstName">Espécie</label>
-                <input
-                    id="typeahead-focus"
-                    type="text"
-                    class="form-control"
-                    [(ngModel)]="selectedEspecie"
-                    [ngbTypeahead]="searchEspecies"
-                    (focus)="focusEspecie$.next($event.target.value)"
-                    (click)="clickEspecie$.next($event.target.value)"
-                    #instanceEspecie="ngbTypeahead"/>
-            </div>
-        <div class='col-sm'>
+        <div class='col-sm-3'>
+            <label for="firstName">Espécie</label>
+            <input
+                id="typeahead-focus"
+                type="text"
+                class="form-control"
+                [(ngModel)]="selectedEspecie"
+                [ngbTypeahead]="searchEspecies"
+                (focus)="focusEspecie$.next($event.target.value)"
+                (click)="clickEspecie$.next($event.target.value)"
+                #instanceEspecie="ngbTypeahead"/>
+        </div>
+        <div class='col-sm-2'>
             <label for="firstName">Porte</label>
             <input
                 id="typeahead-focus"
@@ -24,7 +24,7 @@
                 (click)="clickPorte$.next($event.target.value)"
                 #instancePorte="ngbTypeahead"/>
         </div>
-        <div class='col-sm'>
+        <div class='col-sm-3'>
             <label for="firstName">Objetivo</label>
             <input
                 id="typeahead-focus"
@@ -36,7 +36,7 @@
                 (click)="clickObjetivo$.next($event.target.value)"
                 #instanceObjetivo="ngbTypeahead"/>
         </div>
-        <div class='col-sm'>
+        <div class='col-sm-2'>
             <label for="firstName">Sexo</label>
             <input
                 id="typeahead-focus"
@@ -48,11 +48,9 @@
                 (click)="clickSexo$.next($event.target.value)"
                 #instanceSexo="ngbTypeahead"/>
         </div>
-        <div class='col-sm'>
-            <button type="button" class="btn btn-success" (click)="filtraPetsClick()"><i class="fa fa-search" aria-hidden="true"></i> Filtrar</button>
-        </div>
-        <div class='col-sm'>
-            <button type="button" class="btn btn-warning" (click)="limpaFiltros()"><i class="fa fa-eraser" aria-hidden="true"></i> Limpar</button>
+        <div class='col-sm-2 text-center btnDiv'>
+            <button type="button" class="btn btn-sm btnSearch btn-success" (click)="filtraPetsClick()"><i class="fa fa-search" aria-hidden="true"></i> Filtrar</button>
+            <button type="button" class="btn btn-sm btnClean btn-warning" (click)="limpaFiltros()"><i class="fa fa-eraser" aria-hidden="true"></i> Limpar</button>
         </div>
     </div>
 </div>
