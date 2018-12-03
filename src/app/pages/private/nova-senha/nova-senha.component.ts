@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ConfirmPasswordValidator } from 'src/app/shared/form-user/confirm-password.validator';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nova-senha',
@@ -14,13 +14,22 @@ export class NovaSenhaComponent implements OnInit {
 
   novaSenhaForm: FormGroup;
   submitted = false;
+  token: any;
+  id: any;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe( params => {
+      this.id = params.id;
+      this.token = params.token;
+    });
     this.novaSenhaForm = this.formBuilder.group({
-      acessToken: [1],
-      id: [2],
+      acessToken: [this.token],
+      id: [this.id],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmSenha: ['', Validators.required]
     },{
