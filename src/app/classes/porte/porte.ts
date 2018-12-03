@@ -1,4 +1,4 @@
 export class Porte {
-    id: number;
-    tamanho: string;
+    porte: string;
+    descricao: string;
 }

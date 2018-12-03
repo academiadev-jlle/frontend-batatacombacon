@@ -11,6 +11,7 @@ import { LoaderComponent } from './public/loader/loader.component';
 import { AlertComponent } from './alert/alert.component';
 import { FormPetComponent } from './private/form-pet/form-pet.component';
 import { InputImageComponent } from './private/input-image/input-image.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { InputImageComponent } from './private/input-image/input-image.component
     NgbModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   exports: [
     FooterComponent,
