@@ -27,7 +27,7 @@ export class AuthService {
   loginAuth(user: string, pass: string): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa(this.oauth.clientId + ':' + this.oauth.dummyClientSecret),
-      'grant_type': 'password'
+      //'grant_type': 'password'
     });
     
     this.oauth.scope = 'password';

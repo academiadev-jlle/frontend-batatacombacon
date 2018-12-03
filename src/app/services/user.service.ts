@@ -58,7 +58,7 @@ export class UserService {
   }
 
   getPetsUser(userId: number): Observable<Pet[]>{
-    return this.http.get<Pet[]>(`https://backendcombacon.herokuapp.com/usuario/${userId}/pet`).pipe(
+    return this.http.get<Pet[]>(`${this.usersUrl}/user/${userId}/pet`).pipe(
       catchError(this.handleError)
     )
   }

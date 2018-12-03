@@ -20,16 +20,10 @@ export class LoginComponent implements OnInit {
       //.login("","")
       .loginAuth("petcodes@petcodes.com.br","SuperSecreto")
       .subscribe(ret => {
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
       },
       error => console.log(error) //trocar pelo alert.
       );
-  }
-
-  test(){
-    this.userService.getUser(2).subscribe( ret => {
-      console.log(ret)
-    })
   }
 
 }
