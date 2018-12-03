@@ -13,7 +13,7 @@ export class Pet {
 }
 
 export class PetPagination {
-    content: [ Pet ];
+    content: Array<Pet>;
     pageable:{
         sort: {
             sorted: boolean,

@@ -22,8 +22,8 @@ export class PetService {
     private http: HttpClient
   ) { }
 
-  getPets(): Observable<PetPagination[]> {
-    return this.http.get<PetPagination[]>(this.petsUrl)
+  getPets(): Observable<PetPagination> {
+    return this.http.get<PetPagination>(this.petsUrl)
       .pipe(
         catchError(this.handleError)
       );
@@ -35,7 +35,7 @@ export class PetService {
     );
   }
 
-  getPetsByFilter(filter: FilterPets): Observable<PetPagination[]>{
+  getPetsByFilter(filter: FilterPets): Observable<PetPagination>{
 
     if((filter.objetivo===""||filter.objetivo===undefined)&&
         (filter.especie===""||filter.especie===undefined)&&
@@ -57,7 +57,7 @@ export class PetService {
     console.log(filter);
     console.log(this.petsUrl + str)
     
-    return this.http.get<PetPagination[]>(this.petsUrl + str)
+    return this.http.get<PetPagination>(this.petsUrl + str)
       .pipe(
         catchError(this.handleError)
       );

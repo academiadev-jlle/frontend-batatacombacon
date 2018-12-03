@@ -58,9 +58,9 @@ export class UserService {
     );
   }
 
-  getPetsUser(userId: number): Observable<PetPagination[]>{
+  getPetsUser(userId: number): Observable<PetPagination>{
     //return this.http.get<Pet[]>(`${this.usersUrl}/user/${userId}/pet`).pipe(
-      return this.http.get<PetPagination[]>(`${this.usersUrl}/${userId}/pet?page=0&size=1000`).pipe(
+      return this.http.get<PetPagination>(`${this.usersUrl}/${userId}/pet?page=0&size=1000`).pipe(
       catchError(this.handleError)
     )
   }

@@ -10,7 +10,7 @@ import { FilterPets } from 'src/app/classes/filter';
 })
 export class DiscoverComponent implements OnInit {
 
-  pets: PetPagination[]=[];
+  pets: Pet[];
   message:string;
 
   constructor(private petService: PetService) { }
