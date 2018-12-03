@@ -2,11 +2,7 @@
 
 <div class="row editProfile">
   <div class="col-md-6">
-    <div class="user-form">
-      <h3>Meus dados</h3>
-      <app-form-user (messageEvent)=receiveClickEditUser($event) [usuarioProfile]="usuario"></app-form-user>
-    </div>
-    
+    <app-form-user btnText="Editar" (messageEvent)=receiveClickEditUser($event) [usuarioProfile]="usuario"></app-form-user>
   </div>
   <div class="col-md-6">
     <div class="pets-data">

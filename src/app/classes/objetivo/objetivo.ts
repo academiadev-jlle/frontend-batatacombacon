@@ -1,4 +1,4 @@
 export class Objetivo {
-    id: number;
+    objetivo: string;
     descricao: string;
 }

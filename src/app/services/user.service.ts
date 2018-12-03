@@ -72,6 +72,16 @@ export class UserService {
       ret.message = "Usuário não encontrado."
       return throwError(ret);
     }
+
+    if(error.status===400){
+      ret.message = "Bad request."
+      return throwError(ret);
+    }
+
+    if(error.status===401){
+      ret.message = "Você não tem autorização"
+      return throwError(ret);
+    }
     
     //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
     return throwError(error);

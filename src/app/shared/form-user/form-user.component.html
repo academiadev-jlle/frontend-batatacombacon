@@ -48,10 +48,15 @@
           <div class= "is-invalid-text" *ngIf="f.confirmSenha.errors?.ConfirmPassword">A senha não é a mesma</div>
         </div>
       </div>
-      <button class="btn btn-lg btn-primary btn-block mb-4" 
+      <button 
       type="submit" 
-      class="btn btn-primary btn-block">Cadastrar</button>
+      class="btn btn-primary btn-block">{{ btnText }}</button>
+    </div>  
+      <div class="col-md-12 mb-4">
+        <button class="btn btn-lg btn-primary btn-block" 
+        type="submit" 
+        class="btn btn-primary btn-block">Cadastrar</button>
+      </div>
     </div>
-    
   </form>
 </div>

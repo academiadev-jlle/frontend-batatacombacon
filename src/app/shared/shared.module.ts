@@ -1,35 +1,44 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
 import { FormUserComponent } from './form-user/form-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './public/loader/loader.component';
 import { AlertComponent } from './alert/alert.component';
+import { FormPetComponent } from './private/form-pet/form-pet.component';
+import { InputImageComponent } from './private/input-image/input-image.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     FormUserComponent,
     LoaderComponent,
-    AlertComponent
+    AlertComponent,
+    FormPetComponent,
+    InputImageComponent
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
     FormUserComponent,
     LoaderComponent,
-    AlertComponent
+    AlertComponent,
+    FormPetComponent,
+    InputImageComponent
   ]
 
 })
