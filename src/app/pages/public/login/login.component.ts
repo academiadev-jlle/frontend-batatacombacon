@@ -34,30 +34,19 @@ export class LoginComponent implements OnInit {
       senha: ['', [Validators.required]]
     })
   }
-  
+  redirectToCadastro() {
+    this.router.navigate(['cadastro']);
+  }
+
   openEsqueceuSenha() {
     this.modalService.open(EsqueceuSenhaComponent, { centered: true });
-    // this.modalService.open(EsqueceuSenhaComponent, { centered: true }).componentInstance.messageEvent
-    // .subscribe((e) => {
-    //   this.showAlert = e.get(0);
-    //   this.errorMessage = e.get(1);
-    //   this.messageAlert = e.get(2);
-    // });
-    // console.log(this.errorMessage);
-    // if (this.showAlert) {
-    //   if (this.errorMessage) {
-    //     this.alert.show('success', this.messageAlert);
-    //   }
-    //   this.alert.show('error', this.messageAlert);
-    // }
-    // console.log('oi');
   }
-    
+
   submitClick($event) {
     // variavel que torna o botao de submit disponivel ou 
     // nao somente ao terminar todo o form
-    this.submitted = true; 
-    
+    this.submitted = true;
+
     if (this.loginUser.valid){
       this.authService
         .loginAuth(this.loginUser.controls['email'].value, this.loginUser.controls['senha'].value)
@@ -71,10 +60,5 @@ export class LoginComponent implements OnInit {
           }
         );
     }
-    
-    
   }
 }
-  
-  
-  
