@@ -12,7 +12,6 @@ import { AlertComponent } from './alert/alert.component';
 import { FormPetComponent } from './private/form-pet/form-pet.component';
 import { InputImageComponent } from './private/input-image/input-image.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   imports: [
@@ -21,8 +20,7 @@ import { FileDropModule } from 'ngx-file-drop';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule,
-    FileDropModule
+    FontAwesomeModule
   ],
   exports: [
     FooterComponent,

@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
 import { NewUserGuard } from './guards/new-user.guard';
 import { ProfileGuard } from './guards/profile.guard';
+import { InputImageComponent } from './shared/private/input-image/input-image.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
+
+    { path: 'imagem', component: InputImageComponent},
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam
     { path: '404', component: PageNotFoundComponent},
