@@ -15,7 +15,6 @@ export class NovaSenhaComponent implements OnInit {
   @ViewChild(AlertComponent) alert;
 
   novaSenhaForm: FormGroup;
-  submitSenha: FormGroup;
   submitted = false;
   token: any;
   id: any;
@@ -31,15 +30,13 @@ export class NovaSenhaComponent implements OnInit {
       this.token = params.token;
     });
     this.novaSenhaForm = this.formBuilder.group({
+      id: [this.id],
+      token: [this.token],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       confirmSenha: ['', Validators.required]
     },{
       validator: ConfirmPasswordValidator.MatchPassword
     });
-    this.submitSenha = this.formBuilder.group({
-      token: [this.token],
-      id: [this.id],
-      senha: ['']});
   }
 
   get f() { return this.novaSenhaForm.controls; }
@@ -47,10 +44,12 @@ export class NovaSenhaComponent implements OnInit {
   clickConfirma($event) {
     this.submitted = true;
     if (this.novaSenhaForm.valid) {
-      this.submitSenha.value.senha = this.novaSenhaForm.value.senha;
-      this.userService.changeUserPassword(this.submitSenha.value).subscribe(
+      this.userService.changeUserPassword(this.novaSenhaForm).subscribe(
         ret => {
-          this.router.navigate(['login']);
+          this.alert.show('success', ret.message);
+          setTimeout(() => {
+            this.router.navigate(['login']);
+          }, 5000);
         },
         error => {
           this.alert.show('danger', error.message);

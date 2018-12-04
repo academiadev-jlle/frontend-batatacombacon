@@ -64,14 +64,18 @@ export class UserService {
     )
   }
 
-  changeUserPassword(submitForm: FormGroup): Observable<FormGroup> {
-    return this.http.post<FormGroup>(`${this.usersUrl}/user/changePassword`, submitForm.value)
+  changeUserPassword(submitForm: FormGroup): Observable<any> {
+    const body = { "senha": submitForm.get('senha').value };
+    const id = submitForm.get('id').value;
+    const token = submitForm.get('token').value;
+    return this.http.post<any>(`${this.usersUrl}/changePassword?id=${id}&token=${token}`, body , httpOptions)
     .pipe(catchError(this.handleError)
     );
   }
 
-  resetUserPassword(email: string): Observable<string> {
-    return this.http.post<string>(`${this.usersUrl}/user/resetPassword`, email)
+  resetUserPassword(email: string): Observable<any> {
+    const body = { "email": email };
+    return this.http.post<any>(`${this.usersUrl}/resetPassword?email=${email}`, body, httpOptions)
     .pipe(catchError(this.handleError)
     );
   }
