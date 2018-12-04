@@ -12,6 +12,7 @@ import { DiscoverRoutingModule } from './discover-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status.component';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import { DisqusModule } from 'angular2-disqus';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
     DiscoverRoutingModule,
     FormsModule,
     SharedModule,
+    DisqusModule,
     NgbTypeaheadModule,
     ShareButtonsModule.forRoot()
   ],

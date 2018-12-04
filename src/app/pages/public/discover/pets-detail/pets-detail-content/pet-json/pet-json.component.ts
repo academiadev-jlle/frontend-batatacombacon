@@ -13,6 +13,8 @@ import { PetService } from 'src/app/services/pet.service';
 export class PetJsonComponent implements OnInit {
 
   pet: Pet;
+  pageIdentifier: string;
+  pageUrl: string;
 
 
   constructor(
@@ -22,7 +24,8 @@ export class PetJsonComponent implements OnInit {
 
   ngOnInit() {
     this.getPet();
-    
+    this.pageIdentifier = this.route.snapshot.paramMap.get('id');
+    this.pageUrl = `https://frontendbatatacombacon.disqus.com${ this.pageIdentifier }`;
     //garantindo que não de erro quando a página abrir.
     this.pet = new Pet();
   }
