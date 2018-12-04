@@ -28,6 +28,13 @@ export class PetService {
         catchError(this.handleError)
       );
   }
+
+  getPetsScroll(page: number, size: number): Observable<PetPagination> {
+    return this.http.get<PetPagination>(`${this.petsUrl}?page=${page}&size=${size}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   
   getPet(id: number): Observable<Pet> {
     return this.http.get<Pet>(`${this.petsUrl}/${id}`).pipe(
