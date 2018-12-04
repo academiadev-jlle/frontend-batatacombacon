@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
@@ -22,7 +21,6 @@ export class LoginComponent implements OnInit {
   constructor(private modalService: NgbModal, 
     private authService: AuthService, 
     private router: Router,
-    private userService: UserService,
     private formBuilder: FormBuilder) { }
     
   // convenience getter for easy access to form fields
@@ -55,8 +53,11 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['']);
           },
           error => {
-            //this.alert.show('danger', error.message);
-            this.alert.show('danger', 'Você não tem autorização para entrar. Cadastre-se ou confirme seu email antes.');
+            if(error.status===400){
+              return this.alert.show('danger', 'Confira seu email e senha.');
+            }
+            
+            return this.alert.show('danger', error.error.error_description);
           }
         );
     }

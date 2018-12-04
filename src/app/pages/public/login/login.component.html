@@ -1,7 +1,5 @@
 <div class="text-center signin-petsave" >
   
-  <app-alert></app-alert>
-
   <form class="form-signin"
   [formGroup]="loginUser"
   (submit)="submitClick($event)">
@@ -44,5 +42,6 @@
       type="submit" 
       class="btn btn-primary btn-block">Entrar</button>
     </div>
+    <app-alert></app-alert>
   </form>
 </div>
