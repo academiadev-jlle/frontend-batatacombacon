@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError, BehaviorSubject, from } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { catchError } from 'rxjs/operators';
+import { UserService } from './user.service';
+import { UsuarioWhoami } from '../classes/usuario/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,11 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
   
   private logged = new BehaviorSubject<boolean>(false);
-
-  constructor(private http: HttpClient, private router: Router, private oauth: OAuthService) { }
+  whoami: UsuarioWhoami;
+  
+  constructor(private router: Router, 
+              private oauth: OAuthService, 
+              private userService: UserService) { }
 
   loginAuth(user: string, pass: string): Observable<any>{
     const headers = new HttpHeaders({
@@ -22,12 +27,18 @@ export class AuthService {
     
     this.oauth.scope = 'password';
 
-    return from(this.oauth.fetchTokenUsingPasswordFlow(user, pass, headers).then(
+    return from(this.oauth.fetchTokenUsingPasswordFlowAndLoadUserProfile(user, pass, headers).then(
       result => {
-
-        console.log(this.oauth.getIdentityClaims())
-
         if(!!this.oauth.getAccessToken()){
+
+          let claims = this.oauth.getIdentityClaims();
+          this.whoami = {
+            nome: claims['nome'], 
+            email: claims['email'], 
+            id: claims['id'], 
+            acabouDeFazerLogin: true
+          }
+
           this.logged.next(true);
         }else{
           catchError(this.handleError)
@@ -40,6 +51,7 @@ export class AuthService {
   logout(){
     this.oauth.logOut();
     this.logged.next(false);
+    this.whoami = null;
     this.router.navigate(['']);
   }
 

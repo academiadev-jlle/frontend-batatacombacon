@@ -17,14 +17,14 @@ export class NewUserGuard implements CanActivate {
     next: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     
-    if(!!this.userService.newUser==false){
+    if(!!this.userService.userSignUpNow==false){
       this.router.navigate([''])
       return false;
     }
 
-    this.temCadastro = this.userService.newUser.acabouDeRegistrar;
-    next.root.data = {nome: this.userService.newUser.nome, email: this.userService.newUser.email}
-    this.userService.newUser.acabouDeRegistrar = false;
+    this.temCadastro = this.userService.userSignUpNow.acabouDeRegistrar;
+    next.root.data = {nome: this.userService.userSignUpNow.nome, email: this.userService.userSignUpNow.email}
+    this.userService.userSignUpNow.acabouDeRegistrar = false;
 
     return this.temCadastro;
   }

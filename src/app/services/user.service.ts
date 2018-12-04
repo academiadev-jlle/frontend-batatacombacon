@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
+import { Usuario, APIUsuarioFactory, UsuarioAPI, UsuarioWhoami } from '../classes/usuario/usuario';
 import { catchError } from 'rxjs/operators';
-import { Pet, PetPagination } from '../classes/pets/pet';
+import { PetPagination } from '../classes/pets/pet';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,12 +18,12 @@ const httpOptions = {
 
 export class UserService {
 
-  newUser: {nome: '',
-            email: '',
-            acabouDeRegistrar: boolean};
-
   private usersUrl = 'https://backendcombacon.herokuapp.com/user';
-  //private usersUrl = 'https://srv-fake-api.herokuapp.com/user';
+  
+  // userSignUpNow verifica se a pessoa é recem cadastrada e é usada
+  // para fazer os guards e redirecionamento para tela principal.
+  // Mesmo tipo do WhoAmI, mas é usado somente no cadastro! Não misturar as coisas!
+  userSignUpNow: UsuarioWhoami;
 
   constructor(private http: HttpClient) { }
 
@@ -50,8 +50,6 @@ export class UserService {
 
   updateUser(usuario: Usuario): Observable<any> {
     const userPayload = APIUsuarioFactory(usuario);
-
-    //return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions)
     return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}?idUser=${usuario.id}`, userPayload, httpOptions)
     .pipe(
       catchError(this.handleError)
@@ -59,33 +57,12 @@ export class UserService {
   }
 
   getPetsUser(userId: number): Observable<PetPagination>{
-    //return this.http.get<Pet[]>(`${this.usersUrl}/user/${userId}/pet`).pipe(
       return this.http.get<PetPagination>(`${this.usersUrl}/${userId}/pet?page=0&size=1000`).pipe(
       catchError(this.handleError)
     )
   }
 
   private handleError(error: any) { 
-
-    const ret = {status: error.status,
-                 message: ""};
-
-    if(error.status===404){
-      ret.message = "Usuário não encontrado."
-      return throwError(ret);
-    }
-
-    if(error.status===400){
-      ret.message = "Bad request."
-      return throwError(ret);
-    }
-
-    if(error.status===401){
-      ret.message = "Você não tem autorização"
-      return throwError(ret);
-    }
-    
-    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
     return throwError(error);
   }
 

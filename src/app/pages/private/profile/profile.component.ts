@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { PetService } from 'src/app/services/pet.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,13 +23,11 @@ export class ProfileComponent implements OnInit {
   closeResult: string;
 
   constructor(private userService: UserService,
-              private petService: PetService) { }
+              private petService: PetService,
+              private oauth: AuthService) { }
 
   ngOnInit() {
-
-    // desenvolvimento apenas. Provavelmente o usuario 
-    // estará registrado em algum lugar e bastara chamar ele.
-    const idUser = 2;
+    const idUser = this.oauth.whoami.id;
     
     this.userService.getUser(idUser).subscribe(user => {
       this.usuario = APIUsuarioFactory(user)
@@ -45,10 +44,7 @@ export class ProfileComponent implements OnInit {
   getPetsUser(idUser: number){
     this.userService.getPetsUser(idUser)
       .subscribe(
-        pets => {
-          this.pets = pets.content
-          console.log(pets)
-        },
+        pets => this.pets = pets.content,
         error => this.alert.show('info', 'Nenhum pet foi encontrado.')
       )
   }
@@ -66,10 +62,12 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(sendUser)
       .subscribe(
         ret => {
-          this.alert.show('success');
+          //console.log(ret)
+          this.alert.show('success', 'Usuário alterado com sucesso.');
         },
         error => {
-          this.alert.show('danger');
+          //console.log(error)
+          this.alert.show('danger', error.error.message );
         });
   }
   
