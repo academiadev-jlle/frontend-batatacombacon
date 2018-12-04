@@ -1,6 +1,6 @@
 @import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
 
-$paddingHeight: 160px;
+$paddingHeight: 10px;
 
 html {
   position: relative;
@@ -17,20 +17,8 @@ main {
   color: #999;
   text-align: left;
   background-color: #f9f9f9;
-  position: fixed;
-  bottom: 0px;
-}
-
-// Conversao do footer para o mobile
-@media (max-width: 576px) { 
-  .footer-fixed {
-    position: initial;
-    bottom: auto;
-  }
-
-  main {
-    padding-bottom: 0;
-  }
+  position: initial;
+  bottom: auto;
 }
 
 html, body { overflow-x: hidden; }

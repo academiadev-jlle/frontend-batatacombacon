@@ -13,10 +13,10 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item" *ngIf="isLogged$ | async">
-                <div container="body" placement="bottom" ngbDropdown>
+                <div container="body" placement="bottom-right" ngbDropdown>
                     <a href id="basic-link" class="nav-link" ngbDropdownToggle (click)="false" aria-controls="basic-link-dropdown">Minha Conta</a>
                     <div id="basic-link-dropdown" ngbDropdownMenu class="dropdown-menu" role="menu" aria-labelledby="basic-link">
-                        <div *ngIf="isLogged$ | async">
+                        <div>
                             <h6 class="dropdown-header">{{ (userLogged$ | async)?.email }}</h6>
                             <div class="dropdown-divider"></div>
                         </div>
