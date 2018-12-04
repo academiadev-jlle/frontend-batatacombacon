@@ -37,16 +37,15 @@ export class EsqueceuSenhaComponent implements OnInit {
   requestNovaSenha() {
     this.submitted = true;
     if (this.formEmail.valid) {
-      this.activeModal.close();
-      this.modalService.open(EmailMessageSuccessComponent, { centered: true });
+      this.userService.resetUserPassword(this.formEmail.get('email').value)
+      .subscribe(
+        ret => {
+          this.modalService.open(EmailMessageSuccessComponent, { centered: true });
+        },
+        error => {
+          this.modalService.open(EmailMessageErrorComponent, { centered: true });
+        }
+      );
     }
-      // this.userService.addUser(this.receivedForm.value)
-      // .subscribe(
-      //   ret => {
-      //     this.modalService.open(EmailMessageSuccessComponent, {size: 'sm', centered: true });
-      //   },
-      //   error => {
-      //     this.modalService.open(EmailMessageErrorComponent, {size: 'sm', centered: true });
-      //   });
   }
 }

@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -63,6 +64,22 @@ export class UserService {
       return this.http.get<PetPagination>(`${this.usersUrl}/${userId}/pet?page=0&size=1000`).pipe(
       catchError(this.handleError)
     )
+  }
+
+  changeUserPassword(submitForm: FormGroup): Observable<any> {
+    const body = { "senha": submitForm.get('senha').value };
+    const id = submitForm.get('id').value;
+    const token = submitForm.get('token').value;
+    return this.http.post<any>(`${this.usersUrl}/changePassword?id=${id}&token=${token}`, body , httpOptions)
+    .pipe(catchError(this.handleError)
+    );
+  }
+
+  resetUserPassword(email: string): Observable<any> {
+    const body = { "email": email };
+    return this.http.post<any>(`${this.usersUrl}/resetPassword?email=${email}`, body, httpOptions)
+    .pipe(catchError(this.handleError)
+    );
   }
 
   private handleError(error: any) { 
