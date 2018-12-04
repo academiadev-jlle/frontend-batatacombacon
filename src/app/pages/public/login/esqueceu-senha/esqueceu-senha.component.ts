@@ -37,7 +37,7 @@ export class EsqueceuSenhaComponent implements OnInit {
   requestNovaSenha() {
     this.submitted = true;
     if (this.formEmail.valid) {
-      this.userService.resetUserPassword(this.formEmail.value)
+      this.userService.resetUserPassword(this.formEmail.get('email').value)
       .subscribe(
         ret => {
           this.modalService.open(EmailMessageSuccessComponent, { centered: true });

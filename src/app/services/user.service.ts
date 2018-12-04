@@ -70,8 +70,8 @@ export class UserService {
     );
   }
 
-  resetUserPassword(email: FormGroup): Observable<string> {
-    return this.http.post<string>(`${this.usersUrl}/user/resetPassword`, email.value)
+  resetUserPassword(email: string): Observable<string> {
+    return this.http.post<string>(`${this.usersUrl}/user/resetPassword`, email)
     .pipe(catchError(this.handleError)
     );
   }
