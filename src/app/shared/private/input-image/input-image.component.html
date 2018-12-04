@@ -1,13 +1,19 @@
-<div class="center">
-    <input 
-      style="display: none" 
-      type="file" (change)="onFileChanged($event)" 
-      #fileInput>
-  
-    <button (click)="fileInput.click()">Select File</button>
-  
-    <button (click)="send()">Enviar</button>
-    <button (click)="get()">Get image</button>
-    
-    {{ url }}
-  </div>
+<input type="file" style="display: none" (change)="fileChangeEvent($event)" #fileInput/>
+
+<div class="item">
+    <img src="./assets/dog-silhouette.jpg" alt="" class="showImage" *ngIf="!imgCarregada">
+    <image-cropper
+      [hidden]="!imgCarregada"
+      class="showImage"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="1 / 1"
+      [resizeToWidth]="128"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (loadImageFailed)="loadImageFailed()"
+      [autoCrop]="true"></image-cropper>
+</div>
+
+<button class="btn btn-success" (click)="fileInput.click()">Selecionar imagem <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>

@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 
 import { NgbTypeaheadModule, NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
@@ -30,7 +31,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NgbTypeaheadModule,
     NgbAlertModule,
     NgbAccordionModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    ImageCropperModule
   ],
   providers: [
     {
