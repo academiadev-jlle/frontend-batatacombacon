@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Usuario, APIUsuarioFactory, UsuarioAPI } from '../classes/usuario/usuario';
 import { catchError } from 'rxjs/operators';
-import { Pet } from '../classes/pets/pet';
+import { Pet, PetPagination } from '../classes/pets/pet';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -51,14 +51,16 @@ export class UserService {
   updateUser(usuario: Usuario): Observable<any> {
     const userPayload = APIUsuarioFactory(usuario);
 
-    return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions)
+    //return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}`, userPayload, httpOptions)
+    return this.http.put<UsuarioAPI>(`${this.usersUrl}/${usuario.id}?idUser=${usuario.id}`, userPayload, httpOptions)
     .pipe(
       catchError(this.handleError)
     );
   }
 
-  getPetsUser(userId: number): Observable<Pet[]>{
-    return this.http.get<Pet[]>(`${this.usersUrl}/user/${userId}/pet`).pipe(
+  getPetsUser(userId: number): Observable<PetPagination>{
+    //return this.http.get<Pet[]>(`${this.usersUrl}/user/${userId}/pet`).pipe(
+      return this.http.get<PetPagination>(`${this.usersUrl}/${userId}/pet?page=0&size=1000`).pipe(
       catchError(this.handleError)
     )
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError  } from 'rxjs';
-import { Pet } from '../classes/pets/pet';
+import { Pet, PetPagination } from '../classes/pets/pet';
 import { FilterPets } from '../classes/filter';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
@@ -22,8 +22,8 @@ export class PetService {
     private http: HttpClient
   ) { }
 
-  getPets(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(this.petsUrl)
+  getPets(): Observable<PetPagination> {
+    return this.http.get<PetPagination>(this.petsUrl)
       .pipe(
         catchError(this.handleError)
       );
@@ -35,27 +35,29 @@ export class PetService {
     );
   }
 
-  getPetsByFilter(filter: FilterPets): Observable<Pet[]>{
-    
+  getPetsByFilter(filter: FilterPets): Observable<PetPagination>{
 
-    if(filter.objetivo===""&&filter.especie===""&&filter.porte===""&&filter.sexo==="")
+    if((filter.objetivo===""||filter.objetivo===undefined)&&
+        (filter.especie===""||filter.especie===undefined)&&
+        (filter.porte===""||filter.porte===undefined)&&
+        (filter.sexo===""||filter.sexo===undefined))
       return this.getPets();
 
     let str: string = `?`
 
-    if(filter.especie!=="")
+    if(filter.especie!=="" && filter.especie!==undefined)
       str += `especie=${filter.especie}&`
-    // if(filter.porte!=="")
-    //   filtred = filtred.filter(pet => pet.porte.toLowerCase()===filter.porte.toLowerCase());
-    if(filter.objetivo!=="")
+    if(filter.porte!=="" && filter.porte!==undefined)
+      str += `porte=${filter.porte}&`
+    if(filter.objetivo!=="" && filter.objetivo!==undefined)
       str += `objetivo=${filter.objetivo}&`
-    if(filter.sexo!=="")
-      filter.sexo.toLocaleLowerCase()==='macho'?str += `macho=true&`:str += `macho=false&`
+    if(filter.sexo!=="" && filter.sexo!==undefined)
+      str += `sexo=${filter.sexo}&`
 
     console.log(filter);
     console.log(this.petsUrl + str)
     
-    return this.http.get<Pet[]>(this.petsUrl + str)
+    return this.http.get<PetPagination>(this.petsUrl + str)
       .pipe(
         catchError(this.handleError)
       );
