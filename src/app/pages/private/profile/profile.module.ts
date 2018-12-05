@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile.component';
 import { PetsListComponent } from './pets-list/pets-list.component';
 
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddPetComponent } from './add-pet/add-pet.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     ProfileComponent,
-    PetsListComponent
+    PetsListComponent,
+    AddPetComponent
   ]
 })
 export class ProfileModule { }

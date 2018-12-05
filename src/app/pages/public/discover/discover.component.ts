@@ -13,22 +13,23 @@ export class DiscoverComponent implements OnInit {
 
   pets = [];
   message:string;
-  sum = 0;
-  end: boolean;
+  page = 0;
   numberOfElements = 6;
+  end: boolean;
+  filtred: boolean=false;
 
   constructor(private petService: PetService) { }
 
   ngOnInit() {
-    this.getPets(this.sum, this.numberOfElements);
+    this.getPets(this.page, this.numberOfElements);
   }
 
   getPets(page: number, size: number) {
-    this.petService.getPetsScroll( page, size)
+    this.petService.getPetsScroll(page, size)
       .subscribe(
         pets => {
-        pets.content.map( pet => this.pets.push(pet) );
-        this.end = pets.last;
+          pets.content.map( pet => this.pets.push(pet) );
+          this.end = pets.last;
       },
         error => console.log(error)
       );
@@ -41,18 +42,17 @@ export class DiscoverComponent implements OnInit {
   }
 
   filterPets(params: FilterPets):void {
-    this.petService.getPetsByFilter(params)
+    this.petService.getPetsByFilterScroll(params, this.page, this.numberOfElements)
       .subscribe(
         pets => this.pets = pets.content,
         error => console.log(error)
       );
   }
 
-  onScroll () {
-    console.log('scrolled!!');
+  onScroll() {
     if (!this.end) {
-      this.sum ++;
-      this.getPets(this.sum, this.numberOfElements);
+      this.page++;
+      this.getPets(this.page, this.numberOfElements);
     }
   }
 }
