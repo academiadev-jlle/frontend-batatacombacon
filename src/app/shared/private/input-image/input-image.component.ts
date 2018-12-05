@@ -21,7 +21,7 @@ export class InputImageComponent {
   }
 
   imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
+    this.croppedImage = event.file;
   }
 
   imageLoaded() {
