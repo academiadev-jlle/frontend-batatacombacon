@@ -20,27 +20,26 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
-  addPetImage(imagem: File, petId: number): Observable<any> {
-
-    console.log(imagem, petId)
-
-    const formData = new FormData();
+  addPetImage(imagem: any, petId: number): Observable<any> {
+    const formData:FormData = new FormData();
     formData.append('imagem', imagem);
+
+    console.log('formdata imagem', formData.get('imagem'))
 
     return this.http.post(`${this.imageUrl}/pet/${petId}`, formData).pipe(
       catchError(this.handleError)
     );
   }
 
-  // adiciona uma imagem qualquer
-  addImage(imagem: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('imagem', imagem);
+  // // adiciona uma imagem qualquer
+  // addImage(imagem: any): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('imagem', imagem);
 
-    return this.http.post(this.imageUrl, formData).pipe(
-      catchError(this.handleError)
-    );
-  }
+  //   return this.http.post(this.imageUrl, formData).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
 
   getImage(id: number): Observable<any> {
     return this.http.get<any>(`${this.imageUrl}/${id}`).pipe(
@@ -49,6 +48,6 @@ export class ImageService {
   }
 
   private handleError(error: any) { 
-    return error;
+    return throwError(error);
   }
 }

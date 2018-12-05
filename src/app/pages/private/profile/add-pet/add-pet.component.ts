@@ -30,30 +30,31 @@ export class AddPetComponent implements OnInit {
     this.oauth.userLogged.subscribe(ret => ret!==null ? this.userId = ret.id : this.userId=0)
    }
 
-   receiveClickAddPet($event) {
-    this.receivedForm = $event;
-    //setando idUser aqui para manter o desacoplamento de componentes filhos
-    this.receivedForm.patchValue({idUsuario: this.userId})
+   receiveClickAddPet($event){
+      this.imageService.addPetImage(this.imageInput.croppedImage, 1).subscribe(
+      ret => console.log('okkkkk'),
+      error => console.log(error)
+      )
+   }
 
-    // 1) é preciso criar um pet para depois adicionar a imagem
-    this.petService.addPet(this.receivedForm.value).subscribe(
-      retUser => {
-        console.log('passou liso!', retUser);
+  //  receiveClickAddPet($event) {
+  //   this.receivedForm = $event;
+  //   //setando idUser aqui para manter o desacoplamento de componentes filhos
+  //   this.receivedForm.patchValue({idUsuario: this.userId})
 
-        this.imageService.addPetImage(this.imageInput.croppedImage, retUser.id).subscribe(
-          retImage => {
-            console.log('passou liso!', retImage);
-          },
-          errorImage => {
-            console.log('deu pau!', errorImage)
-          }
-        )
-},
-      errorUser => console.log('deu pau!', errorUser)
-    )
-  
+  //   // 1) é preciso criar um pet para depois adicionar a imagem
+  //   this.petService.addPet(this.receivedForm.value).subscribe(
+  //     retPet => {
+  //       console.log('passou liso!', retPet);
 
-    //console.log(this.imageInput.croppedImage) // nao eh croppedImage, tem uma function que retorna o Form!
-  }
+  //       this.imageService.addPetImage(this.imageInput.croppedImage, retPet.id).subscribe(
+  //         ret => console.log('okkkkk'),
+  //         error => console.log('errorrrrr')
+  //       )
+  //     },
+  //     errorPet => console.log('deu pau!', errorPet)
+  //   )
+    
+  // }
 
 }
