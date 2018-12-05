@@ -1,8 +1,7 @@
-import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
-import { Pet, PetPagination} from 'src/app/classes/pets/pet';
 import { FilterPets } from 'src/app/classes/filter';
+import { Pet } from 'src/app/classes/pets/pet';
 
 @Component({
   selector: 'app-discover',
@@ -12,7 +11,7 @@ import { FilterPets } from 'src/app/classes/filter';
 export class DiscoverComponent implements OnInit {
 
   pets = [];
-  message:string;
+  filterContent: FilterPets;
   page = 0;
   numberOfElements = 6;
   end: boolean;
@@ -37,14 +36,20 @@ export class DiscoverComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    this.message = $event
+    this.page = 0;
+    this.pets = [];
+    this.filtred = true;
+    this.filterContent = $event
     this.filterPets($event);
   }
 
   filterPets(params: FilterPets):void {
     this.petService.getPetsByFilterScroll(params, this.page, this.numberOfElements)
       .subscribe(
-        pets => this.pets = pets.content,
+        pets => {
+          pets.content.map( pet => this.pets.push(pet) );     
+          this.end = pets.last;
+      },
         error => console.log(error)
       );
   }
@@ -52,7 +57,13 @@ export class DiscoverComponent implements OnInit {
   onScroll() {
     if (!this.end) {
       this.page++;
-      this.getPets(this.page, this.numberOfElements);
+      if (this.filtred) {
+        this.filterPets(this.filterContent);
+      } else {
+        this.getPets(this.page, this.numberOfElements);
+      }
+    } else {
+      this.filtred = false;
     }
   }
 }

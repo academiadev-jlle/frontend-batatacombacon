@@ -48,7 +48,7 @@ export class PetService {
         (filter.especie===""||filter.especie===undefined)&&
         (filter.porte===""||filter.porte===undefined)&&
         (filter.sexo===""||filter.sexo===undefined))
-      return this.getPets();
+      return this.getPetsScroll(page, size);
 
     let str: string = `&`
 
