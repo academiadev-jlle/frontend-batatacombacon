@@ -14,10 +14,11 @@ export class AppComponent {
   oauthSetup() {
     this.oAuthService.requireHttps = false;
     this.oAuthService.tokenEndpoint = 'https://backendcombacon.herokuapp.com/oauth/token';
-    // this.oAuthService.userinfoEndpoint = '';
+    this.oAuthService.userinfoEndpoint = 'https://backendcombacon.herokuapp.com/user/whoami';
     this.oAuthService.clientId = 'tokenAdmin';
     this.oAuthService.scope = 'openid profile email voucher offline_access';
     this.oAuthService.dummyClientSecret = 'TokenComBacon';
+    this.oAuthService.oidc = false;
   }
 
 }
