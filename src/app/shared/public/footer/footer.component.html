@@ -2,10 +2,12 @@
   <div class="row">
     <div class="col-sm-2">        
       <p class=header><strong>Apoiadores</strong></p>
-      <p>Conta Azul</p>
-      <p>ASAAS</p>
-      <p>Becomex</p>
-      <p>Treasy</p>
+      <ul>
+        <li><button class="btn-link btn-sm linkApoiadores" (click)="redirectToAsaas()">Asaas</button></li>
+        <li><button class="btn-link btn-sm linkApoiadores" (click)="redirectToBecomex()">Becomex</button></li>
+        <li><button class="btn-link btn-sm linkApoiadores" (click)="redirectToContaAzul()">ContaAzul</button></li>
+        <li><button class="btn-link btn-sm linkApoiadores" (click)="redirectToTreasy()">Treasy</button></li>
+      </ul> 
     </div>
     <div class="col-sm">
       <p class="header"><Strong>Sobre:</Strong></p>
