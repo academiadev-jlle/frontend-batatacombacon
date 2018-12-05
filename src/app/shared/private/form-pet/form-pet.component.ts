@@ -65,22 +65,21 @@ export class FormPetComponent implements OnInit, OnChanges {
       porte: [''],
       sexo: [''],
       objetivo: [''],
-      // dataPet: [''],
-      // dataCriacao: [''],
       localPet: [''],
       descricao: [''],
       fotos: [],
-      idUsuario: [1],
-
+      idUsuario: [0],
       cepNum: [''],
-      cepRua: ['']
+      cepRua: [''],
+      cepBairro: [''],
+      cepNumero: [''],
+      cepCidade: [''],
+      cepUf: [''],
+      cepComplemento: [''],
+      cepReferencia: ['']
     });
 
-    this.cepSubject
-            .pipe(debounceTime(1000))
-            .subscribe(cep => {
-              this.getCep(cep)
-            });
+    this.cepSubject.pipe(debounceTime(1000)).subscribe(cep => this.getCep(cep));
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -133,16 +132,15 @@ export class FormPetComponent implements OnInit, OnChanges {
     this.cepService.getCep(cep)
     .subscribe(
       ret => {
-
         this.petForm.patchValue({
-          cepRua: ret.logradouro
+          cepRua: ret.logradouro,
+          cepBairro: ret.bairro,
+          cepCidade: ret.localidade,
+          cepUf: ret.uf
         });
-
         this.loadingCep=false;
       }, 
-      error => {
-        this.loadingCep=false;
-    })
+      error => this.loadingCep=false)
   }
 
   keyUp(event) {

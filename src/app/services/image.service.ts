@@ -20,6 +20,19 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
+  addPetImage(imagem: File, petId: number): Observable<any> {
+
+    console.log(imagem, petId)
+
+    const formData = new FormData();
+    formData.append('imagem', imagem);
+
+    return this.http.post(`${this.imageUrl}/pet/${petId}`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // adiciona uma imagem qualquer
   addImage(imagem: File): Observable<any> {
     const formData = new FormData();
     formData.append('imagem', imagem);

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         .loginAuth(this.loginUser.controls['email'].value, this.loginUser.controls['senha'].value)
         .subscribe(
           ret => {
-            this.router.navigate(['imagem']);
+            this.router.navigate(['userpet']);
           },
           error => {
             if(error.status===400){

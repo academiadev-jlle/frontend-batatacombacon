@@ -6,10 +6,10 @@
         <div class="form-group row">
           <label for="staticName" class="col-sm-3 col-form-label"><strong>Nome:</strong></label>
           <div class="col-sm-9 m-auto">
-            <input type="text" class="form-control form-control-sm" id="staticName" placeholder="Ex: Rex" 
-            formControlName="nome"
-            autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"> 
+            <input type="text" class="form-control form-control-sm" id="staticName"
+                formControlName="nome"
+                autofocus
+                [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"> 
             <div *ngIf="submitted && f.nome.errors">
               <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
             </div>
@@ -30,13 +30,45 @@
                 [ngClass]="{ 'is-invalid': submitted && f.cepNum.errors }" (keyup)="keyUp($event)">
                 <span class="cepLoading"><i class="fa fa-spinner fa-spin fa-fw" *ngIf="loadingCep"></i></span>
             </div>
+
+
             <input type="text" class="form-control form-control-sm" id="cepRua" placeholder="rua"
                 formControlName="cepRua"
                 autofocus
-                [ngClass]="{ 'is-invalid': submitted && f.cepNum.errors }" >
+                [ngClass]="{ 'is-invalid': submitted && f.cepRua.errors }" >
             <div *ngIf="submitted && f.cepRua.errors">
               <div class= "is-invalid-text" *ngIf="f.cepRua.errors?.required">Preencha a rua</div>
             </div>
+            <input type="text" class="form-control form-control-sm" id="cepBairro" placeholder="bairro"
+                formControlName="cepBairro"
+                autofocus
+                [ngClass]="{ 'is-invalid': submitted && f.cepBairro.errors }" >
+            <div *ngIf="submitted && f.cepBairro.errors">
+              <div class= "is-invalid-text" *ngIf="f.cepBairro.errors?.required">Preencha o bairro</div>
+            </div>
+            <input type="text" class="form-control form-control-sm" id="cepNumero" placeholder="numero"
+                formControlName="cepNumero"
+                autofocus>
+            <input type="text" class="form-control form-control-sm" id="cepCidade" placeholder="cidade"
+                formControlName="cepCidade"
+                autofocus
+                [ngClass]="{ 'is-invalid': submitted && f.cepCidade.errors }" >
+            <div *ngIf="submitted && f.cepCidade.errors">
+              <div class= "is-invalid-text" *ngIf="f.cepCidade.errors?.required">Preencha a cidade</div>
+            </div>
+            <input type="text" class="form-control form-control-sm" id="cepUf" placeholder="uf"
+                formControlName="cepUf"
+                autofocus
+                [ngClass]="{ 'is-invalid': submitted && f.cepUf.errors }" >
+            <div *ngIf="submitted && f.cepUf.errors">
+              <div class= "is-invalid-text" *ngIf="f.cepUf.errors?.required">Preencha a UF</div>
+            </div>
+            <input type="text" class="form-control form-control-sm" id="cepComplemento" placeholder="complemento"
+                formControlName="cepComplemento"
+                autofocus>
+            <input type="text" class="form-control form-control-sm" id="cepReferencia" placeholder="referencia"
+                formControlName="cepReferencia"
+                autofocus>
         </div>
     </div>
 
@@ -108,12 +140,6 @@
       <div class= "is-invalid-text" *ngIf="f.objetivo.errors?.required">Selecione um objetivo</div>
     </div>
   </div>
-  </div>
-  <div class="form-group row">
-    <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Data:</strong></label>
-    <div class="col-sm-9 m-auto">
-      <input type="text" class="form-control form-control-sm" id="staticCategoria" placeholder="Data Encontrado">
-    </div>
   </div>
   <div class="form-group row">
     <label for="staticCategoria" class="col-sm-3 col-form-label"><strong>Localização:</strong></label>

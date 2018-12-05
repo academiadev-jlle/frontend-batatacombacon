@@ -15,6 +15,7 @@ export interface Pet {
     fotos: Array<string>;
     dataPet: string;
     idUsuario: number;
+    created_at?: string;
 }
 
 export interface PetAPI {
@@ -62,7 +63,7 @@ export const APIPetFactory = function(pet: Pet): PetAPI {
     return {
         descricao: pet.descricao,
         especie: pet.especie,
-        fotos: pet.fotos,
+        fotos: [],
         idUsuario: pet.idUsuario,
         localPet: pet.localPet,
         nome: pet.nome,
