@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError  } from 'rxjs';
-import { Pet, PetPagination } from '../classes/pets/pet';
+import { Pet, PetPagination, APIPetFactory, PetAPI } from '../classes/pets/pet';
 import { FilterPets } from '../classes/filter';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
@@ -63,8 +63,16 @@ export class PetService {
       );
   }
 
-  addPet(pet: Pet): Observable<Pet> {
-    return this.http.post<Pet>(this.petsUrl, pet, httpOptions).pipe(
+  // addPet(pet: Pet): Observable<Pet> {
+  //   return this.http.post<Pet>(this.petsUrl, pet, httpOptions).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  addPet(pet: Pet): Observable<any>{
+    const petPayload = APIPetFactory(pet);
+    console.log('payload', petPayload)
+    return this.http.post<PetAPI>(this.petsUrl, petPayload, httpOptions).pipe(
       catchError(this.handleError)
     );
   }

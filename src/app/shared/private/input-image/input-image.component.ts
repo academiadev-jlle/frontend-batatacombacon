@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from 'src/app/services/image.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
 
 @Component({
@@ -9,25 +8,18 @@ import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component
 })
 export class InputImageComponent implements OnInit {
   
-  constructor(private imageService: ImageService) { }
+  constructor() { }
   
   ngOnInit() {
   }
-  
-  get(){
-    this.imageService.getImage(2).subscribe(
-      ret => {}, 
-      error => {}
-      )
-    }
-
-    /**----------------------------------- */
 
     imgCarregada:boolean=false; // mostra a imagem quando carrega a imagem
     loading: boolean=false; // mostra loading no button
-
-    imageChangedEvent: any = '';
+    
+    // a cada redimensionada, o croppedImage é preenchido com a nova imagem.
     croppedImage: any = '';
+    imageChangedEvent: any = '';
+    
     
     fileChangeEvent(event: any): void {
       //this.loading=true; //nao funcionou como devia
@@ -45,6 +37,7 @@ export class InputImageComponent implements OnInit {
 
     loadImageFailed() {}
     
+    // monta form para que o service envie
     mountImage(imagem: File) {
       const formData = new FormData();
       formData.append('imagem', imagem);

@@ -1,12 +1,18 @@
+$marginDefault: 5px;
+
 .showImage {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
 .item {
+  margin: $marginDefault;
+  max-width: 350px;
   background-color: cornflowerblue;
-  width: 350px;
-  height: auto;
-  margin: 5px;
-  padding: 5px;
+  padding: 15px;
+}
+
+button {
+  margin-top: $marginDefault;
+  margin-left: $marginDefault;
 }
