@@ -41,6 +41,7 @@
     "font-awesome": "^4.7.0",
     "ngx-disqus": "^2.4.3",
     "ngx-file-drop": "^5.0.0",
+    "ngx-infinite-scroll": "^6.0.1",
     "rxjs": "^6.0.0",
     "typescript": "~2.7.2",
     "zone.js": "~0.8.26"
