@@ -71,7 +71,7 @@ export const APIPetFactory = function(pet: Pet): PetAPI {
         objetivo: pet.objetivo,
         porte: pet.porte,
         sexo: pet.sexo,
-        created_at: pet.created_at,
-        id: pet.id
+        //created_at: pet.created_at,
+        //id: pet.id
     };
 };

@@ -7,7 +7,7 @@
       <app-input-image></app-input-image>
     </div>
     <div class="col-sm-8">
-      <app-form-pet buttonText="Editar" (messageEvent)=receiveClickEditPet($event)></app-form-pet>
+      <app-form-pet buttonText="Editar" (messageEvent)=receiveFormPet($event) [petToEdit]="pet"></app-form-pet>
     </div>
   </div>
 

@@ -30,7 +30,7 @@ export class AddPetComponent implements OnInit {
     this.oauth.userLogged.subscribe(ret => ret!==null ? this.userId = ret.id : this.userId=0)
    }
 
-  receiveClickAddPet($event) {
+  receiveFormPet($event) {
     this.receivedForm = $event;
     //setando idUser aqui para manter o desacoplamento de componentes filhos
     this.receivedForm.patchValue({idUsuario: this.userId})

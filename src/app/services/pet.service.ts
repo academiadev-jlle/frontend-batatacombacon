@@ -70,8 +70,11 @@ export class PetService {
     );
   }
 
-  updatePet(pet: Pet): Observable<any> {
-    return this.http.put(this.petsUrl, pet, httpOptions).pipe(
+  updatePet(pet: Pet, idPet: number): Observable<any> {
+    const petPayload = APIPetFactory(pet);
+    console.log(idPet)
+    console.log(petPayload)
+    return this.http.put(`${this.petsUrl}/${idPet}?idPet=${idPet}`, petPayload, httpOptions).pipe(
       catchError(this.handleError)
     );
   }
@@ -86,26 +89,6 @@ export class PetService {
   }
   
   private handleError(error: any) { 
-
-    const ret = {status: error.status,
-                 message: ""};
-
-    if(error.status===404){
-      ret.message = "Pet não encontrado."
-      return throwError(ret);
-    }
-
-    if(error.status===400){
-      ret.message = "Bad request."
-      return throwError(ret);
-    }
-
-    if(error.status===401){
-      ret.message = "Você não tem autorização"
-      return throwError(ret);
-    }
-    
-    //ret.message =`(${error.status}) Ops... Aconteceu algum problema no servidor.`;
     return throwError(error);
   }
 
