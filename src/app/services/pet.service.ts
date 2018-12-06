@@ -28,6 +28,13 @@ export class PetService {
         catchError(this.handleError)
       );
   }
+
+  getPetsScroll(page: number, size: number): Observable<PetPagination> {
+    return this.http.get<PetPagination>(`${this.petsUrl}?page=${page}&size=${size}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   
   getPet(id: number): Observable<Pet> {
     return this.http.get<Pet>(`${this.petsUrl}/${id}`).pipe(
@@ -35,15 +42,15 @@ export class PetService {
     );
   }
 
-  getPetsByFilter(filter: FilterPets): Observable<PetPagination>{
+  getPetsByFilterScroll(filter: FilterPets, page: number, size: number): Observable<PetPagination>{
 
     if((filter.objetivo===""||filter.objetivo===undefined)&&
         (filter.especie===""||filter.especie===undefined)&&
         (filter.porte===""||filter.porte===undefined)&&
         (filter.sexo===""||filter.sexo===undefined))
-      return this.getPets();
+      return this.getPetsScroll(page, size);
 
-    let str: string = `?`
+    let str: string = `&`
 
     if(filter.especie!=="" && filter.especie!==undefined)
       str += `especie=${filter.especie}&`
@@ -55,9 +62,9 @@ export class PetService {
       str += `sexo=${filter.sexo}&`
 
     console.log(filter);
-    console.log(this.petsUrl + str)
+    console.log(`${this.petsUrl}?page=${page}&size=${size}${str}`)
     
-    return this.http.get<PetPagination>(this.petsUrl + str)
+    return this.http.get<PetPagination>(`${this.petsUrl}?page=${page}&size=${size}${str}`)
       .pipe(
         catchError(this.handleError)
       );

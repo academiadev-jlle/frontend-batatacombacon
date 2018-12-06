@@ -13,6 +13,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status.component';
 import { ShareButtonsModule } from '@ngx-share/buttons';
 import { DisqusModule } from 'angular2-disqus';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { DisqusModule } from 'angular2-disqus';
     FormsModule,
     SharedModule,
     DisqusModule,
+    InfiniteScrollModule,
     NgbTypeaheadModule,
     ShareButtonsModule.forRoot()
   ],
