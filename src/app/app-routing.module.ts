@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
 
-    { path: 'editpet', component: EditPetComponent}, //TODO: adicionar guard aqui
+    { path: 'editpet/:id', component: EditPetComponent}, //TODO: adicionar guard aqui
     { path: 'addpet', component: AddPetComponent}, // TODO: adicionar guard aqui
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam

@@ -13,21 +13,22 @@ export interface Pet {
     objetivo: Objetivo['objetivo'];
     localPet: string;
     fotos: Array<string>;
-    dataPet: string;
     idUsuario: number;
     created_at?: string;
 }
 
 export interface PetAPI {
+    id?: number;
+    nome: string;
     descricao: string;
+    sexo: Sexo['sexo'];
+    porte: Porte['porte'];
     especie: Especie['especie'];
+    objetivo: Objetivo['objetivo'];
+    localPet: string;
     fotos: Array<string>;
     idUsuario: number;
-    localPet: string;
-    nome: string;
-    objetivo: Objetivo['objetivo'];
-    porte: Porte['porte'];
-    sexo: Sexo['sexo'];
+    created_at?: string;
 }
 
 export class PetPagination {
@@ -63,12 +64,14 @@ export const APIPetFactory = function(pet: Pet): PetAPI {
     return {
         descricao: pet.descricao,
         especie: pet.especie,
-        fotos: [],
+        fotos: pet.fotos,
         idUsuario: pet.idUsuario,
         localPet: pet.localPet,
         nome: pet.nome,
         objetivo: pet.objetivo,
         porte: pet.porte,
-        sexo: pet.sexo
+        sexo: pet.sexo,
+        created_at: pet.created_at,
+        id: pet.id
     };
 };

@@ -20,7 +20,7 @@ export class PetsListComponent implements OnInit {
   }
 
   infoPet($event){
-    this.router.navigate([`pet/${$event}`]);
+    this.router.navigate([`editpet/${$event}`]);
   }
 
   deletePet($event, content){
