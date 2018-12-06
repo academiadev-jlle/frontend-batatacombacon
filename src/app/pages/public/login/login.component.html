@@ -32,16 +32,17 @@
           <div class= "is-invalid-text" *ngIf="f.senha.errors?.required">Coloque uma senha</div>
         </div>
       </div>
-
-      <div class="col-md-12 d-block mb-2">
-        <button class="btn-link btn-sm btnEsqueceuSenha" (click)="openEsqueceuSenha()">Esqueceu Senha</button>
-        <button class="btn-link btn-sm btnCadastro" (click)="redirectToCadastro()">Cadastrar</button>
-      </div> 
-
       <button 
       type="submit" 
       class="btn btn-primary btn-block">Entrar</button>
     </div>
-    <app-alert></app-alert>
   </form>
+  <div class="col-md-12 d-block mb-2">
+    <button class="btn-link btn-sm btnEsqueceuSenha" (click)="openEsqueceuSenha()">Esqueceu a Senha?</button>
+    <button class="btn-link btn-sm btnCadastro" (click)="redirectToCadastro()">Cadastrar</button>
+  </div>
+  <div class="col-md-12 d-block mb-2">
+    <app-social-login></app-social-login>
+  </div> 
+  <app-alert></app-alert>
 </div>

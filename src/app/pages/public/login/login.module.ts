@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { EmailMessageSuccessComponent } from './email-message-success/email-message-success.component';
 import { EmailMessageErrorComponent } from './email-message-error/email-message-error.component';
 import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.component';
+import { SocialLoginComponent } from './social-login/social-login.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { EsqueceuSenhaComponent } from './esqueceu-senha/esqueceu-senha.componen
     LoginComponent,
     EsqueceuSenhaComponent,
     EmailMessageSuccessComponent,
-    EmailMessageErrorComponent
+    EmailMessageErrorComponent,
+    SocialLoginComponent
   ],
   entryComponents: [
     EsqueceuSenhaComponent,

@@ -16,6 +16,28 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { FileDropModule } from 'ngx-file-drop';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angular-6-social-login';
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('493898704450534')
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('970316733015-a0cirmg0f9jkd62ilgkvueomabtrki4l.apps.googleusercontent.com')
+        },
+      ]);
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -33,7 +55,8 @@ import { FileDropModule } from 'ngx-file-drop';
     NgbAlertModule,
     NgbAccordionModule,
     OAuthModule.forRoot(),
-    FileDropModule
+    FileDropModule,
+    SocialLoginModule
   ],
   providers: [
     {
@@ -45,6 +68,10 @@ import { FileDropModule } from 'ngx-file-drop';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
     }
   ],
   bootstrap: [AppComponent]
