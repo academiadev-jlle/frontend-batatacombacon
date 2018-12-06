@@ -7,16 +7,14 @@ import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component
   styleUrls: ['./input-image.component.scss']
 })
 export class InputImageComponent {
-  
   imgCarregada:boolean=false; // mostra a imagem quando carrega a imagem
-  loading: boolean=false; // mostra loading no button
 
   // a cada redimensionada, o croppedImage é preenchido com a nova imagem.
   croppedImage: any = '';
   imageChangedEvent: any = '';
 
   fileChangeEvent(event: any): void {
-    //this.loading=true; //nao funcionou como devia
+    this.imgCarregada=true;
     this.imageChangedEvent = event;
   }
 
@@ -25,10 +23,15 @@ export class InputImageComponent {
   }
 
   imageLoaded() {
-    this.loading=false;
     this.imgCarregada=true;
   }
 
   loadImageFailed() {}
+
+  limparInput(){
+    this.imageChangedEvent='';
+    this.croppedImage='';
+    this.imgCarregada=false;
+  }
 }
   

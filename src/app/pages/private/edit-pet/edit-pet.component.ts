@@ -20,27 +20,10 @@ export class EditPetComponent implements OnInit {
 
   constructor(private petService: PetService, private router: Router) { }
 
-  ngOnInit () {
-    const idPet = 1;
+  ngOnInit () { }
 
-    this.petService.getPet(idPet).subscribe(pet =>
-      this.petForEdit = pet
-    );
-  }
-
-  receiveClickAddUser($event) {
+  receiveClickEditPet($event) {
     this.receivedForm = $event;
   }
 
-  clickEditPet() {
-    this.petService.updatePet(this.receivedForm.value)
-      .subscribe(
-        ret => {
-          this.alert.show('success');
-          this.router.navigate(['/addpet']);
-        },
-        error => {
-          this.alert.show('danger', error.message);
-        });
-  }
 }

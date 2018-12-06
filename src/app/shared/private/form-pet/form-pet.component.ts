@@ -48,33 +48,21 @@ export class FormPetComponent implements OnInit, OnChanges {
     this.fillOptions();
 
     this.petForm = this.formBuilder.group({
-      // nome: ['', Validators.required],
-      // especie: ['', Validators.required],
-      // porte: ['', Validators.required],
-      // sexo: ['', Validators.required],
-      // objetivo: ['', Validators.required],
-      // // dataPet: [''],
-      // // dataCriacao: [''],
-      // localPet: ['', Validators.required],
-      // descricao: [''],
-      // fotos: [],
-      // idUsuario: [1]
-
-      nome: [''],
-      especie: [''],
-      porte: [''],
-      sexo: [''],
-      objetivo: [''],
+      nome: ['', Validators.required],
+      especie: ['', Validators.required],
+      porte: ['', Validators.required],
+      sexo: ['', Validators.required],
+      objetivo: ['', Validators.required],
       localPet: [''],
       descricao: [''],
       fotos: [],
       idUsuario: [0],
       cepNum: [''],
-      cepRua: [''],
+      cepRua: ['', Validators.required],
       cepBairro: [''],
       cepNumero: [''],
-      cepCidade: [''],
-      cepUf: [''],
+      cepCidade: ['', Validators.required],
+      cepUf: ['', Validators.required],
       cepComplemento: [''],
       cepReferencia: ['']
     });
@@ -106,7 +94,6 @@ export class FormPetComponent implements OnInit, OnChanges {
   }
 
   sendMessage() {
-    console.log('send form', this.petForm)
     this.messageEvent.emit(this.petForm);
   }
 
@@ -118,6 +105,29 @@ export class FormPetComponent implements OnInit, OnChanges {
     if ( this.petForm.valid ) {
       this.sendMessage();
     }
+  }
+
+  cleanForm() {
+    // reset nao funciona por conta das validações
+    this.petForm.patchValue({
+      nome: [''],
+      especie: [''],
+      porte: [''],
+      sexo: [''],
+      objetivo: [''],
+      localPet: [''],
+      descricao: [''],
+      fotos: [],
+      idUsuario: [0],
+      cepNum: [''],
+      cepRua: [''],
+      cepBairro: [''],
+      cepNumero: [''],
+      cepCidade: [''],
+      cepUf: [''],
+      cepComplemento: [''],
+      cepReferencia: ['']
+    });
   }
 
   fillOptions(){

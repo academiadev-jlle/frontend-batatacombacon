@@ -7,6 +7,8 @@ import { PageNotFoundComponent } from './public/page-not-found/page-not-found.co
 import { SharedModule } from '../shared/shared.module';
 import { LoginModule } from './public/login/login.module';
 import { ProfileModule } from './private/profile/profile.module';
+import { AddPetComponent } from './private/add-pet/add-pet.component';
+import { EditPetComponent } from './private/edit-pet/edit-pet.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,9 @@ import { ProfileModule } from './private/profile/profile.module';
     LoginModule,
     ProfileModule
   ],
-  declarations: [ PageNotFoundComponent]
+  declarations: [ 
+    PageNotFoundComponent,
+    AddPetComponent,
+    EditPetComponent ]
 })
 export class PagesModule { }
