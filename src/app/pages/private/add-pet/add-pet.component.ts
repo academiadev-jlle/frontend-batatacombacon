@@ -18,6 +18,7 @@ export class AddPetComponent implements OnInit {
   @ViewChild(InputImageComponent) imageInput;
   @ViewChild(FormPetComponent) formPet;
 
+  creatingNewPet: boolean=true;
   receivedForm: FormGroup;
   userId: number;
 

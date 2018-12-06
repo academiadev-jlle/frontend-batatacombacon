@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -8,7 +8,6 @@ import { Pet, APIPetFactory } from 'src/app/classes/pets/pet';
 import { InputImageComponent } from 'src/app/shared/private/input-image/input-image.component';
 import { FormPetComponent } from 'src/app/shared/private/form-pet/form-pet.component';
 import { ImageService } from 'src/app/services/image.service';
-
 
 @Component({
   selector: 'app-edit-pet',
@@ -20,10 +19,11 @@ export class EditPetComponent implements OnInit {
   @ViewChild(InputImageComponent) imageInput;
   @ViewChild(FormPetComponent) formPet;
 
-  receivedForm: FormGroup;
+  creatingNewPet: boolean=false; //estou criando um novo pet ?
+  receivedForm: FormGroup; // form recebido do component
   pet: Pet;
-
   idPet: number;
+  imagePet:any; // imagem do pet
 
   constructor(private petService: PetService,
       private imageService: ImageService,
@@ -32,14 +32,30 @@ export class EditPetComponent implements OnInit {
   }
 
   ngOnInit () { 
-    this.petService.getPet(this.idPet).subscribe(ret => {
-      this.pet = APIPetFactory(ret)
-    });
+    this.petService.getPet(this.idPet)
+      .subscribe(
+        retPet => {
+          this.pet = APIPetFactory(retPet);
+
+          let lastImage = +retPet.fotos.sort()[retPet.fotos.length-1]
+          this.imageService.getImage(lastImage).subscribe(
+            retImage => {
+              this.imagePet = URL.createObjectURL(retImage);
+            },
+            errorImage => {
+
+            }
+          )
+
+        },
+        errorPet => {
+          console.log(errorPet);
+        }
+        );
   }
 
   receiveFormPet($event) {
     this.receivedForm = $event;
-
     this.petService.updatePet(this.receivedForm.value, this.idPet).subscribe(
       retPet => {
         if(!!this.imageInput.croppedImage==true){ // se tiver imagem, quer dizer que se quer atualizar
@@ -59,7 +75,4 @@ export class EditPetComponent implements OnInit {
       }
     )
   }
-
-
-
 }

@@ -29,8 +29,14 @@ export class ImageService {
     );
   }
 
-  getImage(id: number): Observable<any> {
-    return this.http.get<any>(`${this.imageUrl}/${id}`).pipe(
+  // getImage(id: number): Observable<any> {
+  //   return this.http.get<any>(`${this.imageUrl}/${id}`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  getImage(idImage: number): Observable<Blob> {
+    return this.http.get(`${this.imageUrl}/${idImage}`, { responseType: 'blob' }).pipe(
       catchError(this.handleError)
     );
   }

@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="col-sm-4">
-      <app-input-image></app-input-image>
+      <app-input-image [creatingNewPet]="creatingNewPet"></app-input-image>
     </div>
     <div class="col-sm-8">
       <app-form-pet buttonText="Adicionar" (messageEvent)="receiveFormPet($event)"></app-form-pet>
