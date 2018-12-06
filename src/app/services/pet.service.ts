@@ -60,9 +60,6 @@ export class PetService {
       str += `objetivo=${filter.objetivo}&`
     if(filter.sexo!=="" && filter.sexo!==undefined)
       str += `sexo=${filter.sexo}&`
-
-    console.log(filter);
-    console.log(`${this.petsUrl}?page=${page}&size=${size}${str}`)
     
     return this.http.get<PetPagination>(`${this.petsUrl}?page=${page}&size=${size}${str}`)
       .pipe(
