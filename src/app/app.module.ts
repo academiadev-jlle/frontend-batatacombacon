@@ -1,21 +1,18 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
-
 import { NgbTypeaheadModule, NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-
 import { FileDropModule } from 'ngx-file-drop';
+import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
 
 @NgModule({
   declarations: [
@@ -33,7 +30,8 @@ import { FileDropModule } from 'ngx-file-drop';
     NgbAlertModule,
     NgbAccordionModule,
     OAuthModule.forRoot(),
-    FileDropModule
+    FileDropModule,
+    DisqusModule.forRoot('frontendbatatacombacon')
   ],
   providers: [
     {
@@ -45,7 +43,9 @@ import { FileDropModule } from 'ngx-file-drop';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { provide: DISQUS_SHORTNAME,
+      useValue: 'frontendbatatacombacon' }
   ],
   bootstrap: [AppComponent]
 })
