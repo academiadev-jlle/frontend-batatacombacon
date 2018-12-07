@@ -10,8 +10,10 @@ import { ProfileComponent } from './pages/private/profile/profile.component';
 import { RedirectNewUserComponent } from './pages/public/cadastro/redirect-new-user/redirect-new-user.component';
 import { NewUserGuard } from './guards/new-user.guard';
 import { ProfileGuard } from './guards/profile.guard';
-import { NovaSenhaComponent } from './pages/private/nova-senha/nova-senha.component';
+import { AddPetComponent } from './pages/private/add-pet/add-pet.component';
+import { EditPetComponent } from './pages/private/edit-pet/edit-pet.component';
 
+import { NovaSenhaComponent } from './pages/private/nova-senha/nova-senha.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
@@ -23,6 +25,9 @@ const routes: Routes = [
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
+
+    { path: 'editpet/:id', component: EditPetComponent}, //TODO: adicionar guard aqui
+    { path: 'addpet', component: AddPetComponent}, // TODO: adicionar guard aqui
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam
     { path: '404', component: PageNotFoundComponent},

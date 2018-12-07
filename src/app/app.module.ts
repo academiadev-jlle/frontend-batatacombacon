@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { NgbTypeaheadModule, NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { FileDropModule } from 'ngx-file-drop';
 import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
     NgbAlertModule,
     NgbAccordionModule,
     OAuthModule.forRoot(),
-    FileDropModule,
+    ImageCropperModule,
     DisqusModule.forRoot('frontendbatatacombacon')
   ],
   providers: [

@@ -12,7 +12,7 @@ import { AlertComponent } from './alert/alert.component';
 import { FormPetComponent } from './private/form-pet/form-pet.component';
 import { InputImageComponent } from './private/input-image/input-image.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FileDropModule } from 'ngx-file-drop';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { FileDropModule } from 'ngx-file-drop';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    FileDropModule
+    ImageCropperModule
   ],
   exports: [
     FooterComponent,
