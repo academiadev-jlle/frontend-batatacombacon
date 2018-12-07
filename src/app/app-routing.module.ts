@@ -13,6 +13,7 @@ import { ProfileGuard } from './guards/profile.guard';
 import { AddPetComponent } from './pages/private/add-pet/add-pet.component';
 import { EditPetComponent } from './pages/private/edit-pet/edit-pet.component';
 
+import { NovaSenhaComponent } from './pages/private/nova-senha/nova-senha.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'cadastro', component: CadastroComponent},
     { path: 'contato', component: ContatoComponent},
+    { path: 'novasenha', component: NovaSenhaComponent},
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },

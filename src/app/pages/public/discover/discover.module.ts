@@ -12,6 +12,8 @@ import { DiscoverRoutingModule } from './discover-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BadgeStatusComponent } from './pets-list-item/badge-status/badge-status.component';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import { DisqusModule } from 'ngx-disqus';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
     DiscoverRoutingModule,
     FormsModule,
     SharedModule,
+    DisqusModule,
+    InfiniteScrollModule,
     NgbTypeaheadModule,
     ShareButtonsModule.forRoot()
   ],

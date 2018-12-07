@@ -17,4 +17,17 @@ export class FooterComponent implements OnInit {
   goGitWiki() {
     window.location.href = 'https://github.com/academiadev-jlle/wiki-batatacombacon/blob/master/Documentation/Frontend.md';
   }
+
+  redirectToAsaas() {
+    window.location.href = 'https://www.asaas.com';
+  }
+  redirectToBecomex() {
+    window.location.href = 'https://becomex.com.br';
+  }
+  redirectToContaAzul() {
+    window.location.href = 'https://contaazul.com';
+  }
+  redirectToTreasy() {
+    window.location.href = 'https://www.treasy.com.br';
+  }
 }

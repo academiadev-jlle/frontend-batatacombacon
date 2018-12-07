@@ -20,7 +20,7 @@ export class EsqueceuSenhaComponent implements OnInit {
 
 
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder,
-    private userService: UserService, private modalService: NgbModal) {}
+    private userService: UserService, private modalService: NgbModal,) {}
 
   get f() { return this.formEmail.controls; }
 
@@ -37,16 +37,21 @@ export class EsqueceuSenhaComponent implements OnInit {
   requestNovaSenha() {
     this.submitted = true;
     if (this.formEmail.valid) {
-      this.activeModal.close();
-      this.modalService.open(EmailMessageSuccessComponent, { centered: true });
+      this.userService.resetUserPassword(this.formEmail.get('email').value)
+      .subscribe(
+        ret => {
+          this.modalService.open(EmailMessageSuccessComponent, { centered: true });
+          setTimeout(() => {
+            this.activeModal.close(EsqueceuSenhaComponent);
+          }, 500);
+        },
+        error => {
+          this.modalService.open(EmailMessageErrorComponent, { centered: true });
+          setTimeout(() => {
+            this.activeModal.close(EsqueceuSenhaComponent);
+          }, 500);
+        }
+      );
     }
-      // this.userService.addUser(this.receivedForm.value)
-      // .subscribe(
-      //   ret => {
-      //     this.modalService.open(EmailMessageSuccessComponent, {size: 'sm', centered: true });
-      //   },
-      //   error => {
-      //     this.modalService.open(EmailMessageErrorComponent, {size: 'sm', centered: true });
-      //   });
   }
 }
