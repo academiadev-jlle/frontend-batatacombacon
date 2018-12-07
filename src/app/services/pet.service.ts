@@ -72,8 +72,6 @@ export class PetService {
 
   updatePet(pet: Pet, idPet: number): Observable<any> {
     const petPayload = APIPetFactory(pet);
-    console.log(idPet)
-    console.log(petPayload)
     return this.http.put(`${this.petsUrl}/${idPet}?idPet=${idPet}`, petPayload, httpOptions).pipe(
       catchError(this.handleError)
     );

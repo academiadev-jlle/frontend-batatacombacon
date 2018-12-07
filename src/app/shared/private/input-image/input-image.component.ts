@@ -10,7 +10,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class InputImageComponent implements OnInit, OnChanges {
   
   @Input() imagePetEdit:any;
-  @Input() creatingNewPet:boolean;
+  @Input() creatingNewPet:boolean; //serve tambem para desablitar o botão de remover imagem quando o pet est sendo editado
+  @Input() recemEditado:boolean;
 
   srcImage: any; // caminho da imagem
   imgCarregada:boolean=false; // mostra a imagem quando carrega a imagem
@@ -22,12 +23,18 @@ export class InputImageComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if("imagePetEdit" in changes || "creatingNewPet" in changes){
       if(this.creatingNewPet){
-        console.log("new pet!!")
         this.srcImage= './assets/dog-silhouette.jpg'
       }else{
         this.srcImage = this.sanitize(this.imagePetEdit)
       }
     }
+
+    if(this.recemEditado){
+      this.imgCarregada=false;
+      this.srcImage = this.sanitize(this.imagePetEdit)
+      
+    }
+    
   }
 
   ngOnInit() {}

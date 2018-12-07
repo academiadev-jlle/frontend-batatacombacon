@@ -17,4 +17,4 @@
 </div>
 
 <button class="btn btn-success" (click)="fileInput.click()"><i class="fa fa-image" aria-hidden="true"></i> Selecionar</button>
-<button class="btn btn-danger" (click)="limparInput()"><i class="fa fa-eraser" aria-hidden="true"></i> Remover</button>
+<button class="btn btn-danger" (click)="limparInput()" [disabled]="!creatingNewPet"><i class="fa fa-eraser" aria-hidden="true"></i> Remover</button>

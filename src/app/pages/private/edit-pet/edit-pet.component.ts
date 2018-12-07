@@ -8,6 +8,7 @@ import { Pet, APIPetFactory } from 'src/app/classes/pets/pet';
 import { InputImageComponent } from 'src/app/shared/private/input-image/input-image.component';
 import { FormPetComponent } from 'src/app/shared/private/form-pet/form-pet.component';
 import { ImageService } from 'src/app/services/image.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-edit-pet',
@@ -20,6 +21,7 @@ export class EditPetComponent implements OnInit {
   @ViewChild(FormPetComponent) formPet;
 
   creatingNewPet: boolean=false; //estou criando um novo pet ?
+  recemEditado: boolean=false; // quando atualizo a image, preciso dizer pro inputImage tirar o crop e mostrar a imagem normal.
   receivedForm: FormGroup; // form recebido do component
   pet: Pet;
   idPet: number;
@@ -32,47 +34,64 @@ export class EditPetComponent implements OnInit {
   }
 
   ngOnInit () { 
-    this.petService.getPet(this.idPet)
-      .subscribe(
-        retPet => {
-          this.pet = APIPetFactory(retPet);
-
-          let lastImage = +retPet.fotos.sort()[retPet.fotos.length-1]
-          this.imageService.getImage(lastImage).subscribe(
-            retImage => {
-              this.imagePet = URL.createObjectURL(retImage);
-            },
-            errorImage => {
-
-            }
-          )
-
-        },
-        errorPet => {
-          console.log(errorPet);
-        }
-        );
+    this.getPet();
   }
 
+  imageSubject = new Subject<any>();
   receiveFormPet($event) {
     this.receivedForm = $event;
     this.petService.updatePet(this.receivedForm.value, this.idPet).subscribe(
       retPet => {
+        
         if(!!this.imageInput.croppedImage==true){ // se tiver imagem, quer dizer que se quer atualizar
           this.imageService.addPetImage(this.imageInput.croppedImage, retPet.id).subscribe(
-            retImage => {},
-            errorImage => {
-              this.alert.show('danger', 'Problema ao enviar a imagem, mas o pet foi editado :D.');
-              console.log(errorImage)
+              retImage => {
+                this.imageSubject.next(retImage)
+              },
+              errorImage => {
+                this.alert.show('danger', 'Problema ao enviar a imagem, mas o pet foi editado :D.');
+                console.log(errorImage)
+              }
+            ) 
+          }
+
+          this.imageSubject.subscribe( //https://stackoverflow.com/questions/43366694/waiting-for-an-observable-to-finish
+            data => {
+              this.recemEditado=true;
+              this.getPet()
+              this.alert.show('success', 'Pet editado com sucesso.');     
             }
           )
-        }
-        this.alert.show('success', 'Pet editado com sucesso.');
-      },
+
+        },
       errorPet => {
         this.alert.show('danger', 'Não foi possível editar o pet.');
         console.log(errorPet)
       }
+
     )
+    
+  }
+
+  getPet(){ // get pet do banco
+    this.petService.getPet(this.idPet)
+    .subscribe(
+      retPet => {
+        this.pet = APIPetFactory(retPet);
+
+        let lastImage = +retPet.fotos.sort()[retPet.fotos.length-1]
+        this.imageService.getImage(lastImage).subscribe(
+          retImage => {
+            this.imagePet = URL.createObjectURL(retImage);
+          },
+          errorImage => {
+            console.log(errorImage)
+          }
+        )
+      },
+      errorPet => {
+        console.log(errorPet);
+      }
+    );
   }
 }
