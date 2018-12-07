@@ -2,6 +2,7 @@ import { Especie } from "../especie/especies";
 import { Sexo } from "../sexo/sexo";
 import { Porte } from "../porte/porte";
 import { Objetivo } from "../objetivo/objetivo";
+import { SafeResourceUrl } from "@angular/platform-browser";
 
 export interface Pet {
     id?: number;
@@ -15,6 +16,7 @@ export interface Pet {
     fotos: Array<string>;
     idUsuario: number;
     created_at?: string;
+    photoLink?: SafeResourceUrl;
 }
 
 export interface PetAPI {

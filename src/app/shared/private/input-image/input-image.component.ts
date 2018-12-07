@@ -37,13 +37,6 @@ export class InputImageComponent implements OnInit, OnChanges {
         }
       }
     }
-
-    // if(this.recemEditado){
-    //   this.imgCarregada=false;
-    //   this.srcImage = this.sanitize(this.imagePetEdit)
-      
-    // }
-    
   }
 
   ngOnInit() {}
