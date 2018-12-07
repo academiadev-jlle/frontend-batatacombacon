@@ -7,6 +7,8 @@ import { AlertComponent } from 'src/app/shared/alert/alert.component';
 import { PetService } from 'src/app/services/pet.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
+import { ImageService } from 'src/app/services/image.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +26,9 @@ export class ProfileComponent implements OnInit {
   
   constructor(private userService: UserService,
     private petService: PetService,
-    private oauth: AuthService) { }
+    private oauth: AuthService,
+    private imageService: ImageService,
+    private sanitizer: DomSanitizer) { }
     
   ngOnInit() {
     this.oauth.userLogged.subscribe(ret => {
@@ -46,7 +50,24 @@ export class ProfileComponent implements OnInit {
   getPetsUser(idUser: number){
     this.userService.getPetsUser(idUser)
     .subscribe(
-      pets => this.pets = pets.content,
+      pets => {
+        pets.content.map(pet =>{
+          // get image from database
+          let lastImage = +pet.fotos.sort()[pet.fotos.length-1]
+          this.imageService.getImage(lastImage).subscribe(
+            retImage => {
+              pet.photoLink = this.sanitize(URL.createObjectURL(retImage));
+            },
+            errorImage => {
+              pet.photoLink = './assets/dog-silhouette.jpg'
+            }
+          )
+          // get image from database
+        })
+        this.pets = pets.content;
+
+        console.log(this.pets)
+      },
       error => this.alert.show('info', 'Nenhum pet foi encontrado.')
       )
     }
@@ -73,20 +94,24 @@ export class ProfileComponent implements OnInit {
       });
     }
         
-    getFormValues(att){
-      return this.receivedForm.controls[att].value;
-    }
-    
-    msgDeletePet($event){
-      this.petService.deletePet($event)
-      .subscribe(
-        ret => {
-          this.getPetsUser(this.usuario.id);
-          this.alert.show('success', ret.message);
-        },
-        error => this.alert.show('danger', error.message)
-        )
-      }
-      
+  getFormValues(att){
+    return this.receivedForm.controls[att].value;
+  }
+  
+  msgDeletePet($event){
+    this.petService.deletePet($event)
+    .subscribe(
+      ret => {
+        this.getPetsUser(this.usuario.id);
+        this.alert.show('success', ret.message);
+      },
+      error => this.alert.show('danger', error.message)
+      )
+  }
+
+  sanitize(url:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 }
         
