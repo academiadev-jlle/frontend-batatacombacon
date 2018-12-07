@@ -14,6 +14,8 @@ import { AddPetComponent } from './pages/private/add-pet/add-pet.component';
 import { EditPetComponent } from './pages/private/edit-pet/edit-pet.component';
 
 import { NovaSenhaComponent } from './pages/private/nova-senha/nova-senha.component';
+import { AddPetGuard } from './guards/add-pet.guard';
+import { EditPetGuard } from './guards/edit-pet.guard';
 
 const routes: Routes = [
     { path: '', redirectTo: '/discover', pathMatch: 'full' },
@@ -25,9 +27,8 @@ const routes: Routes = [
 
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
-
-    { path: 'editpet/:id', component: EditPetComponent}, //TODO: adicionar guard aqui
-    { path: 'addpet', component: AddPetComponent}, // TODO: adicionar guard aqui
+    { path: 'editpet/:id', component: EditPetComponent, canActivate: [EditPetGuard]},
+    { path: 'addpet', component: AddPetComponent, canActivate: [AddPetGuard]},
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam
     { path: '404', component: PageNotFoundComponent},
