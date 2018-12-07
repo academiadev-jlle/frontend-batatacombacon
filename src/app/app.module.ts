@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
@@ -32,7 +32,7 @@ import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
     NgbAlertModule,
     NgbAccordionModule,
     OAuthModule.forRoot(),
-    ImageCropperModule
+    ImageCropperModule,
     DisqusModule.forRoot('frontendbatatacombacon')
   ],
   providers: [
