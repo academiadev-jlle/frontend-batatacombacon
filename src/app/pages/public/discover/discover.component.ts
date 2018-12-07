@@ -47,7 +47,6 @@ export class DiscoverComponent implements OnInit {
       },
         error => console.log(error)
       );
-    console.log(this.pets);
   }
 
   receiveMessage($event) {
