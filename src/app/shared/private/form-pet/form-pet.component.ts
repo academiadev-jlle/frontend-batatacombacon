@@ -147,7 +147,8 @@ export class FormPetComponent implements OnInit, OnChanges {
 
   getCep(cep: string){
     this.loadingCep=true;
-    this.cepService.getCep(cep)
+    
+    this.cepService.getCepJsonp(cep)
     .subscribe(
       ret => {
         this.petForm.patchValue({
@@ -158,7 +159,9 @@ export class FormPetComponent implements OnInit, OnChanges {
         });
         this.loadingCep=false;
       }, 
-      error => this.loadingCep=false)
+      error => {
+        this.loadingCep=false;
+      })
   }
 
   keyUp(event) {

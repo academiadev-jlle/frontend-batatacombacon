@@ -13,8 +13,18 @@ export class CepService {
 
   constructor(private http: HttpClient) { }
 
+  // get cep as json
+  // problem with cors
   getCep(cep: string): Observable<Cep> {
     return this.http.get<Cep>(`${this.cepsUrl}/${cep}/json`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  // returning jsonp
+  getCepJsonp(cep: string){
+    return this.http.jsonp<Cep>(`${this.cepsUrl}/${cep}/json/?callback=callback_name`, 'callback')
       .pipe(
         catchError(this.handleError)
       );
