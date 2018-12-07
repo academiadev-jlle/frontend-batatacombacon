@@ -14,7 +14,9 @@ export class InputImageComponent implements OnInit, OnChanges {
   @Input() recemEditado:boolean;
 
   srcImage: any; // caminho da imagem
-  imgCarregada:boolean=false; // mostra a imagem quando carrega a imagem
+
+  imgHide:boolean=true;
+  imgCropHide:boolean=true;
 
   // a cada redimensionada, o croppedImage é preenchido com a nova imagem.
   croppedImage: any = '';
@@ -24,16 +26,23 @@ export class InputImageComponent implements OnInit, OnChanges {
     if("imagePetEdit" in changes || "creatingNewPet" in changes){
       if(this.creatingNewPet){
         this.srcImage= './assets/dog-silhouette.jpg'
+        this.imgHide=false;
       }else{
-        this.srcImage = this.sanitize(this.imagePetEdit)
+        this.imgCropHide=true;
+        if(!!this.imagePetEdit==true){
+          
+          this.srcImage = this.sanitize(this.imagePetEdit)
+          this.imgHide=false;
+
+        }
       }
     }
 
-    if(this.recemEditado){
-      this.imgCarregada=false;
-      this.srcImage = this.sanitize(this.imagePetEdit)
+    // if(this.recemEditado){
+    //   this.imgCarregada=false;
+    //   this.srcImage = this.sanitize(this.imagePetEdit)
       
-    }
+    // }
     
   }
 
@@ -42,8 +51,10 @@ export class InputImageComponent implements OnInit, OnChanges {
   constructor(private sanitizer: DomSanitizer) {}
   
   fileChangeEvent(event: any): void {
-    this.imgCarregada=true;
     this.imageChangedEvent = event;
+
+    this.imgHide=true;
+    this.imgCropHide=false;
   }
 
   imageCropped(event: ImageCroppedEvent) {
@@ -51,7 +62,7 @@ export class InputImageComponent implements OnInit, OnChanges {
   }
 
   imageLoaded() {
-    this.imgCarregada=true;
+    this.imgHide=true;
   }
 
   loadImageFailed() {}
@@ -59,7 +70,8 @@ export class InputImageComponent implements OnInit, OnChanges {
   limparInput(){
     this.imageChangedEvent='';
     this.croppedImage='';
-    this.imgCarregada=false;
+    this.imgCropHide=true;
+    this.imgHide=false;
   }
 
   sanitize(url:string){

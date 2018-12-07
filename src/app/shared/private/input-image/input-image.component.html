@@ -1,9 +1,9 @@
 <input type="file" style="display: none" (change)="fileChangeEvent($event)" #fileInput/>
 
 <div class="item">
-    <img [src]="srcImage" alt="" class="showImage" [hidden]="imgCarregada">
+    <img [src]="srcImage" alt="" class="showImage" [hidden]="imgHide">
     <image-cropper
-      [hidden]="!imgCarregada"
+      [hidden]="imgCropHide"
       class="showImage"
       [imageChangedEvent]="imageChangedEvent"
       [maintainAspectRatio]="true"
