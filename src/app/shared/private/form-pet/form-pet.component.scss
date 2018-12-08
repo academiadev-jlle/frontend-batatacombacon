@@ -10,7 +10,26 @@ button {
     color: red;
 }
 
-.petInfo {
+.petInfo, .petLocal {
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.petInfo {
+    background-color: #ffd0c0
+}
+
+.petLocal {
+    background-color: aqua;
+}
+
+@media (max-width: 576px) {
+    .loadingIcon {
+        margin: auto;
+        text-align: center;
+    }
 }

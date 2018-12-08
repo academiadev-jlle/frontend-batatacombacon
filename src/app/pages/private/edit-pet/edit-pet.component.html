@@ -1,14 +1,17 @@
-<div class="container">
+<div class="container mt-3">
  
   <app-alert></app-alert>
 
   <div class="row">
-    <div class="col-sm-4">
-      <app-input-image [imagePetEdit]="imagePet" [creatingNewPet]="creatingNewPet" [recemEditado]="recemEditado"></app-input-image>
+    <div class="col-md-6 mb-2 text-center">
+      <div>
+        <app-input-image [creatingNewPet]="creatingNewPet"></app-input-image>
+      </div>
     </div>
-    <div class="col-sm-8">
-      <app-form-pet buttonText="Editar" (messageEvent)=receiveFormPet($event) [petToEdit]="pet"></app-form-pet>
+    <div class="col-md-6">
+      <div>
+        <app-form-pet buttonText="Editar" (messageEvent)="receiveFormPet($event)"></app-form-pet>
+      </div>
     </div>
   </div>
-
 </div>
