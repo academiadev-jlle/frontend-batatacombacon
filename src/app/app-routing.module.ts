@@ -28,7 +28,8 @@ const routes: Routes = [
     { path: 'bem-vindo', component: RedirectNewUserComponent, canActivate: [NewUserGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard] },
     { path: 'editpet/:id', component: EditPetComponent, canActivate: [EditPetGuard]},
-    { path: 'addpet', component: AddPetComponent, canActivate: [AddPetGuard]},
+    // { path: 'addpet', component: AddPetComponent, canActivate: [AddPetGuard]},
+    { path: 'addpet', component: AddPetComponent},
 
     // essas 2 tem que ficar por ultimo. Rotas depois delas nao funcionam
     { path: '404', component: PageNotFoundComponent},
