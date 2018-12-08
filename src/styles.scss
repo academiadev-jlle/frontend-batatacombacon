@@ -1,4 +1,4 @@
-@import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
+//@import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
 
 $paddingHeight: 10px;
 
@@ -14,9 +14,7 @@ main {
 .footer-fixed {
   margin: auto;
   padding-top: 20px;
-  color: #999;
   text-align: left;
-  background-color: #f9f9f9;
   position: initial;
   bottom: auto;
 }
