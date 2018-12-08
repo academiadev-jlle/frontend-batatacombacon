@@ -1,6 +1,6 @@
 //@import './node_modules/@ngx-share/button/themes/circles/circles-dark-theme.scss';
 
-$paddingHeight: 10px;
+$paddingHeight: 50px;
 
 html {
   position: relative;
@@ -14,18 +14,16 @@ main {
 .footer-fixed {
   margin: auto;
   padding-top: 20px;
+  color: #0000009c;
   text-align: left;
-  position: initial;
-  bottom: auto;
 }
 
-@media (max-height: 450px) { 
+@media (max-width: 576px) { 
   .footer-fixed {
     position: initial;
     bottom: auto;
   }
-
-  main {
+   main {
     padding-bottom: 0;
   }
 }

@@ -34,7 +34,36 @@ p {
   margin-right: auto;
   
 }
-  
+
+.githubIcon {
+  text-align: center;
+
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    vertical-align: middle;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 20px;
+  padding-inline-start: 15px;
+
+  li {
+    .linkApoiadores {
+      padding: 0;
+      border: none;
+      background: none;
+      outline: none;
+      color: #0000009c;
+      margin: auto;
+      font-size: 1rem;
+    }
+  }
+}
+
 @media (max-width: 576px) {
   p {
     text-align: justify;
