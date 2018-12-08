@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NovaSenhaComponent } from './nova-senha.component';
 
-describe('NovaSenhaComponent', () => {
+xdescribe('NovaSenhaComponent', () => {
   let component: NovaSenhaComponent;
   let fixture: ComponentFixture<NovaSenhaComponent>;
 
