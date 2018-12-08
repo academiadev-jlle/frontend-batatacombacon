@@ -1,4 +1,4 @@
 export class Porte {
-    porte: string;
+    name: string;
     descricao: string;
 }
