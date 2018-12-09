@@ -1,60 +1,38 @@
 .petContent {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: #f9f9f9;
-}
+    margin-left: auto;
+    margin-right: auto;
 
-.petDivPhoto{
-    padding: 0px;
-
-    .pet-image-container {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-    
-    
-      .pet-image-dummy {
-        margin-top: 75%;
-      }
-      
-      .pet-image-url {
-        display: block;
-        margin: auto;
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
+    .petDivPhoto {
+        background-color: slategrey;
+        text-align: center;
+        
+        .pet-image-url {
+            max-width: 90%;
+        }
     }
 
-}
-
-.petInfo {
-    text-align: left;
-
-    div {
-        margin-top: 5px;
-        margin-bottom: 22px;
+    .petInfo, .petLocal, .petDivPhoto {
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 5px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+       
+        .row {
+            margin: 0px;
+        }
     }
-}
-
-.petTitle {
-    text-align: center;
-    font-size: 250px;
-}
-
-.petDescription {
-    padding: 15px;
-    margin-top: 10px;
+    
+    .petInfo {
+        background-color: #ffd0c0;
+    }
+    
+    .petLocal {
+        background-color: aqua;
+    }
 }
 
 .btnDiv {
@@ -63,8 +41,8 @@
 
     .btnVoltar {
         padding: 0px;
-        margin-top: 10px;
-        margin-bottom: 5px;
+        margin-top: auto;
+        margin-bottom: auto;
 
         button {
             display: block;
@@ -82,5 +60,20 @@
             margin-right: auto;
             text-align: center;
         }
+    }
+}
+
+@media (max-width: 576px) {
+    .petDivPhoto {
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .btnShare {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
     }
 }
