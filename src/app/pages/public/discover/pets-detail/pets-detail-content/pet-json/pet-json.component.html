@@ -1,47 +1,55 @@
 <div class="container">
-    <div class="petTitle">
-        <h1>{{ pet.nome }}</h1>
-    </div>
     <div class="row petContent">
-        <div class="col-md-7 petDivPhoto">
-            <div class="pet-image-container" style="cursor: default;">
-                <div class="pet-image-dummy"></div>
-                <img class="pet-image-url" [src]="pet.photoLink" alt="your image">
-            </div>      
+        <div class="col-md-6 petDivPhoto">
+            <img class="pet-image-url" [src]="pet.photoLink">
         </div>
-        <div class="col-md-5 petInfo">
-            <div>
-                <span><strong>Nome: </strong></span>
-                <span>{{ pet.nome }}</span>
+        <div class="col-md-6">
+            <div class="petInfo">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <strong>{{ pet.created_at | date: 'dd/MM/yyyy' }}</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>Nome: </strong>
+                        <p>{{ pet.nome }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Espécie: </strong>
+                        <p>{{ pet.especie }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Porte: </strong>
+                        <p>{{ pet.porte }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Sexo: </strong>
+                        <p>{{ pet.sexo }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Objetivo: </strong>
+                        <p>{{ pet.objetivo }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>Descrição: </strong>
+                        <p>{{ pet.descricao }}</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <span><strong>Espécie: </strong></span>
-                <span>{{ pet.especie }}</span>
+           
+            <div class="petLocal">
+                <div class="row">
+                    <strong>Localização: </strong>
+                    <p>{{ pet.localPet }}</p>
+                </div>
             </div>
-            <div>
-                <span><strong>Porte: </strong></span>
-                <span>{{ pet.porte }}</span>
-            </div>
-            <div>
-                <span><strong>Sexo: </strong></span>
-                <span>{{ pet.sexo }}</span>
-            </div>
-            <div>
-                <span><strong>Objetivo: </strong></span>
-                <span>{{ pet.objetivo }}</span>
-            </div>
-            <div>
-                <span><strong>Data: </strong></span>
-                <span>{{ pet.created_at | date: 'dd/MM/yyyy' }}</span>
-            </div>
-            <div>
-                <span><strong>Localização: </strong></span>
-                <span>{{ pet.localPet }}</span>
-            </div>
-        </div>
-        <div class="col-md-12 petDescription">
-            <label><strong>Descrição: </strong></label>
-            <!-- <p>{{ pet.descricao }}</p> -->
         </div>
     </div>
     <div class="btnDiv row">

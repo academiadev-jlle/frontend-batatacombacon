@@ -1,19 +1,19 @@
 <input type="file" style="display: none" (change)="fileChangeEvent($event)" #fileInput/>
 
 <div class="item m-auto">
-    <img [src]="srcImage" alt="" class="showImage" [hidden]="imgHide">
-    <image-cropper
-      [hidden]="imgCropHide"
-      class="showImage"
-      [imageChangedEvent]="imageChangedEvent"
-      [maintainAspectRatio]="true"
-      [aspectRatio]="1 / 1"
-      [resizeToWidth]="400"
-      format="png"
-      (imageCropped)="imageCropped($event)"
-      (imageLoaded)="imageLoaded()"
-      (loadImageFailed)="loadImageFailed()"
-      [autoCrop]="true"></image-cropper>
+  <img [src]="srcImage" alt="" class="showImage" [hidden]="imgHide">
+  <image-cropper
+    [hidden]="imgCropHide"
+    class="showImage"
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    [resizeToWidth]="400"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (loadImageFailed)="loadImageFailed()"
+    [autoCrop]="true"></image-cropper>
 </div>
 
 <button class="btn btn-success" (click)="fileInput.click()"><i class="fa fa-image" aria-hidden="true"></i> Selecionar</button>
