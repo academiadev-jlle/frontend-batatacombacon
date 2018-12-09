@@ -56,14 +56,17 @@ export class EditPetComponent implements OnInit {
             ) 
           }
 
-          this.imageSubject.subscribe(
-            data => {
-              this.recemEditado=true;
-              this.getPet()
-              //this.alert.show('success', 'Pet editado com sucesso.');     
-              this.route.navigate['editpet']
-            }
-          )
+          this.route.navigate(['profile'])
+          // this.imageSubject.subscribe(
+          //   data => {
+          //     this.recemEditado=true;
+          //     this.route.navigate['profile']
+          //     this.getPet()
+          //     this.alert.show('success', 'Pet editado com sucesso.');
+              
+          //     console.log('fecho!')
+          //   }
+          // )
 
         },
       errorPet => {
