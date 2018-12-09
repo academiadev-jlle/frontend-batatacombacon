@@ -65,6 +65,7 @@ export class PetPagination {
 }
 
 export const APIPetFactory = function(pet: Pet): PetAPI {
+    console.log('APIFActory::::', pet)
     return {
         descricao: pet.descricao,
         especie: pet.especie,
