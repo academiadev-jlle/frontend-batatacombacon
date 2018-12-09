@@ -1,33 +1,41 @@
-.card-list-pet {
-  margin-bottom: 10px; 
+p {
+  margin-bottom: 5px;
+  max-width: 300px;
+  color: #0000009c;
+  font-size: 13px;
+}
 
-  p {
-    margin-bottom: 5px;
-  }
-  
-  .card {
-    margin-bottom: 15px;
-    border: 0px;
-  }
-  
-  .card-body {
-    background-color: #f9f9f9;
-    border-color: transparent;
-  }
-  
-  .maxv {
+h5 {
+  max-width: 300px;
+  color: #0000009c;
+}
+
+.card {
+  margin-bottom: 15px;
+  border: 0px;
+}
+
+.card-body {
+  background-color: #e9c46a;
+  border-color: transparent;
+  max-width: 300px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px
+}
+
+.maxv {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 300px;
+  display: flex;
+
+  .card-img-top{
     width: 100%;
-    max-width: 300px;
-    height: auto;
-    max-height: 300px;
-    display: flex;
-
-    .card-img-top{
-      width: 300px;  /* Or whatever */
-      height: 300px; /* Or whatever */
-      margin: auto;  /* Magic! */
-    }
-
+    height: 20vw;
+    object-fit: cover;
+    //margin: auto;  /* Magic! */
   }
 
 }
@@ -35,16 +43,17 @@
 @media (max-width: 576px) {
   .maxv {
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
     height: auto;
-    max-height: 200px;
+    max-height: 300px;
     display: flex;
-
+  
     .card-img-top{
-      width: 200px;  /* Or whatever */
-      height: 200px; /* Or whatever */
-      margin: auto;  /* Magic! */
+      width: 100%;
+      height: 50vw;
+      object-fit: cover;
+      //margin: auto;  /* Magic! */
     }
-
+  
   }
 }

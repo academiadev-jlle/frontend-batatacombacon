@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
               pet.photoLink = this.sanitize(URL.createObjectURL(retImage));
             },
             errorImage => {
-              pet.photoLink = './assets/dog-silhouette.jpg'
+              pet.photoLink = './assets/undraw_Cautious_dog_q83f.png'
             }
           )
           // get image from database

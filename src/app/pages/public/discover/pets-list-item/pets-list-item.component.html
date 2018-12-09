@@ -1,18 +1,20 @@
 <div class="container">
-  <div class='row card-list-pet'>
-    <div *ngFor="let pet of petsFromService" class="card col-md-4">
-      <div class="card-body">
-          <div class="maxv">
-            <img class="card-img-top" [src]="pet.photoLink" alt="Card image cap">
+    <div class="card-columns">
+        <div *ngFor="let pet of petsFromService" class="card">
+            <div class="card-body">
+              <div class="maxv">
+                <img class="card-img-top" [src]="pet.photoLink" alt="Card image cap">
+              </div>
+              <div class="info">
+                  <p class="card-text"><app-badge-status class="" [childObjetivo]="pet.objetivo"></app-badge-status></p>  
+                  <h5 class="card-title">{{ pet.nome }}</h5>
+                  <p class="card-text">{{ pet.localPet.rua }}</p>
+                  <p class="card-text">{{ pet.localPet.bairro }}</p>
+                  <p class="card-text">{{ pet.localPet.referencia }}</p>
+                  <a routerLink="/pet/{{pet.id}}" class="btn btn-info btn-sm text-center mt-auto ">+ informações</a>
+              </div>
+            </div> 
           </div>
-          <p class="card-text"><app-badge-status class="" [childObjetivo]="pet.objetivo"></app-badge-status></p>  
-          <h5 class="card-title">{{ pet.nome }}</h5>
-          <p class="card-text">{{ pet.localPet.rua }}</p>
-          <p class="card-text">{{ pet.localPet.bairro }}</p>
-          <p class="card-text">{{ pet.localPet.referencia }}</p>
-          <a routerLink="/pet/{{pet.id}}" class="btn btn-info btn-sm text-center mt-auto ">+ informações</a>
-        </div> 
-    </div>
-  </div>
+     </div>
 </div>
-
+ 
