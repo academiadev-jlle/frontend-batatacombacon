@@ -13,6 +13,15 @@
   
   .card-img-top {
     width: 100%;
-    height: 15vw;
+    height: 20vw;
+    // max-height: 20vw;
+    // min-height: 20vw;
     object-fit: cover; }
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    max-height: 100vw;
+    min-height: 100vw;
+  }
 }
