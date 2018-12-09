@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DiscoverComponent implements OnInit {
 
-  pets = [];
+  pets:Pet[] = [];
   filterContent: FilterPets;
   page = 0;
   numberOfElements = 6;

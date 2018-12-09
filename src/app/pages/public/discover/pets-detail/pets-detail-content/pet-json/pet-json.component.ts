@@ -26,21 +26,16 @@ export class PetJsonComponent implements OnInit {
     private imageService: ImageService) { }
 
   ngOnInit() {
-    this.getPet();
     
-    // //garantindo que não de erro quando a página abrir.
-    // this.pet = new Pet();
-
     this.pageIdentifier = this.route.snapshot.paramMap.get('id');
+    this.getPet(+this.pageIdentifier);
+    
     this.pageUrl = `https://frontendbatatacombacon.disqus.com${ this.pageIdentifier }`;
   }
 
-  getPet(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+  getPet(id: number): void {
     this.petService.getPet(id)
       .subscribe(pet => {
-        this.pet = pet
-      
         // get image from database
         let lastImage = +pet.fotos.sort()[pet.fotos.length-1]
         this.imageService.getImage(lastImage).subscribe(
@@ -52,7 +47,8 @@ export class PetJsonComponent implements OnInit {
           }
         )
         // get image from database
-      
+        
+        this.pet = pet
       
       });
   }
