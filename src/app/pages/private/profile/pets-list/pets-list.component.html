@@ -22,8 +22,9 @@
         <div class="container">
             <div class="row">
               <div class="col-md-4">
-                <!-- <div class ="divSep"></div> -->
-                <img class="image-pet" [src]="pet.photoLink" alt="pet">
+                  <div class="maxv">
+                    <img class="image-pet" [src]="pet.photoLink" alt="pet">
+                  </div>
               </div>
               <div class="col-md-8">
                 <p><strong>Endereço: </strong>{{ pet.localPet.rua }}</p>
@@ -31,7 +32,6 @@
                 <p><strong>Objetivo: </strong>{{ pet.objetivo }}</p>
                 <p><strong>Espécie: </strong>{{ pet.especie }}</p>
                 <p><strong>Sexo: </strong>{{ pet.sexo }}</p>
-                
               </div>
             </div>
             <div class="row">

@@ -25,7 +25,7 @@ export class InputImageComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if("imagePetEdit" in changes || "creatingNewPet" in changes){
       if(this.creatingNewPet){
-        this.srcImage= './assets/dog-silhouette.jpg'
+        this.srcImage= './assets/undraw_Cautious_dog_q83f.png'
         this.imgHide=false;
       }else{
         this.imgCropHide=true;
