@@ -21,16 +21,17 @@
     <ng-template ngbPanelContent>
         <div class="container">
             <div class="row">
-              <div class="col-md-7">
-                <div class ="divSep"></div>
+              <div class="col-md-4">
+                <!-- <div class ="divSep"></div> -->
                 <img class="image-pet" [src]="pet.photoLink" alt="pet">
               </div>
-              <div class="col-md-5">
-                <p><strong>Espécie: </strong>{{ pet.especie }}</p>
+              <div class="col-md-8">
+                <p><strong>Endereço: </strong>{{ pet.localPet.rua }}</p>
+                <p><strong>Bairro: </strong>{{ pet.localPet.bairro }}</p>
                 <p><strong>Objetivo: </strong>{{ pet.objetivo }}</p>
-                <p><strong>Porte: </strong>{{ pet.porte }}</p>
+                <p><strong>Espécie: </strong>{{ pet.especie }}</p>
                 <p><strong>Sexo: </strong>{{ pet.sexo }}</p>
-                <p><strong>Local: </strong>{{ pet.localPet }}</p>
+                
               </div>
             </div>
             <div class="row">

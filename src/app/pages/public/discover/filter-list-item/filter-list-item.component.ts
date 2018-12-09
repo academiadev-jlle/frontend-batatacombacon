@@ -121,10 +121,10 @@ export class FilterListItemComponent implements OnInit {
   }
 
   filtraPetsClick() {
-    this.filterParams["especie"] = this.especies.filter(x => x.descricao == this.selectedEspecie).map(m => m.especie)[0];
-    this.filterParams["porte"] = this.portes.filter(x => x.descricao == this.selectedPorte).map(m => m.porte)[0];
-    this.filterParams["objetivo"] = this.objetivos.filter(x => x.descricao == this.selectedObjetivo).map(m => m.objetivo)[0];
-    this.filterParams["sexo"] = this.sexos.filter(x => x.descricao == this.selectedSexo).map(m => m.sexo)[0];
+    this.filterParams["especie"] = this.especies.filter(x => x.descricao == this.selectedEspecie).map(m => m.name)[0];
+    this.filterParams["porte"] = this.portes.filter(x => x.descricao == this.selectedPorte).map(m => m.name)[0];
+    this.filterParams["objetivo"] = this.objetivos.filter(x => x.descricao == this.selectedObjetivo).map(m => m.name)[0];
+    this.filterParams["sexo"] = this.sexos.filter(x => x.descricao == this.selectedSexo).map(m => m.name)[0];
 
     this.sendMessage(this.filterParams);
   }

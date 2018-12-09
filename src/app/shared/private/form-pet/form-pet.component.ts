@@ -8,7 +8,7 @@ import { Objetivo } from 'src/app/classes/objetivo/objetivo';
 import { Porte } from 'src/app/classes/porte/porte';
 import { Sexo } from 'src/app/classes/sexo/sexo';
 import { CepService } from 'src/app/services/cep.service';
-import { Cep } from 'src/app/classes/cep/cep';
+import { EnderecoAjax } from 'src/app/classes/cep/cep';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ export class FormPetComponent implements OnInit, OnChanges {
   @Output() messageEvent = new EventEmitter<FormGroup>();
   
   cepSubject: Subject<string> = new Subject();
-  wsCep: Cep;
+  wsCep: EnderecoAjax;
   loadingCep: boolean=false;
 
   petForm: FormGroup;
@@ -65,17 +65,10 @@ export class FormPetComponent implements OnInit, OnChanges {
           porte: this.petToEdit.porte,
           sexo: this.petToEdit.sexo,
           objetivo: this.petToEdit.objetivo,
-          localPet: this.petToEdit.localPet,
           descricao: this.petToEdit.descricao,
           fotos: this.petToEdit.fotos,
           idUsuario: this.petToEdit.idUsuario,
-          // cepRua: this.petForEdit.idUsuario,
-          // cepBairro: this.petForEdit.idUsuario,
-          // cepNumero: this.petForEdit.idUsuario,
-          // cepCidade: this.petForEdit.idUsuario,
-          // cepUf: this.petForEdit.idUsuario,
-          // cepComplemento: this.petForEdit.idUsuario,
-          // cepReferencia: this.petForEdit.idUsuario
+          localPet: this.petToEdit.localPet
         });
   }
 
@@ -100,19 +93,23 @@ export class FormPetComponent implements OnInit, OnChanges {
       porte: ['', Validators.required],
       sexo: ['', Validators.required],
       objetivo: ['', Validators.required],
-      localPet: [''],
       descricao: [''],
       fotos: [],
       idUsuario: [0],
-      cepNum: [''],
-      cepRua: ['', Validators.required],
-      cepBairro: [''],
-      cepNumero: [''],
-      cepCidade: ['', Validators.required],
-      cepUf: ['', Validators.required],
-      cepComplemento: [''],
-      cepReferencia: ['']
+      localPet: this.formBuilder.group({
+        cep: [''],
+        rua: ['', Validators.required],
+        bairro: [''],
+        numero: [''],
+        cidade: ['', Validators.required],
+        uf: ['', Validators.required],
+        complemento: [''],
+        referencia: ['']
+      })
+      
     });
+
+    console.log(this.f)
   }
 
   cleanForm() {
@@ -123,18 +120,19 @@ export class FormPetComponent implements OnInit, OnChanges {
       porte: [''],
       sexo: [''],
       objetivo: [''],
-      localPet: [''],
       descricao: [''],
       fotos: [],
       idUsuario: [0],
-      cepNum: [''],
-      cepRua: [''],
-      cepBairro: [''],
-      cepNumero: [''],
-      cepCidade: [''],
-      cepUf: [''],
-      cepComplemento: [''],
-      cepReferencia: ['']
+      localPet: {
+        cep: [''],
+        rua: [''],
+        bairro: [''],
+        numero: [''],
+        cidade: [''],
+        uf: [''],
+        complemento: [''],
+        referencia: ['']
+      }
     });
   }
 
@@ -152,10 +150,13 @@ export class FormPetComponent implements OnInit, OnChanges {
     .subscribe(
       ret => {
         this.petForm.patchValue({
-          cepRua: ret.logradouro,
-          cepBairro: ret.bairro,
-          cepCidade: ret.localidade,
-          cepUf: ret.uf
+          localPet: {
+            rua: ret.logradouro,
+            bairro: ret.bairro,
+            cidade: ret.localidade,
+            uf: ret.uf
+          }
+          
         });
         this.loadingCep=false;
       }, 
