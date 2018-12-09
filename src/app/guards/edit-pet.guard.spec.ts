@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 import { EditPetGuard } from './edit-pet.guard';
 
-describe('EditPetGuard', () => {
+xdescribe('EditPetGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [EditPetGuard]
