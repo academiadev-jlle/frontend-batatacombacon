@@ -2,47 +2,38 @@ button {
     margin-bottom: 10px;
 }
 
-// .petTitle {
-//     text-align: center;
-//     font-size: 250px;
-// }
-
-.petContent {
-    margin-bottom: 10px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: #f9f9f9;
-
-    .is-invalid {
-        background-color: #ffd0c0 ;
-    }
-
-    .is-invalid-text {
-        color: red;
-    }
+.is-invalid {
+    background-color: #ffd0c0 ;
 }
 
-// .petDivPhoto{
-//     padding: 0px;
+.is-invalid-text {
+    color: red;
+}
 
-//     .petPhoto {
-//         width: 100%; 
-//         height: 100%;
-//         margin: 0;
-//         display: block;
-//         -webkit-border-radius: 10px;
-//         -moz-border-radius: 10px;
-//         border-radius: 10px;
-//     }
-// }
+.petInfo, .petLocal {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
 
-// .petInfo {
-//     text-align: left;
+.petInfo {
+    background-color: #ffd0c0
+}
 
-//     div {
-//         margin-bottom: 10px;
-//     }
-// }
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.petLocal {
+    background-color: aqua;
+}
+
+@media (max-width: 576px) {
+    .loadingIcon {
+        margin: auto;
+        text-align: center;
+    }
+}

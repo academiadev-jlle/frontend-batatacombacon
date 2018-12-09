@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PetService } from 'src/app/services/pet.service';
 import { FilterPets } from 'src/app/classes/filter';
 import { Pet } from 'src/app/classes/pets/pet';
+import { ImageService } from 'src/app/services/image.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-discover',
@@ -10,14 +12,14 @@ import { Pet } from 'src/app/classes/pets/pet';
 })
 export class DiscoverComponent implements OnInit {
 
-  pets = [];
+  pets:Pet[] = [];
   filterContent: FilterPets;
   page = 0;
   numberOfElements = 6;
   end: boolean;
   filtred: boolean=false;
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService, private imageService: ImageService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getPets(this.page, this.numberOfElements);
@@ -27,12 +29,24 @@ export class DiscoverComponent implements OnInit {
     this.petService.getPetsScroll(page, size)
       .subscribe(
         pets => {
-          pets.content.map( pet => this.pets.push(pet) );
+          pets.content.map(pet => {
+            this.pets.push(pet)
+            // get image from database
+            let lastImage = +pet.fotos.sort()[pet.fotos.length-1]
+            this.imageService.getImage(lastImage).subscribe(
+              retImage => {
+                pet.photoLink = this.sanitize(URL.createObjectURL(retImage));
+              },
+              errorImage => {
+                pet.photoLink = './assets/dog-silhouette.jpg'
+              }
+            )
+            // get image from database
+          });
           this.end = pets.last;
       },
         error => console.log(error)
       );
-    console.log(this.pets);
   }
 
   receiveMessage($event) {
@@ -47,7 +61,20 @@ export class DiscoverComponent implements OnInit {
     this.petService.getPetsByFilterScroll(params, this.page, this.numberOfElements)
       .subscribe(
         pets => {
-          pets.content.map( pet => this.pets.push(pet) );     
+          pets.content.map(pet => {
+            this.pets.push(pet)
+            // get image from database
+            let lastImage = +pet.fotos.sort()[pet.fotos.length-1]
+            this.imageService.getImage(lastImage).subscribe(
+              retImage => {
+                pet.photoLink = this.sanitize(URL.createObjectURL(retImage));
+              },
+              errorImage => {
+                pet.photoLink = './assets/dog-silhouette.jpg'
+              }
+            )
+            // get image from database
+          });     
           this.end = pets.last;
       },
         error => console.log(error)
@@ -65,5 +92,9 @@ export class DiscoverComponent implements OnInit {
     } else {
       this.filtred = false;
     }
+  }
+
+  sanitize(url:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

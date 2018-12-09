@@ -29,7 +29,8 @@ export class EditPetComponent implements OnInit {
 
   constructor(private petService: PetService,
       private imageService: ImageService,
-      private activatedRoute: ActivatedRoute) { 
+      private activatedRoute: ActivatedRoute,
+      private route: Router) { 
     this.activatedRoute.params.subscribe(params => this.idPet = params['id'])
   }
 
@@ -55,11 +56,12 @@ export class EditPetComponent implements OnInit {
             ) 
           }
 
-          this.imageSubject.subscribe( //https://stackoverflow.com/questions/43366694/waiting-for-an-observable-to-finish
+          this.imageSubject.subscribe(
             data => {
               this.recemEditado=true;
               this.getPet()
-              this.alert.show('success', 'Pet editado com sucesso.');     
+              //this.alert.show('success', 'Pet editado com sucesso.');     
+              this.route.navigate['editpet']
             }
           )
 

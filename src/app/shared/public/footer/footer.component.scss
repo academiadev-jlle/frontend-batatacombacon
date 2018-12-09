@@ -1,4 +1,16 @@
+$fontColor: #0000009c;
+
+.navbar {
+  background-color: #ffb366;
+  padding-top: 25px;
+}
+
+a {
+  color: $fontColor;
+}
+
 p {
+  color: $fontColor;
   margin-bottom: 0;
   margin-left: 20px;
 
@@ -18,6 +30,9 @@ p {
   padding-left: 2%;
   padding-right: 2%;
   margin-bottom: 0.5%;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 .githubIcon {
@@ -42,22 +57,20 @@ ul {
       border: none;
       background: none;
       outline: none;
-      color: #999;
+      color: #0000009c;
       margin: auto;
       font-size: 1rem;
     }
   }
 }
-    
+
 @media (max-width: 576px) {
-  ul {
-    list-style-type: none;
-    text-align: center;
-    padding: 0px;
-    margin-left: 0px;
-  }
   p {
-    text-align: center;
+    text-align: justify;
     margin: 0px;
+  }
+
+  .header {
+    margin-top: 10px;
   }
 }
