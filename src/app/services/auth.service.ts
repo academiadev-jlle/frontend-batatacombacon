@@ -41,7 +41,7 @@ export class AuthService {
   logout(){
     this.oauth.logOut();
     this.logged.next(false);
-    this.whoami.next(null)
+    this.whoami.next(this.userInfo)
     this.router.navigate(['']);
   }
 
@@ -54,8 +54,7 @@ export class AuthService {
     const user:UsuarioWhoami = {
       id: claims['id'],
       nome: claims['nome'],
-      email: claims['email'],
-      acabouDeFazerLogin: true
+      email: claims['email']
     }
 
     return user
