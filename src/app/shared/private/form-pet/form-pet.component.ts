@@ -108,8 +108,6 @@ export class FormPetComponent implements OnInit, OnChanges {
       })
       
     });
-
-    console.log(this.f)
   }
 
   cleanForm() {
