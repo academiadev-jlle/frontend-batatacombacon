@@ -3,7 +3,6 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { DebugElement } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { FormUserComponent } from './form-user.component';
 
@@ -54,8 +53,10 @@ describe('FormUserComponent', () => {
   }));
 
   it('form should be invalid empty input', async(() => {
+    component.usuario.controls['nome'].setValue('');
     component.usuario.controls['email'].setValue('');
     component.usuario.controls['senha'].setValue('');
+    component.usuario.controls['confirmSenha'].setValue('');
     expect(component.usuario.controls['email'].valid).toBeFalsy();
     expect(component.usuario.controls['senha'].valid).toBeFalsy();
     expect(component.usuario.valid).toBeFalsy();
@@ -66,9 +67,17 @@ describe('FormUserComponent', () => {
     expect(component.usuario.valid).toBeFalsy();
   }));
 
+  it('should trigger password match validators', async(() => {
+    component.usuario.controls['senha'].setValue('123456');
+    component.usuario.controls['confirmSenha'].setValue('123457');
+    expect(component.usuario.controls['confirmSenha'].valid).toBeFalsy();
+  }));
+
   it('form shold be valid', async(() => {
+    component.usuario.controls['nome'].setValue('user');
     component.usuario.controls['email'].setValue('user@user.com');
     component.usuario.controls['senha'].setValue('123456');
+    component.usuario.controls['confirmSenha'].setValue('123456');
     expect(component.usuario.valid).toBeTruthy();
   }));
 });
