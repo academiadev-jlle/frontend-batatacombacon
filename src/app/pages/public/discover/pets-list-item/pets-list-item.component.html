@@ -3,7 +3,7 @@
         <div *ngFor="let pet of petsFromService" class="card col-md-4">
             <div class="card-body m-auto">
               <div class="maxv">
-                <img class="card-img-top" [src]="pet.photoLink" alt="Card image cap">
+                <img class="card-img-top" [src]="pet.photoLink"  (error)="errorHandler($event)" alt="Card image cap">
               </div>
               <div class="info">
                   <p class="card-text"><app-badge-status class="" [childObjetivo]="pet.objetivo"></app-badge-status></p>  
