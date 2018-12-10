@@ -7,13 +7,15 @@ import { LoginComponent } from './login.component';
 import { DebugElement } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AuthService } from 'src/app/services/auth.service';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Router } from '@angular/router';
+
 
 describe('LoginComponent', () => {
   let comp: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de: DebugElement;
   let el: HTMLElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,6 +31,7 @@ describe('LoginComponent', () => {
       ],
       providers: [
         { provide: AuthService, useValue: AuthService },
+        { provide: Router, useValue: jasmine.createSpyObj('Router', ['navigate'])},
       ]
     })
     .compileComponents().then(() => {
@@ -73,7 +76,24 @@ describe('LoginComponent', () => {
   it('button click should submit form', async(() => {
     fixture.detectChanges();
     spyOn(comp, 'submitClick');
-    el = fixture.debugElement.query(By.css('btn-entrar'));
+    el = fixture.debugElement.nativeElement.querySelector('.btn-entrar');
+    el.click();
+    expect(comp.submitClick).toHaveBeenCalled();
   }));
 
+  it('btnCadastro click should redirectTo cadastro',  async(() => {
+    fixture.detectChanges();
+    spyOn(comp, 'redirectToCadastro');
+    el = fixture.debugElement.nativeElement.querySelector('.btnCadastro');
+    el.click();
+    expect(comp.redirectToCadastro).toHaveBeenCalled();
+  }));
+
+  it('btn click should open modal', async(() => {
+    fixture.detectChanges();
+    spyOn(comp, 'openEsqueceuSenha');
+    el = fixture.debugElement.nativeElement.querySelector('.btnEsqueceuSenha');
+    el.click();
+    expect(comp.openEsqueceuSenha).toHaveBeenCalled();
+  }));
 });
