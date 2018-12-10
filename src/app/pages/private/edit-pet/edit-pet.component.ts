@@ -56,12 +56,13 @@ export class EditPetComponent implements OnInit {
             ) 
           }
 
+          //this.route.navigate(['profile'])
           this.imageSubject.subscribe(
             data => {
               this.recemEditado=true;
-              this.getPet()
+              //this.getPet()
               //this.alert.show('success', 'Pet editado com sucesso.');     
-              this.route.navigate['editpet']
+              this.route.navigate(['profile'])
             }
           )
 
@@ -82,14 +83,19 @@ export class EditPetComponent implements OnInit {
         this.pet = APIPetFactory(retPet);
 
         let lastImage = +retPet.fotos.sort()[retPet.fotos.length-1]
-        this.imageService.getImage(lastImage).subscribe(
-          retImage => {
-            this.imagePet = URL.createObjectURL(retImage);
-          },
-          errorImage => {
-            console.log(errorImage)
-          }
-        )
+        if(lastImage!==NaN && lastImage!==undefined && !!lastImage!==false){
+          this.imageService.getImage(lastImage).subscribe(
+            retImage => {
+              this.imagePet = URL.createObjectURL(retImage);
+            },
+            errorImage => {
+              console.log(errorImage)
+            }
+          )
+        }else{
+          this.imagePet = '';
+        }
+
       },
       errorPet => {
         console.log(errorPet);

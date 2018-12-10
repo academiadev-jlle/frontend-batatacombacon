@@ -65,8 +65,6 @@ export class ProfileComponent implements OnInit {
           // get image from database
         })
         this.pets = pets.content;
-
-        console.log(this.pets)
       },
       error => this.alert.show('info', 'Nenhum pet foi encontrado.')
       )

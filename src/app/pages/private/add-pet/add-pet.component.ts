@@ -32,9 +32,6 @@ export class AddPetComponent implements OnInit {
    }
 
   receiveFormPet($event) {
-
-    console.log($event)
-
     this.receivedForm = $event;
     //setando idUser aqui para manter o desacoplamento de componentes filhos
     this.receivedForm.patchValue({idUsuario: this.userId})
