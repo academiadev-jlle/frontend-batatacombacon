@@ -9,7 +9,7 @@
           [ngClass]="{ 'is-invalid': submitted && f.nome.errors }"> 
         </div>
         <div *ngIf="submitted && f.nome.errors">
-          <div class= "is-invalid-text" *ngIf="f.nome.errors?.required">Preencha o nome</div>
+          <div class= "is-invalid-text col-md-12" *ngIf="f.nome.errors?.required">Preencha o nome</div>
         </div>
       </div>
       <div class="form-row">
@@ -27,7 +27,7 @@
           </select>
         </div>
         <div *ngIf="submitted && f.especie.errors"> 
-          <div class= "is-invalid-text" *ngIf="f.especie.errors?.required">Selecione a espécie</div>
+          <div class= "is-invalid-text col-md-12" *ngIf="f.especie.errors?.required">Selecione a espécie</div>
         </div>  
       </div>
       <div class="col-md-6">
@@ -44,7 +44,7 @@
         </select>
       </div>
       <div *ngIf="submitted && f.porte.errors">
-        <div class= "is-invalid-text" *ngIf="f.porte.errors?.required">Selecione o porte</div>
+        <div class= "is-invalid-text col-md-12" *ngIf="f.porte.errors?.required">Selecione o porte</div>
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
       </select>
     </div>
     <div *ngIf="submitted && f.sexo.errors">
-      <div class= "is-invalid-text" *ngIf="f.sexo.errors?.required">Selecione o sexo</div>
+      <div class= "is-invalid-text col-md-12" *ngIf="f.sexo.errors?.required">Selecione o sexo</div>
     </div>  
   </div>
   <div class="col-md-6">
@@ -80,7 +80,7 @@
     </select>
   </div>
   <div *ngIf="submitted && f.objetivo.errors">
-    <div class= "is-invalid-text" *ngIf="f.objetivo.errors?.required">Selecione um objetivo</div>
+    <div class= "is-invalid-text col-md-12" *ngIf="f.objetivo.errors?.required">Selecione um objetivo</div>
   </div>
   </div>
   </div>
@@ -101,7 +101,7 @@
             <input type="text" class="form-control form-control-sm" id="cepNum"
             formControlName="cep"
             autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.localPet.controls.cep.errors }" (keyup)="keyUp($event)">
+            [ngClass]="{ 'is-invalid': submitted && f.localPet['controls'].cep.errors }" (keyup)="keyUp($event)">
           </div>
         </div>
         <div class="form-group col-md mt-auto loadingIcon">
@@ -115,10 +115,10 @@
             <input type="text" class="form-control form-control-sm" id="cepUf" 
             formControlName="uf"
             autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.localPet.controls.uf.errors }">
+            [ngClass]="{ 'is-invalid': submitted && f.localPet['controls'].uf.errors }">
           </div>
-          <div *ngIf="submitted && f.localPet.controls.uf.errors">
-            <div class= "is-invalid-text" *ngIf="f.localPet.controls.uf.errors?.required">Preencha a UF</div>
+          <div *ngIf="submitted && f.localPet['controls'].uf.errors">
+            <div class= "is-invalid-text col-md-12" *ngIf="f.localPet['controls'].uf.errors?.required">Preencha a UF</div>
           </div>
         </div>
         <div class="form-group col-md-4">
@@ -127,10 +127,10 @@
             <input type="text" class="form-control form-control-sm" id="cepCidade" 
             formControlName="cidade"
             autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.localPet.controls.cidade.errors }" >
+            [ngClass]="{ 'is-invalid': submitted && f.localPet['controls'].cidade.errors }" >
           </div>
-          <div *ngIf="submitted && f.localPet.controls.cidade.errors">
-            <div class= "is-invalid-text" *ngIf="f.localPet.controls.cidade.errors?.required">Preencha a cidade</div>
+          <div *ngIf="submitted && f.localPet['controls'].cidade.errors">
+            <div class= "is-invalid-text col-md-12" *ngIf="f.localPet['controls'].cidade.errors?.required">Preencha a cidade</div>
           </div>
         </div>
         <div class="form-group col-md-5">
@@ -139,10 +139,10 @@
             <input type="text" class="form-control form-control-sm" id="cepBairro" 
             formControlName="bairro"
             autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.localPet.controls.bairro.errors }" >
+            [ngClass]="{ 'is-invalid': submitted && f.localPet['controls'].bairro.errors }" >
           </div>
-          <div *ngIf="submitted && f.localPet.controls.bairro.errors">
-            <div class= "is-invalid-text" *ngIf="f.localPet.controls.bairro.errors?.required">Preencha o bairro</div>
+          <div *ngIf="submitted && f.localPet['controls'].bairro.errors">
+            <div class= "is-invalid-text col-md-12" *ngIf="f.localPet['controls'].bairro.errors?.required">Preencha o bairro</div>
           </div>
         </div>
       </div>
@@ -153,10 +153,10 @@
             <input type="text" class="form-control form-control-sm" id="cepRua" 
             formControlName="rua"
             autofocus
-            [ngClass]="{ 'is-invalid': submitted && f.localPet.controls.rua.errors }" >
+            [ngClass]="{ 'is-invalid': submitted && f.localPet['controls'].rua.errors }" >
           </div>
-          <div *ngIf="submitted && f.localPet.controls.rua.errors">
-            <div class= "is-invalid-text" *ngIf="f.localPet.controls.rua.errors?.required">Preencha a rua</div>
+          <div *ngIf="submitted && f.localPet['controls'].rua.errors">
+            <div class= "is-invalid-text col-md-12" *ngIf="f.localPet['controls'].rua.errors?.required">Preencha a rua</div>
           </div>
         </div>
         <div class="form-group col-md-4">
