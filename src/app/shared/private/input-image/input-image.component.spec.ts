@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputImageComponent } from './input-image.component';
 
-describe('InputImageComponent', () => {
+xdescribe('InputImageComponent', () => {
   let component: InputImageComponent;
   let fixture: ComponentFixture<InputImageComponent>;
 

@@ -26,8 +26,7 @@ export class DiscoverComponent implements OnInit {
   }
 
   getPets(page: number, size: number) {
-    this.petService.getPetsScroll(page, size)
-      .subscribe(
+    this.petService.getPetsScroll(page, size).subscribe(
         pets => {
           pets.content.map(pet => {
             this.pets.push(pet)

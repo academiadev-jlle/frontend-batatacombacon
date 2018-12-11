@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 import { ProfileGuard } from './profile.guard';
 
-describe('ProfileGuard', () => {
+xdescribe('ProfileGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [ProfileGuard]
