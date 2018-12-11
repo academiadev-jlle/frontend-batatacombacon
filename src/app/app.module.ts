@@ -13,7 +13,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
+import { DisqusModule, DISQUS_SHORTNAME } from 'ngx-disqus';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
     NgbAccordionModule,
     OAuthModule.forRoot(),
     ImageCropperModule,
-    DisqusModule.forRoot('frontendbatatacombacon')
+    DisqusModule.forRoot('procurandopets')
   ],
   providers: [
     {
@@ -48,7 +48,7 @@ import { DisqusModule, DISQUS_SHORTNAME } from "ngx-disqus";
       multi: true
     },
     { provide: DISQUS_SHORTNAME,
-      useValue: 'frontendbatatacombacon' }
+      useValue: 'procurandopets' }
   ],
   bootstrap: [AppComponent]
 })

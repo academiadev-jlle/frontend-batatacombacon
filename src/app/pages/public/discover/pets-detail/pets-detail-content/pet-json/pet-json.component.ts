@@ -17,6 +17,7 @@ export class PetJsonComponent implements OnInit {
   pet: Pet;
   pageIdentifier: string;
   pageUrl: string;
+  title = 'Salve um PET';
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,7 @@ export class PetJsonComponent implements OnInit {
     this.pageIdentifier = this.route.snapshot.paramMap.get('id');
     this.getPet(+this.pageIdentifier);
     
-    this.pageUrl = `https://frontendbatatacombacon.disqus.com${ this.pageIdentifier }`;
+    this.pageUrl = `https://procurandopets.disqus.com/${ this.pageIdentifier }`;
   }
 
   getPet(id: number): void {
